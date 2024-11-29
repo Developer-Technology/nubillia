@@ -16,3 +16,6 @@ Este proyecto es un sistema de gestión empresarial (ERP) diseñado bajo el mode
 - **Otros**: Integraciones para pagos y suscripciones.
 
 Este sistema está diseñado para garantizar la seguridad y el aislamiento de datos de cada empresa, asegurando una experiencia intuitiva tanto para administradores como para colaboradores.
+
+## Cambios al 29/11/24
+1 Se crea archivos principales del proyecto
