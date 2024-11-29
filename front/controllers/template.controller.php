@@ -13,6 +13,10 @@ class TemplateController {
 	=============================================*/
 	static public function path() {
 
+		/* Produccion */
+		//return "nubillia.chanamoth.local/";
+
+		/* Desarrollo */
 		return "nubillia.local/";
 
 	}
