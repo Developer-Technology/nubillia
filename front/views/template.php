@@ -75,11 +75,86 @@ if (!empty($routesArray[2])) {
         <script src="views/assets/vendor/js/helpers.js"></script>
         <!--Config  -->
         <script src="views/assets/js/config.js"></script>
+
+        <!-- Scripts Footer -->
+        <script src="views/assets/vendor/libs/jquery/jquery.js"></script>
+        <script src="views/assets/vendor/libs/popper/popper.js"></script>
+        <script src="views/assets/vendor/js/bootstrap.js"></script>
+        <script src="views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+        <script src="views/assets/vendor/libs/hammer/hammer.js"></script>
+        <script src="views/assets/vendor/libs/i18n/i18n.js"></script>
+        <script src="views/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+        <script src="views/assets/vendor/js/menu.js"></script>
+    
+        <!-- Main JS -->
+        <script src="views/assets/js/main.js"></script>
         
     </head>
 
     <body>
     
+        <?php
+        
+            /* Si no hay sesión se le redirige al login */
+            if(!isset($_SESSION["user"])) {
+                
+                if(!empty($routesArray[1])) {
+                    
+                    if($routesArray[1] == "forgot" ||
+                        $routesArray[1] == "register") {
+                        
+                        echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-auth.css">';
+                        include "views/pages/auth/".$routesArray[1]."/".$routesArray[1].".php";
+                        
+                    } else {
+                        
+                        echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-misc.css">';
+                        include "views/pages/auth/404/404.php";
+                    
+                    }
+                
+                } else {
+                    
+                    echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-auth.css">';
+                    include "views/pages/auth/login/login.php";
+                
+                }
+                
+                echo '</body></head>';
+                return;
+            
+            }
+
+            /* Si hay sesión pero en bloqueo se le redirige al lock screen */
+            if(!isset($_SESSION["user"]->password_user)) {
+                
+                if(!empty($routesArray[1])) {
+                    
+                    if($routesArray[1] == "logout") {
+                        
+                        include "views/pages/".$routesArray[1]."/".$routesArray[1].".php";
+                    
+                    } else {
+                        
+                        echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-misc.css">';
+                        include "views/pages/auth/404/404.php";
+                    
+                    }
+                
+                } else {
+                    
+                    echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-auth.css">';
+                    include "views/pages/auth/lock/lock.php";
+                
+                }
+                
+                echo '</body></head>';
+                return;
+            
+            }
+            
+        ?>
+
         <!-- Layout wrapper -->
         <div class="layout-wrapper layout-content-navbar">
 
@@ -108,10 +183,11 @@ if (!empty($routesArray[2])) {
                                 if(!empty($routesArray[1])) {
 
                                     if($routesArray[1] == "clients" ||
-                                        $routesArray[1] == "users") {
+                                        $routesArray[1] == "users" ||
+                                        $routesArray[1] == "logout") {
 
                                         include "views/pages/".$routesArray[1]."/".$routesArray[1].".php";
-                                        
+
                                     } else {
 
                                         include "views/pages/404/404.php";
@@ -152,18 +228,6 @@ if (!empty($routesArray[2])) {
             
         </div>
         <!-- / Layout wrapper -->
-    
-        <script src="views/assets/vendor/libs/jquery/jquery.js"></script>
-        <script src="views/assets/vendor/libs/popper/popper.js"></script>
-        <script src="views/assets/vendor/js/bootstrap.js"></script>
-        <script src="views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-        <script src="views/assets/vendor/libs/hammer/hammer.js"></script>
-        <script src="views/assets/vendor/libs/i18n/i18n.js"></script>
-        <script src="views/assets/vendor/libs/typeahead-js/typeahead.js"></script>
-        <script src="views/assets/vendor/js/menu.js"></script>
-    
-        <!-- Main JS -->
-        <script src="views/assets/js/main.js"></script>
     
     </body>
 

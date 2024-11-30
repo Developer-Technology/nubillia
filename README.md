@@ -21,4 +21,9 @@ Este sistema está diseñado para garantizar la seguridad y el aislamiento de da
 1 Se crea archivos principales del proyecto  
 2 Se corrige CORS para cualquier tecnolgía  
 3 Se agrega la estructura base de la vista, se implemente la plantilla, la cabecera, el menú lateral y el footer  
-4 Se configura las rutas amigables y el error 404  
+4 Se configura las rutas amigables y el error 404
+
+## Cambios al 30/11/24
+1 Se configura la vista de login, si no hay sesión se redirige al login  
+2 Se configura la vista de forgot con la url amigable  
+3 Se configura el error 404 cuando no se tiene sesión
