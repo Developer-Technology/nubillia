@@ -1,8 +1,46 @@
+<?php
+
+session_start();
+
+/*=============================================
+Capturar las rutas de la URL
+=============================================*/
+$routesArray = explode("/", $_SERVER['REQUEST_URI']);
+$routesArray = array_filter($routesArray);
+
+/*=============================================
+Limpiar la Url de variables GET
+=============================================*/
+foreach ($routesArray as $key => $value) {
+    
+    $value = explode("?", $value)[0];
+    $routesArray[$key] = $value;
+
+}
+
+/*=============================================
+Cambiamos el nombre de las rutas
+=============================================*/
+if (!empty($routesArray[2])) {
+    
+    if ($routesArray[2] == "new") {
+      $subRuta = "Nuevo";
+    } elseif ($routesArray[2] == "edit") {
+      $subRuta = "Editar";
+    } else {
+      $subRuta = "Detalle";
+    }
+
+}
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="es" class="light-style layout-navbar-fixed layout-menu-fixed layout-wide " dir="ltr" data-theme="theme-bordered" data-assets-path="views/assets/" data-template="vertical-menu-template-bordered">
 
     <head>
+        
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
@@ -65,7 +103,28 @@
                         <div class="container-fluid flex-grow-1 container-p-y">
 
                             <!-- Pagina -->
-                            <?php include "views/pages/home/home.php"; ?>
+                            <?php
+
+                                if(!empty($routesArray[1])) {
+
+                                    if($routesArray[1] == "clients" ||
+                                        $routesArray[1] == "users") {
+
+                                        include "views/pages/".$routesArray[1]."/".$routesArray[1].".php";
+                                        
+                                    } else {
+
+                                        include "views/pages/404/404.php";
+
+                                    }
+
+                                } else {
+
+                                    include "views/pages/home/home.php";
+
+                                }
+                                
+                            ?>
                             <!--/ Pagina -->
 
                         </div>
