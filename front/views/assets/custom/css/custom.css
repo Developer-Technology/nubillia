@@ -1,0 +1,11 @@
+.text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block; /* Asegura que se aplique a contenedores en línea */
+    max-width: 100%; /* Ajusta el ancho máximo si es necesario */
+}
+
+.pointer {
+    cursor: pointer;
+}

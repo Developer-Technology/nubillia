@@ -11,8 +11,13 @@ echo '<script>
         fncSweetAlert("loading", "Cargando...", "");
     </script>';
 
-session_destroy();
+$session_name = session_name();
+unset($_SESSION['store']);
+$url = '/';
 
-echo '<script>
-        window.location= "/";
-    </script>';
+if (isset($_COOKIE[$session_name])) {
+	echo '<script>
+            fncFormatInputs();
+            window.location = "' . $url . '"
+        </script>'; 
+}

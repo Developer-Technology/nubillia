@@ -9,6 +9,13 @@ if(isset($_SESSION["user"])) {
 
 }
 
+if(isset($_SESSION["store"])) {
+
+    require_once "controllers/stores.controller.php";
+    $getStore = StoresController::getdata($_SESSION["store"]->id_store);
+
+}
+
 require_once "controllers/settings.controller.php";
 $getSetting = SettingsController::getdata();
 
@@ -76,6 +83,7 @@ if (!empty($routesArray[2])) {
         <link rel="stylesheet" href="views/assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
         <link rel="stylesheet" href="views/assets/vendor/css/rtl/theme-bordered.css" class="template-customizer-theme-css" />
         <link rel="stylesheet" href="views/assets/css/demo.css" />
+        <link rel="stylesheet" href="views/assets/custom/css/custom.css">
         
         <!-- Vendors CSS -->
         <link rel="stylesheet" href="views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
@@ -134,6 +142,35 @@ if (!empty($routesArray[2])) {
                     
                     echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-auth.css">';
                     include "views/pages/auth/login/login.php";
+                
+                }
+                
+                echo '</body></head>';
+                return;
+            
+            }
+
+            /* Si no hay sesión de tienda */
+            if(!isset($_SESSION["store"])) {
+                
+                if(!empty($routesArray[1])) {
+                    
+                    if($routesArray[1] == "logout" || 
+                        $routesArray[1] == "redirect") {
+                        
+                        include "views/pages/".$routesArray[1]."/".$routesArray[1].".php";
+                        
+                    } else {
+                        
+                        echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-misc.css">';
+                        include "views/pages/auth/404/404.php";
+                    
+                    }
+                
+                } else {
+                    
+                    echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-auth.css"><link rel="stylesheet" href="views/assets/vendor/css/pages/page-profile.css" />';
+                    include "views/pages/auth/tenant/tenant.php";
                 
                 }
                 
@@ -202,7 +239,8 @@ if (!empty($routesArray[2])) {
                                     if($routesArray[1] == "clients" ||
                                         $routesArray[1] == "users" ||
                                         $routesArray[1] == "logout" ||
-                                        $routesArray[1] == "lock") {
+                                        $routesArray[1] == "lock" || 
+                                        $routesArray[1] == "change") {
 
                                         if($routesArray[1] == "lock") {
                                             include "views/pages/auth/".$routesArray[1]."/".$routesArray[1].".php";

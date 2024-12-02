@@ -33,4 +33,5 @@ Este sistema está diseñado para garantizar la seguridad y el aislamiento de da
 2 LockScreen funcional
 
 ## Cambios al 02/12/24
-1 Se crea tabla de configuración y personalización del sistema
+1 Se crea tabla de configuración y personalización del sistema  
+2 Se configura las sesiones para el acceso al panel de la empresa con la tienda seleccionada, de momento solo el super administrador podrá tener acceso a todas las empresas y tiendas

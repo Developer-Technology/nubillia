@@ -23,7 +23,7 @@
                         <span class="app-brand-logo demo">
                             <?php include "views/assets/img/svg/logo.svg"; ?>
                         </span>
-                        <span class="app-brand-text demo h3 mb-0 fw-bold"><?php echo $getSetting->name_setting; ?></span>
+                        <span class="app-brand-text demo h3 mb-0 fw-bold"><?php echo $getSetting->name_system_setting; ?></span>
                     </a>
                 </div>
                 <!-- /Logo -->

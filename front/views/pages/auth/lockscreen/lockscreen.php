@@ -15,17 +15,18 @@
                             <span class="app-brand-logo demo">
                                 <?php include "views/assets/img/svg/logo.svg"; ?>
                             </span>
-                            <span class="app-brand-text demo h3 mb-0 fw-bold"><?php echo $getSetting->name_setting; ?></span>
+                            <span class="app-brand-text demo h3 mb-0 fw-bold"><?php echo $getSetting->name_system_setting; ?></span>
                         </a>
                     </div>
                     <!-- /Logo -->
 
                     <h4 class="mb-2"><?php echo $getUser->name_worker; ?></h4>
-                    <p class="mb-4">Ingresa tu contraseña para desbloquear tu sesión.</p>
+                    <p>Ingresa tu contraseña para desbloquear tu sesión.</p>
+                    <span class="footer-link me-4"><small><b>Empresa: </b><?php echo $getStore->name_tenant; ?> <br> <b>Tienda: </b><?php echo $getStore->name_store; ?></small></span>
 
-                    <form class="mb-3 needs-validation" method="POST" novalidate>
+                    <form class="mb-3 needs-validation mt-3" method="POST" novalidate>
                         
-                    <input type="hidden" class="form-control" id="username" name="loginUsername" placeholder="Ingresa tu Usuario" value="<?php echo $getUser->username_user; ?>">
+                        <input type="hidden" class="form-control" id="username" name="loginUsername" placeholder="Ingresa tu Usuario" value="<?php echo $getUser->username_user; ?>">
                         <div class="mb-3 form-password-toggle">
                             <label for="loginPassword" class="form-label">Contraseña</label>
                             <div class="input-group input-group-merge">

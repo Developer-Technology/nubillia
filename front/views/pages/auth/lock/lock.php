@@ -6,6 +6,11 @@ Web: www.chanamoth.com
 Mail: info@chanamoth.com
 ---------------------------*/
 
+echo '<script>
+        matPreloader("on");
+        fncSweetAlert("loading", "Cargando...", "");
+    </script>';
+
 // Capturar cualquier salida previa (solución temporal)
 ob_start();
 

@@ -6,7 +6,7 @@
             <span class="app-brand-logo demo">
                 <?php include "views/assets/img/svg/logo.svg"; ?>
             </span>
-            <span class="app-brand-text demo menu-text fw-bold ms-2"><?php echo $getSetting->name_setting; ?></span>
+            <span class="app-brand-text demo menu-text fw-bold ms-2"><?php echo $getSetting->name_system_setting; ?></span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
