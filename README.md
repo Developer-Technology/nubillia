@@ -29,4 +29,5 @@ Este sistema está diseñado para garantizar la seguridad y el aislamiento de da
 3 Se configura el error 404 cuando no se tiene sesión
 
 ## Cambios al 01/12-24
-1 Login funcional
+1 Login funcional  
+2 LockScreen funcional
