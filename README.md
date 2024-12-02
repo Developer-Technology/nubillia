@@ -27,3 +27,6 @@ Este sistema está diseñado para garantizar la seguridad y el aislamiento de da
 1 Se configura la vista de login, si no hay sesión se redirige al login  
 2 Se configura la vista de forgot con la url amigable  
 3 Se configura el error 404 cuando no se tiene sesión
+
+## Cambios al 01/12-24
+1 Login funcional
