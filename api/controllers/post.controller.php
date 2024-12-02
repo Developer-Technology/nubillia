@@ -25,78 +25,6 @@ class PostController{
 	}
 
 	/*=============================================
-	Peticion POST para registrar cliente
-	=============================================*/
-
-	static public function postRegisterC($table, $data, $suffix){
-
-		if(isset($data["name_".$suffix]) && $data["name_".$suffix] != null){
-
-			//$crypt = crypt($data["name_".$suffix], '$2a$07$azybxcags23425sdg23sdfhsd$');
-
-			//$data["name_".$suffix] = $crypt;
-
-			$response = PostModel::postData($table, $data);
-
-			$return = new PostController();
-			$return -> fncResponse($response,null,$suffix);
-
-		}else{
-
-			/*=============================================
-			Registro de usuarios desde APP externas
-			=============================================*/
-
-			$response = PostModel::postData($table, $data);
-
-			if(isset($response["comment"]) && $response["comment"] == "El proceso fue exitoso" ){
-
-				/*=============================================
-				Validar que el usuario exista en BD
-				=============================================*/
-
-				$response = GetModel::getDataFilter($table, "*", "name_".$suffix, $data["name_".$suffix], null,null,null,null);
-				
-				if(!empty($response)){		
-
-					$token = Connection::jwt($response[0]->{"id_".$suffix}, $response[0]->{"name_".$suffix});
-
-					$jwt = JWT::encode($token, "dfhsdfg34dfchs4xgsrsdry46");
-
-					/*=============================================
-					Actualizamos la base de datos con el Token del usuario
-					=============================================*/
-
-					$data = array(
-
-						"token_".$suffix => $jwt,
-						"token_exp_".$suffix => $token["exp"]
-
-					);
-
-					$update = PutModel::putData($table, $data, $response[0]->{"id_".$suffix}, "id_".$suffix);
-
-					if(isset($update["comment"]) && $update["comment"] == "El proceso fue exitoso" ){
-
-						$response[0]->{"token_".$suffix} = $jwt;
-						$response[0]->{"token_exp_".$suffix} = $token["exp"];
-
-						$return = new PostController();
-						$return -> fncResponse($response, null,$suffix);
-
-					}
-
-				}
-
-
-			}
-
-
-		}
-
-	}
-
-	/*=============================================
 	Peticion POST para registrar usuario
 	=============================================*/
 
@@ -127,11 +55,11 @@ class PostController{
 				Validar que el usuario exista en BD
 				=============================================*/
 
-				$response = GetModel::getDataFilter($table, "*", "email_".$suffix, $data["email_".$suffix], null,null,null,null);
+				$response = GetModel::getDataFilter($table, "*", "username_".$suffix, $data["username_".$suffix], null,null,null,null);
 				
 				if(!empty($response)){		
 
-					$token = Connection::jwt($response[0]->{"id_".$suffix}, $response[0]->{"email_".$suffix});
+					$token = Connection::jwt($response[0]->{"id_".$suffix}, $response[0]->{"username_".$suffix});
 
 					$jwt = JWT::encode($token, "dfhsdfg34dfchs4xgsrsdry46");
 
@@ -178,7 +106,7 @@ class PostController{
 		Validar que el usuario exista en BD
 		=============================================*/
 
-		$response = GetModel::getDataFilter($table, "*", "email_".$suffix, $data["email_".$suffix], null,null,null,null);
+		$response = GetModel::getDataFilter($table, "*", "username_".$suffix, $data["username_".$suffix], null,null,null,null);
 		
 		if(!empty($response)){	
 
@@ -193,7 +121,7 @@ class PostController{
 
 				if($response[0]->{"password_".$suffix} == $crypt){
 
-					$token = Connection::jwt($response[0]->{"id_".$suffix}, $response[0]->{"email_".$suffix});
+					$token = Connection::jwt($response[0]->{"id_".$suffix}, $response[0]->{"username_".$suffix});
 
 					$jwt = JWT::encode($token, "dfhsdfg34dfchs4xgsrsdry46");
 

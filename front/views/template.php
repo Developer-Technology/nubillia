@@ -69,7 +69,11 @@ if (!empty($routesArray[2])) {
         
         <!-- Vendors CSS -->
         <link rel="stylesheet" href="views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-        <link rel="stylesheet" href="views/assets/vendor/libs/typeahead-js/typeahead.css" /> 
+        <link rel="stylesheet" href="views/assets/vendor/libs/typeahead-js/typeahead.css" />
+
+        <!-- Plugins -->
+        <link rel="stylesheet" href="views/assets/plugins/material-preloader/material-preloader.css">
+        <link rel="stylesheet" href="views/assets/plugins/notie/notie.css">
 
         <!-- Helpers -->
         <script src="views/assets/vendor/js/helpers.js"></script>
@@ -88,6 +92,12 @@ if (!empty($routesArray[2])) {
     
         <!-- Main JS -->
         <script src="views/assets/js/main.js"></script>
+
+        <!-- Plugins -->
+        <script src="views/assets/plugins/material-preloader/material-preloader.js"></script>
+        <script src="views/assets/plugins/notie/notie.min.js"></script>
+        <script src="views/assets/plugins/sweet-alert/sweetalert2-10.js"></script>
+        <script src="views/assets/custom/alerts/alerts.js"></script>
         
     </head>
 
