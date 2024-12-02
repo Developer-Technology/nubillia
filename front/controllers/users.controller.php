@@ -96,9 +96,8 @@ class UsersController{
 	}
 
 	/*=============================================
-	Creación administradores
+	Creación usuarios
 	=============================================*/	
-
 	public function create(){
 
 		if(isset($_POST["displayname"])){
@@ -202,9 +201,8 @@ class UsersController{
 	}
 
 	/*=============================================
-	Edición administradores
+	Edición usuarios
 	=============================================*/	
-
 	public function edit($id){
 
 		if(isset($_POST["idAdmin"])){
@@ -367,25 +365,25 @@ class UsersController{
 	}
 
 	/*=============================================
-	Consultar posicion o cargo
+	Datos usuario
 	=============================================*/	
 	public static function getdata($id){
 
-		$urlUser = "relations?rel=users,workers,rols&type=user,worker,rol&select=*&linkTo=id_user&equalTo=".$id;
-		$methodUser = "GET";
-		$fieldsUser = array();
+		$url = "relations?rel=users,workers,rols&type=user,worker,rol&select=*&linkTo=id_user&equalTo=".$id;
+		$method = "GET";
+		$fields = array();
 
-		$responseUser = CurlController::request($urlUser,$methodUser,$fieldsUser);
+		$response = CurlController::request($url,$method,$fields);
 
         /*=============================================
         Validamos si se tiene un usuario
         =============================================*/	
-        if($responseUser->status == 200){
+        if($response->status == 200){
 
             /*=============================================
             Obtenemos los datos del usuario
             =============================================*/	
-            return $responseUser->results[0];
+            return $response->results[0];
 
         }
 

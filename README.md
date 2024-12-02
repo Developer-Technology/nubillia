@@ -28,6 +28,9 @@ Este sistema está diseñado para garantizar la seguridad y el aislamiento de da
 2 Se configura la vista de forgot con la url amigable  
 3 Se configura el error 404 cuando no se tiene sesión
 
-## Cambios al 01/12-24
+## Cambios al 01/12/24
 1 Login funcional  
 2 LockScreen funcional
+
+## Cambios al 02/12/24
+1 Se crea tabla de configuración y personalización del sistema

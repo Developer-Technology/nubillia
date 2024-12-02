@@ -9,6 +9,9 @@ if(isset($_SESSION["user"])) {
 
 }
 
+require_once "controllers/settings.controller.php";
+$getSetting = SettingsController::getdata();
+
 /*=============================================
 Capturar las rutas de la URL
 =============================================*/
@@ -96,9 +99,6 @@ if (!empty($routesArray[2])) {
         <script src="views/assets/vendor/libs/i18n/i18n.js"></script>
         <script src="views/assets/vendor/libs/typeahead-js/typeahead.js"></script>
         <script src="views/assets/vendor/js/menu.js"></script>
-    
-        <!-- Main JS -->
-        <script src="views/assets/js/main.js"></script>
 
         <!-- Plugins -->
         <script src="views/assets/plugins/material-preloader/material-preloader.js"></script>
@@ -252,6 +252,9 @@ if (!empty($routesArray[2])) {
             
         </div>
         <!-- / Layout wrapper -->
+
+        <!-- Main JS -->
+        <script src="views/assets/js/main.js"></script>
     
     </body>
 

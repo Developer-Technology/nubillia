@@ -6,7 +6,7 @@
             <span class="app-brand-logo demo">
                 <?php include "views/assets/img/svg/logo.svg"; ?>
             </span>
-            <span class="app-brand-text demo menu-text fw-bold ms-2">Nubillia</span>
+            <span class="app-brand-text demo menu-text fw-bold ms-2"><?php echo $getSetting->name_setting; ?></span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
@@ -549,24 +549,30 @@
         </li>
 
         <!-- Soporte -->
+        <?php if($getSetting->whatsapp_setting != '' || $getSetting->youtube_setting != ''): ?>
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text" data-i18n="Soporte">Soporte</span>
         </li>
+        <?php endif; ?>
 
+        <?php if($getSetting->whatsapp_setting != ''): ?>
         <li class="menu-item">
-            <a href="https://wa.link/9g29eb" target="_blank" class="menu-link">
+            <a href="<?php echo $getSetting->whatsapp_setting; ?>" target="_blank" class="menu-link">
                 <i class="menu-icon tf-icons bx bxl-whatsapp"></i>
                 <div data-i18n="WhatsApp">WhatsApp</div>
             </a>
         </li>
+        <?php endif; ?>
 
+        <?php if($getSetting->youtube_setting != ''): ?>
         <li class="menu-item">
-            <a href="https://www.youtube.com/@developertechnolog" target="_blank"
+            <a href="<?php echo $getSetting->youtube_setting; ?>" target="_blank"
                 class="menu-link">
                 <i class="menu-icon tf-icons bx bxl-youtube"></i>
                 <div data-i18n="Tutoriales">Tutoriales</div>
             </a>
         </li>
+        <?php endif; ?>
         
     </ul>
 
