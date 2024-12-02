@@ -1,9 +1,9 @@
 <?php
 
 /*-------------------------
-Autor: Developer Technology
-Web: www.developer-technology.net
-Mail: info@developer-technology.net
+Autor: Chanamoth
+Web: www.chanamoth.com
+Mail: info@chanamoth.com
 ---------------------------*/
 
 class UsersController{
@@ -369,31 +369,23 @@ class UsersController{
 	/*=============================================
 	Consultar posicion o cargo
 	=============================================*/	
-	public function consultPosition($id){
+	public static function getdata($id){
 
-		$url = "positions/consult/".$id;
-        $method = "GET";
-        $header = array();
-        $fields = array();
+		$urlUser = "relations?rel=users,workers,rols&type=user,worker,rol&select=*&linkTo=id_user&equalTo=".$id;
+		$methodUser = "GET";
+		$fieldsUser = array();
 
-        $response = CurlController::request($url,$method,$fields,$header);
+		$responseUser = CurlController::request($urlUser,$methodUser,$fieldsUser);
 
         /*=============================================
-        Validamos que si escriba correctamente los datos
+        Validamos si se tiene un usuario
         =============================================*/	
-        
-        if($response->status == 200){
+        if($responseUser->status == 200){
 
             /*=============================================
-            Creamos variable de sesión
+            Obtenemos los datos del usuario
             =============================================*/	
-            
-            echo $response->response->name;
-
-
-        }else{
-
-            echo $response->response;
+            return $responseUser->results[0];
 
         }
 

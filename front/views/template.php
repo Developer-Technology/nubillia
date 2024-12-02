@@ -2,6 +2,13 @@
 
 session_start();
 
+if(isset($_SESSION["user"])) {
+
+    require_once "controllers/users.controller.php";
+    $getUser = UsersController::getdata($_SESSION["user"]->id_user);
+
+}
+
 /*=============================================
 Capturar las rutas de la URL
 =============================================*/
@@ -154,7 +161,7 @@ if (!empty($routesArray[2])) {
                 } else {
                     
                     echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-auth.css">';
-                    include "views/pages/auth/lock/lock.php";
+                    include "views/pages/auth/lockscreen/lockscreen.php";
                 
                 }
                 
@@ -194,9 +201,16 @@ if (!empty($routesArray[2])) {
 
                                     if($routesArray[1] == "clients" ||
                                         $routesArray[1] == "users" ||
-                                        $routesArray[1] == "logout") {
+                                        $routesArray[1] == "logout" ||
+                                        $routesArray[1] == "lock") {
 
-                                        include "views/pages/".$routesArray[1]."/".$routesArray[1].".php";
+                                        if($routesArray[1] == "lock") {
+                                            include "views/pages/auth/".$routesArray[1]."/".$routesArray[1].".php";
+                                        } else {
+                                            include "views/pages/".$routesArray[1]."/".$routesArray[1].".php";
+                                        }
+
+                                        //include "views/pages/".$routesArray[1]."/".$routesArray[1].".php";
 
                                     } else {
 

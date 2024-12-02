@@ -251,8 +251,8 @@
                                         </div>
                                     </div>
                                     <div class="flex-grow-1">
-                                        <span class="fw-medium d-block lh-1">Mario Rojas Chanamoth</span>
-                                        <small>Super Administrador</small>
+                                        <span class="fw-medium d-block lh-1"><?php echo $getUser->name_worker; ?></span>
+                                        <small><?php echo $getUser->name_rol; ?></small>
                                     </div>
                                 </div>
                             </a>
