@@ -47,7 +47,10 @@ if (!empty($_POST['admin_data'])) {
                 /*=============================================
                 Accede al panel
                 =============================================*/
-                header("Location: /");
+                echo '<script>
+                        fncFormatInputs();
+                        window.location = "/"
+                    </script>'; 
 
             } else {
 

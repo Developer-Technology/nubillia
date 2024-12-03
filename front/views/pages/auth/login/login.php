@@ -3,7 +3,7 @@
         <!-- /Left Text -->
         <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center">
             <div class="flex-row text-center mx-auto">
-                <img src="views/assets/img/pages/login-light.png" alt="Auth Cover Bg color" width="520" class="img-fluid authentication-cover-img" data-app-light-img="pages/login-light.png" data-app-dark-img="pages/login-dark.html">
+                <img src="/views/assets/img/pages/login-light.png" alt="Auth Cover Bg color" width="520" class="img-fluid authentication-cover-img" data-app-light-img="pages/login-light.png" data-app-dark-img="pages/login-dark.html">
                 <div class="mx-auto">
                     <h3>Tu ERP en la nube 🌥️</h3>
                     <p>

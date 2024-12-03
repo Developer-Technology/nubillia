@@ -4,7 +4,7 @@
     <!-- /Left Text -->
     <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center">
       <div class="flex-row text-center mx-auto">
-        <img src="views/assets/img/pages/forgot-password-light.png" alt="Auth Cover Bg color" width="520" class="img-fluid authentication-cover-img" data-app-light-img="pages/forgot-password-light.png" data-app-dark-img="pages/forgot-password-dark.html">
+        <img src="/views/assets/img/pages/forgot-password-light.png" alt="Auth Cover Bg color" width="520" class="img-fluid authentication-cover-img" data-app-light-img="pages/forgot-password-light.png" data-app-dark-img="pages/forgot-password-dark.html">
         <div class="mx-auto">
           <h3>No te preocupes, te enviaremos instrucciones. 👩🏻‍💻</h3>
           <p>

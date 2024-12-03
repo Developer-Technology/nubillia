@@ -49,7 +49,7 @@ if($getUser->id_rol == 1) {
             <div class="card mb-4">
                 <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
                     <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
-                        <img src="views/assets/img/avatars/1.png" alt="<?php echo $getUser->name_worker; ?>" class="d-block h-auto ms-0 ms-sm-4 rounded-3 user-profile-img">
+                        <img src="/views/assets/img/avatars/1.png" alt="<?php echo $getUser->name_worker; ?>" class="d-block h-auto ms-0 ms-sm-4 rounded-3 user-profile-img">
                     </div>
                     <div class="flex-grow-1 mt-3 mt-sm-5">
                         <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
@@ -98,7 +98,7 @@ if($getUser->id_rol == 1) {
                 <div class="row h-100">
                     <div class="col-sm-5">
                         <div class="d-flex align-items-end h-100 justify-content-center mt-sm-0 mt-3">
-                            <img src="views/assets/img/illustrations/lady-with-laptop-light.png" class="img-fluid" alt="Image" width="100" data-app-light-img="illustrations/lady-with-laptop-light.png">
+                            <img src="/views/assets/img/illustrations/lady-with-laptop-light.png" class="img-fluid" alt="Image" width="100" data-app-light-img="illustrations/lady-with-laptop-light.png">
                         </div>
                     </div>
                     <div class="col-sm-7">
@@ -139,7 +139,7 @@ if($getUser->id_rol == 1) {
                                     ?>
 
                                     <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" title="<?php echo $oneStore->name_store; ?>" class="avatar avatar-sm pull-up pointer" onclick="<?php echo $tienda_actual; ?>">
-                                        <img class="rounded" src="views/assets/img/icons/shop.png" alt="Avatar" style="background: #f7f7f7; padding: 2px;">
+                                        <img class="rounded" src="/views/assets/img/icons/shop.png" alt="Avatar" style="background: #f7f7f7; padding: 2px;">
                                     </li>
 
                                 <?php endforeach; ?>
@@ -158,4 +158,4 @@ if($getUser->id_rol == 1) {
 
 </div>
 
-<script src="views/assets/js/main.js"></script>
+<script src="/views/assets/js/main.js"></script>

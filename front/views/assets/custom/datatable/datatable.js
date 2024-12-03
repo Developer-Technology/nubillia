@@ -11,17 +11,16 @@ function execDatatable(text) {
   /*=============================================
   Validamos tabla de planes
   =============================================*/
-  if ($(".tablePlans").length > 0) {
+  if ($(".tablePlansAdmin").length > 0) {
 
-    var url = "ajax/data-plans.php?text=" + text + "&between1=" + $("#between1").val() + "&between2=" + $("#between2").val() + "&token=" + localStorage.getItem("token_user");
+    var url = "ajax/admin/data-plans.php?text=" + text + "&between1=" + $("#between1").val() + "&between2=" + $("#between2").val() + "&token=" + localStorage.getItem("token_user");
 
     var columns = [
       { "data": "id_plan" },
-      { "data": "nombre_plan" },
-      { "data": "precio_plan" },
-      { "data": "descripcion_plan" },
-      { "data": "contiene_plan", "orderable": false },
-      { "data": "creado_plan" },
+      { "data": "status_plan" },
+      { "data": "name_plan" },
+      { "data": "price_plan" },
+      { "data": "created_plan" },
       { "data": "actions", "orderable": false }
     ];
 
@@ -252,17 +251,20 @@ function execDatatable(text) {
 
     "buttons": [
 
-      { extend: "copy", className: "btn-dark" },
-      { extend: "csv", className: "btn-dark" },
-      { extend: "excel", className: "btn-dark" },
-      { extend: "pdf", className: "btn-dark", orientation: "landscape" },
-      { extend: "print", className: "btn-dark" }
+      { extend: "copy", className: "btn btn-label-primary btn-sm mb-2", text: "Copiar" },
+      { extend: "csv", className: "btn btn-label-primary btn-sm mb-2", text: "CSV" },
+      { extend: "excel", className: "btn btn-label-primary btn-sm mb-2", text: "Excel" },
+      { extend: "pdf", className: "btn btn-label-primary btn-sm mb-2", text: "PDF", orientation: "landscape" },
+      { extend: "print", className: "btn btn-label-primary btn-sm mb-2", text: "Imprimir" }
 
     ],
     fnDrawCallback: function (oSettings) {
       if (oSettings.aoData.length == 0) {
         $('.dataTables_paginate').hide();
         $('.dataTables_info').hide();
+      } else {
+        $('.dataTables_paginate').show();
+        $('.dataTables_info').show();
       }
 
     }
@@ -390,7 +392,7 @@ $(document).on("click", ".removeItem", function () {
   var deleteFile = $(this).attr("deleteFile");
   var page = $(this).attr("page");
 
-  fncSweetAlert("confirm", "Are you sure to delete this record?", "").then(resp => {
+  fncSweetAlert("confirm", "¿Estás seguro de eliminar este registro?", "").then(resp => {
 
     if (resp) {
 
@@ -417,7 +419,7 @@ $(document).on("click", ".removeItem", function () {
 
             fncSweetAlert(
               "success",
-              "The record has been successfully deleted",
+              "El registro ha sido eliminado exitosamente",
               "/" + page
             );
 
@@ -425,13 +427,13 @@ $(document).on("click", ".removeItem", function () {
 
             fncSweetAlert(
               "error",
-              "The record has related data",
+              "El registro tiene datos relacionados",
               "/" + page
             );
 
           } else {
 
-            fncNotie(3, "Failed to delete record");
+            fncNotie(3, "No se pudo eliminar el registro");
 
           }
 
@@ -479,11 +481,11 @@ function changeState(event, id, table, suffix) {
 
       if (response == 200) {
 
-        fncNotie(1, "The record was updated");
+        fncNotie(1, "El registro fue actualizado");
 
       } else {
 
-        fncNotie(3, "Failed to update record");
+        fncNotie(3, "No se pudo actualizar el registro");
 
       }
 

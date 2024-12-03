@@ -51,13 +51,13 @@ function fncSweetAlert(type, text, url) {
       if (url == null) {
         Swal.fire({
           icon: "success",
-          title: "Well done!",
+          title: "Bien hecho!",
           text: text,
         });
       } else {
         Swal.fire({
           icon: "success",
-          title: "Well done!",
+          title: "Bien hecho!",
           text: text,
         }).then((result) => {
           if (result.value) {
@@ -100,8 +100,8 @@ function fncSweetAlert(type, text, url) {
           showCancelButton: true,
           confirmButtonColor: "#25476a",
           cancelButtonColor: "#df5645",
-          cancelButtonText: "Cancel",
-          confirmButtonText: "Yes, delete!",
+          cancelButtonText: "Cancelar",
+          confirmButtonText: "Aceptar",
         }).then(function (result) {
           resolve(result.value);
         });

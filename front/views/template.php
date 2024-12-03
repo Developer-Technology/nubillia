@@ -1,5 +1,20 @@
 <?php
 
+/*-------------------------
+Autor: Chanamoth
+Web: www.chanamoth.com
+Mail: info@chanamoth.com
+---------------------------*/
+
+/*=============================================
+Definimos la zona horaria
+=============================================*/
+date_default_timezone_set('America/Lima');
+$fechaHoy = date('Y-m-d');
+
+/*=============================================
+Verificamos la sesion de usuario
+=============================================*/
 session_start();
 
 if(isset($_SESSION["user"])) {
@@ -16,6 +31,9 @@ if(isset($_SESSION["store"])) {
 
 }
 
+/*=============================================
+Obtenemos las configuraciones iniciales
+=============================================*/
 require_once "controllers/settings.controller.php";
 $getSetting = SettingsController::getdata();
 
@@ -29,23 +47,29 @@ $routesArray = array_filter($routesArray);
 Limpiar la Url de variables GET
 =============================================*/
 foreach ($routesArray as $key => $value) {
-    
+
     $value = explode("?", $value)[0];
     $routesArray[$key] = $value;
 
 }
 
 /*=============================================
-Cambiamos el nombre de las rutas
+Texto para el breadcrumb
 =============================================*/
-if (!empty($routesArray[2])) {
+if(!empty($routesArray[2])) {
     
-    if ($routesArray[2] == "new") {
-      $subRuta = "Nuevo";
-    } elseif ($routesArray[2] == "edit") {
-      $subRuta = "Editar";
+    if($routesArray[2] == "new") {
+
+      $txtBread = "Nuevo";
+
+    } elseif($routesArray[2] == "edit") {
+
+      $txtBread = "Editar";
+
     } else {
-      $subRuta = "Detalle";
+
+      $txtBread = "Detalle";
+
     }
 
 }
@@ -67,7 +91,7 @@ if (!empty($routesArray[2])) {
         <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
 
         <!-- Favicon -->
-        <link rel="icon" type="image/x-icon" href="views/assets/img/icons/logo.ico" />
+        <link rel="icon" type="image/x-icon" href="/views/assets/img/icons/logo.ico" />
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -75,45 +99,76 @@ if (!empty($routesArray[2])) {
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
 
         <!-- Icons -->
-        <link rel="stylesheet" href="views/assets/vendor/fonts/boxicons.css" />
-        <link rel="stylesheet" href="views/assets/vendor/fonts/fontawesome.css" />
-        <link rel="stylesheet" href="views/assets/vendor/fonts/flag-icons.css" />
+        <link rel="stylesheet" href="/views/assets/vendor/fonts/boxicons.css" />
+        <link rel="stylesheet" href="/views/assets/vendor/fonts/fontawesome.css" />
+        <link rel="stylesheet" href="/views/assets/vendor/fonts/flag-icons.css" />
 
         <!-- Core CSS -->
-        <link rel="stylesheet" href="views/assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
-        <link rel="stylesheet" href="views/assets/vendor/css/rtl/theme-bordered.css" class="template-customizer-theme-css" />
-        <link rel="stylesheet" href="views/assets/css/demo.css" />
-        <link rel="stylesheet" href="views/assets/custom/css/custom.css">
+        <link rel="stylesheet" href="/views/assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+        <link rel="stylesheet" href="/views/assets/vendor/css/rtl/theme-bordered.css" class="template-customizer-theme-css" />
+        <link rel="stylesheet" href="/views/assets/css/demo.css" />
+        <link rel="stylesheet" href="/views/assets/vendor/libs/sweetalert2/sweetalert2.css" />
+        <link rel="stylesheet" href="/views/assets/custom/css/custom.css">
         
         <!-- Vendors CSS -->
-        <link rel="stylesheet" href="views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-        <link rel="stylesheet" href="views/assets/vendor/libs/typeahead-js/typeahead.css" />
+        <link rel="stylesheet" href="/views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+        <link rel="stylesheet" href="/views/assets/vendor/libs/typeahead-js/typeahead.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css">
 
         <!-- Plugins -->
-        <link rel="stylesheet" href="views/assets/plugins/material-preloader/material-preloader.css">
-        <link rel="stylesheet" href="views/assets/plugins/notie/notie.css">
+        <link rel="stylesheet" href="/views/assets/plugins/material-preloader/material-preloader.css">
+        <link rel="stylesheet" href="/views/assets/plugins/notie/notie.css">
+        <script src="/views/assets/plugins/data-tables/dataTables.js"></script>
 
         <!-- Helpers -->
-        <script src="views/assets/vendor/js/helpers.js"></script>
+        <script src="/views/assets/vendor/js/helpers.js"></script>
         <!--Config  -->
-        <script src="views/assets/js/config.js"></script>
+        <script src="/views/assets/js/config.js"></script>
 
         <!-- Scripts Footer -->
-        <script src="views/assets/vendor/libs/jquery/jquery.js"></script>
-        <script src="views/assets/vendor/libs/popper/popper.js"></script>
-        <script src="views/assets/vendor/js/bootstrap.js"></script>
-        <script src="views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-        <script src="views/assets/vendor/libs/hammer/hammer.js"></script>
-        <script src="views/assets/vendor/libs/i18n/i18n.js"></script>
-        <script src="views/assets/vendor/libs/typeahead-js/typeahead.js"></script>
-        <script src="views/assets/vendor/js/menu.js"></script>
+        <script src="/views/assets/vendor/libs/jquery/jquery.js"></script>
+        <script src="/views/assets/vendor/libs/popper/popper.js"></script>
+        <script src="/views/assets/vendor/js/bootstrap.js"></script>
+        <script src="/views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+        <script src="/views/assets/vendor/libs/hammer/hammer.js"></script>
+        <script src="/views/assets/vendor/libs/i18n/i18n.js"></script>
+        <script src="/views/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+        <script src="/views/assets/vendor/js/menu.js"></script>
 
         <!-- Plugins -->
-        <script src="views/assets/plugins/material-preloader/material-preloader.js"></script>
-        <script src="views/assets/plugins/notie/notie.min.js"></script>
-        <script src="views/assets/plugins/sweet-alert/sweetalert2-10.js"></script>
-        <script src="views/assets/custom/alerts/alerts.js"></script>
-        <script src="views/assets/custom/forms/forms.js"></script>
+        <script src="/views/assets/plugins/material-preloader/material-preloader.js"></script>
+        <script src="/views/assets/plugins/notie/notie.min.js"></script>
+        <script src="/views/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+        <script src="/views/assets/custom/alerts/alerts.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
+        <script src="/views/assets/custom/forms/forms.js"></script>
+
+        <?php if(!empty($routesArray[1])): ?>
+            <?php if($routesArray[1] == "plans"): ?>
+                
+                <!-- DataTables  & Plugins -->
+                <link rel="stylesheet" href="/views/assets/plugins/daterangepicker/daterangepicker.css">
+                <link rel="stylesheet" href="/views/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+                <link rel="stylesheet" href="/views/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+                <link rel="stylesheet" href="/views/assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+                <script src="/views/assets/plugins/moment/moment.min.js"></script>
+                <script src="/views/assets/plugins/daterangepicker/daterangepicker.js"></script>
+                <script src="/views/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+                <script src="/views/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+                <script src="/views/assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+                <script src="/views/assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+                <script src="/views/assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+                <script src="/views/assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+                <script src="/views/assets/plugins/jszip/jszip.min.js"></script>
+                <script src="/views/assets/plugins/pdfmake/pdfmake.min.js"></script>
+                <script src="/views/assets/plugins/pdfmake/vfs_fonts.js"></script>
+                <script src="/views/assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+                <script src="/views/assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+                <script src="/views/assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+            <?php endif; ?>
+        <?php endif; ?>
         
     </head>
 
@@ -180,11 +235,6 @@ if (!empty($routesArray[2])) {
                 echo '</body></html>';
                 return;
             
-            }
-
-            /* Si se ingresa al panel super general */
-            if (!empty($_SESSION["admin"]) && empty($_SESSION["store"])) {
-
             }
 
             /* Si hay sesión pero en bloqueo se le redirige al lock screen */
@@ -274,13 +324,16 @@ if (!empty($routesArray[2])) {
                                         if($routesArray[1] == "logout" || 
                                             $routesArray[1] == "lock" || 
                                             $routesArray[1] == "change" ||
-                                            $routesArray[1] == "users") {
+                                            $routesArray[1] == "plans" ||
+                                            $routesArray[1] == "users" || 
+                                            $routesArray[1] == "settings") {
 
                                             if($routesArray[1] == "lock") {
 
                                                 include "views/pages/auth/".$routesArray[1]."/".$routesArray[1].".php";
 
-                                            } elseif($routesArray[1] == "change") {
+                                            } elseif($routesArray[1] == "change" || 
+                                                    $routesArray[1] == "logout") {
 
                                                 include "views/pages/".$routesArray[1]."/".$routesArray[1].".php";
 
@@ -334,7 +387,7 @@ if (!empty($routesArray[2])) {
         <!-- / Layout wrapper -->
 
         <!-- Main JS -->
-        <script src="views/assets/js/main.js"></script>
+        <script src="/views/assets/js/main.js"></script>
     
     </body>
 

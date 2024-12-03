@@ -585,7 +585,7 @@
         </li>
 
         <!-- Dashboard -->
-        <li class="menu-item active">
+        <li class="menu-item <?php if (empty($routesArray)): ?>active<?php endif?>">
             <a href="/" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-dashboard"></i>
                 <div data-i18n="Dashboard">Dashboard</div>
@@ -593,7 +593,7 @@
         </li>
 
         <!-- Calendario -->
-        <li class="menu-item">
+        <li class="menu-item <?php if (!empty($routesArray) && $routesArray[1] == 'calendar'): ?>active<?php endif?>">
             <a href="/calendar" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-calendar"></i>
                 <div data-i18n="Calendario">Calendario</div>
@@ -606,7 +606,7 @@
         </li>
 
         <!-- Planes -->
-        <li class="menu-item">
+        <li class="menu-item <?php if (!empty($routesArray) && $routesArray[1] == 'plans'): ?>active<?php endif?>">
             <a href="/plans" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-list-ul"></i>
                 <div data-i18n="Planes">Planes</div>
@@ -614,7 +614,7 @@
         </li>
 
         <!-- Empresas -->
-        <li class="menu-item">
+        <li class="menu-item <?php if (!empty($routesArray) && $routesArray[1] == 'tenants'): ?>active<?php endif?>">
             <a href="/tenants" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-building-house"></i>
                 <div data-i18n="Empresas">Empresas</div>
@@ -622,7 +622,7 @@
         </li>
 
         <!-- Ventas -->
-        <li class="menu-item">
+        <li class="menu-item <?php if (!empty($routesArray) && $routesArray[1] == 'sales'): ?>active<?php endif?>">
             <a href="/sales" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cart"></i>
                 <div data-i18n="Ventas">Ventas</div>
@@ -630,7 +630,7 @@
         </li>
 
         <!-- Usuarios -->
-        <li class="menu-item">
+        <li class="menu-item <?php if (!empty($routesArray) && $routesArray[1] == 'users'): ?>active<?php endif?>">
             <a href="/users" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="Usuarios">Usuarios</div>
@@ -638,7 +638,7 @@
         </li>
 
         <!-- Configuraciones -->
-        <li class="menu-item">
+        <li class="menu-item <?php if (!empty($routesArray) && $routesArray[1] == 'settings'): ?>active<?php endif?>">
             <a href="/settings" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div data-i18n="Configuraciones">Configuraciones</div>

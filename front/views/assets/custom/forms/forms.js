@@ -816,6 +816,23 @@ function newOrder(methodPaid, statusPaid, idPayment, total) {
 }
 
 /*=============================================
+Plugin Summernote
+=============================================*/
+$(document).ready(function() {
+  $(".summernote").summernote({
+      placeholder: '',
+      tabsize: 2,
+      height: 100,
+      toolbar: [
+          ['misc', ['undo', 'redo']],
+          ['style', ['bold', 'italic', 'underline', 'clear']],
+          ['para', ['ul', 'ol']],
+          ['insert', ['hr']]
+      ]
+  });
+});
+
+/*=============================================
 Adicionar Entradas al formulario de productos 
 =============================================*/
 function addInput(elem, type) {
@@ -2353,7 +2370,7 @@ function changeMoney(id) {
 /*=============================================
 Autocompletar en ventas
 =============================================*/
-function autoCompleteSale() {
+/*function autoCompleteSale() {
 
   $(function () {
     $(".search-client-sale").autocomplete({
@@ -2378,7 +2395,7 @@ function autoCompleteSale() {
     });
   });
 
-}
+}*/
 
 /*=============================================
 Cambiamos la serie del documento
@@ -2569,5 +2586,5 @@ Ejecutar funciones globales
 =============================================*/
 $(function () {
   preload();
-  autoCompleteSale();
+  //autoCompleteSale();
 });
