@@ -19,6 +19,7 @@
     <div class="menu-divider mt-0"></div>
     <div class="menu-inner-shadow"></div>
 
+    <?php if(!empty($_SESSION["store"])): ?>
     <ul class="menu-inner py-1">
 
         <!-- Principal -->
@@ -575,5 +576,76 @@
         <?php endif; ?>
         
     </ul>
+    <?php elseif(!empty($_SESSION["admin"])): ?>
+    <ul class="menu-inner py-1">
+
+        <!-- Principal -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text" data-i18n="Principal">Principal</span>
+        </li>
+
+        <!-- Dashboard -->
+        <li class="menu-item active">
+            <a href="/" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-dashboard"></i>
+                <div data-i18n="Dashboard">Dashboard</div>
+            </a>
+        </li>
+
+        <!-- Calendario -->
+        <li class="menu-item">
+            <a href="/calendar" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-calendar"></i>
+                <div data-i18n="Calendario">Calendario</div>
+            </a>
+        </li>
+
+        <!-- Menú de navegación -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text" data-i18n="Menú de navegación">Menú de navegación</span>
+        </li>
+
+        <!-- Planes -->
+        <li class="menu-item">
+            <a href="/plans" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-list-ul"></i>
+                <div data-i18n="Planes">Planes</div>
+            </a>
+        </li>
+
+        <!-- Empresas -->
+        <li class="menu-item">
+            <a href="/tenants" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-building-house"></i>
+                <div data-i18n="Empresas">Empresas</div>
+            </a>
+        </li>
+
+        <!-- Ventas -->
+        <li class="menu-item">
+            <a href="/sales" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cart"></i>
+                <div data-i18n="Ventas">Ventas</div>
+            </a>
+        </li>
+
+        <!-- Usuarios -->
+        <li class="menu-item">
+            <a href="/users" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div data-i18n="Usuarios">Usuarios</div>
+            </a>
+        </li>
+
+        <!-- Configuraciones -->
+        <li class="menu-item">
+            <a href="/settings" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Configuraciones">Configuraciones</div>
+            </a>
+        </li>
+        
+    </ul>
+    <?php endif; ?>
 
 </aside>

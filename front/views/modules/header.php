@@ -266,6 +266,7 @@
                                 <span class="align-middle">Mi Perfil</span>
                             </a>
                         </li>
+                        <?php if(isset($getStore)): ?>
                         <li>
                             <a class="dropdown-item" href="/billing">
                                 <span class="d-flex align-items-center align-middle">
@@ -274,13 +275,14 @@
                                 </span>
                             </a>
                         </li>
+                        <?php endif; ?>
                         <li>
                             <div class="dropdown-divider"></div>
                         </li>
                         <li>
                             <a class="dropdown-item" href="/change">
-                                <i class='bx bx-store-alt me-2'></i>
-                                <span class="align-middle">Cambiar Tienda</span>
+                                <i class='bx bx-<?php if(isset($getStore)) { echo "store-alt"; } else { echo "building-house"; } ?> me-2'></i>
+                                <span class="align-middle">Cambiar <?php if(isset($getStore)) { echo "Tienda"; } else { echo "Entorno"; } ?></span>
                             </a>
                         </li>
                         <li>

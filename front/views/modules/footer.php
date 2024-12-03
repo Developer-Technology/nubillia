@@ -14,9 +14,11 @@
             </small>
         </div>
 
+        <?php if(!empty($_SESSION["store"])): ?>
         <div class="d-lg-inline-block">
             <span class="footer-link me-4"><small><b>Empresa: </b><?php echo $getStore->name_tenant; ?> | <b>Tienda: </b><?php echo $getStore->name_store; ?></small></span>
         </div>
+        <?php endif; ?>
 
     </div>
 

@@ -113,6 +113,7 @@ if (!empty($routesArray[2])) {
         <script src="views/assets/plugins/notie/notie.min.js"></script>
         <script src="views/assets/plugins/sweet-alert/sweetalert2-10.js"></script>
         <script src="views/assets/custom/alerts/alerts.js"></script>
+        <script src="views/assets/custom/forms/forms.js"></script>
         
     </head>
 
@@ -145,19 +146,21 @@ if (!empty($routesArray[2])) {
                 
                 }
                 
-                echo '</body></head>';
+                echo '</body></html>';
                 return;
             
             }
 
             /* Si no hay sesión de tienda */
-            if(!isset($_SESSION["store"])) {
+            if(isset($_SESSION["user"]) && !isset($_SESSION["store"]) && empty($_SESSION["admin"])) {
                 
                 if(!empty($routesArray[1])) {
                     
                     if($routesArray[1] == "logout" || 
-                        $routesArray[1] == "redirect") {
+                        $routesArray[1] == "redirect" || 
+                        $routesArray[1] == "admin") {
                         
+                        echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-misc.css">';
                         include "views/pages/".$routesArray[1]."/".$routesArray[1].".php";
                         
                     } else {
@@ -174,9 +177,14 @@ if (!empty($routesArray[2])) {
                 
                 }
                 
-                echo '</body></head>';
+                echo '</body></html>';
                 return;
             
+            }
+
+            /* Si se ingresa al panel super general */
+            if (!empty($_SESSION["admin"]) && empty($_SESSION["store"])) {
+
             }
 
             /* Si hay sesión pero en bloqueo se le redirige al lock screen */
@@ -202,7 +210,7 @@ if (!empty($routesArray[2])) {
                 
                 }
                 
-                echo '</body></head>';
+                echo '</body></html>';
                 return;
             
             }
@@ -236,23 +244,57 @@ if (!empty($routesArray[2])) {
 
                                 if(!empty($routesArray[1])) {
 
-                                    if($routesArray[1] == "clients" ||
-                                        $routesArray[1] == "users" ||
-                                        $routesArray[1] == "logout" ||
-                                        $routesArray[1] == "lock" || 
-                                        $routesArray[1] == "change") {
+                                    if(empty($_SESSION["admin"])) {
+                                        
+                                        if($routesArray[1] == "clients" ||
+                                            $routesArray[1] == "users" ||
+                                            $routesArray[1] == "logout" ||
+                                            $routesArray[1] == "lock" ||
+                                            $routesArray[1] == "change") {
 
-                                        if($routesArray[1] == "lock") {
-                                            include "views/pages/auth/".$routesArray[1]."/".$routesArray[1].".php";
+
+                                            if($routesArray[1] == "lock") {
+
+                                                include "views/pages/auth/".$routesArray[1]."/".$routesArray[1].".php";
+                                            
+                                            } else {
+
+                                                include "views/pages/".$routesArray[1]."/".$routesArray[1].".php";
+                                            
+                                            }
+
                                         } else {
-                                            include "views/pages/".$routesArray[1]."/".$routesArray[1].".php";
+                                            
+                                            include "views/pages/404/404.php";
+                                        
                                         }
 
-                                        //include "views/pages/".$routesArray[1]."/".$routesArray[1].".php";
-
                                     } else {
+                                        
+                                        if($routesArray[1] == "logout" || 
+                                            $routesArray[1] == "lock" || 
+                                            $routesArray[1] == "change" ||
+                                            $routesArray[1] == "users") {
 
-                                        include "views/pages/404/404.php";
+                                            if($routesArray[1] == "lock") {
+
+                                                include "views/pages/auth/".$routesArray[1]."/".$routesArray[1].".php";
+
+                                            } elseif($routesArray[1] == "change") {
+
+                                                include "views/pages/".$routesArray[1]."/".$routesArray[1].".php";
+
+                                            } else {
+
+                                                include "views/pages/admin/".$routesArray[1]."/".$routesArray[1].".php";
+
+                                            }
+
+                                        } else {
+
+                                            include "views/pages/404/404.php";
+
+                                        }
 
                                     }
 

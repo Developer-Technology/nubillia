@@ -102,5 +102,3 @@
         <!-- /Login -->
     </div>
 </div>
-
-<script src="views/assets/custom/forms/forms.js"></script>

@@ -22,7 +22,10 @@
 
                     <h4 class="mb-2"><?php echo $getUser->name_worker; ?></h4>
                     <p>Ingresa tu contraseña para desbloquear tu sesión.</p>
+
+                    <?php if(isset($getStore)): ?>
                     <span class="footer-link me-4"><small><b>Empresa: </b><?php echo $getStore->name_tenant; ?> <br> <b>Tienda: </b><?php echo $getStore->name_store; ?></small></span>
+                    <?php endif; ?>
 
                     <form class="mb-3 needs-validation mt-3" method="POST" novalidate>
                         
@@ -63,5 +66,3 @@
     </div>
 
 </div>
-
-<script src="views/assets/custom/forms/forms.js"></script>

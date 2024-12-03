@@ -12,7 +12,31 @@ if($getUser->id_rol == 1) {
     Controladores
     =============================================*/
     require_once "controllers/tenants.controller.php";
-    $allTenants = TenantsController::getalltenants();
+    $allTenants = TenantsController::getalltenants()->results;
+
+    $urlEncodeAdmin = base64_encode($_SESSION['user']->id_user . '~' . $_SESSION['user']->token_user);
+
+} else {
+
+    $tenantsUser = json_decode($getUser->id_tenant_user, true);
+
+    // Creamos un arreglo para almacenar los resultados de las empresas permitidas
+    $allTenants = [];
+
+    if (!empty($tenantsUser)) {
+        foreach ($tenantsUser as $tenant) {
+            // Obtener información detallada de cada empresa
+            $url = "tenants?select=*&linkTo=id_tenant&equalTo=" . urlencode($tenant['id']);
+            $method = "GET";
+            $fields = [];
+
+            $tenantResponse = CurlController::request($url, $method, $fields);
+
+            if ($tenantResponse->status == 200 && isset($tenantResponse->results[0])) {
+                $allTenants[] = $tenantResponse->results[0]; // Agregar la empresa al listado
+            }
+        }
+    }
 
 }
 
@@ -38,6 +62,20 @@ if($getUser->id_rol == 1) {
                                         <i class='bx bx-briefcase-alt-2'></i>
                                         <?php echo $getUser->name_rol; ?>
                                     </li>
+                                    <li>
+                                    <?php
+    
+                                        if($getUser->id_rol == 1) {
+                                            
+                                            echo '<form action="/admin" method="POST">
+                                                    <input type="hidden" name="admin_data" value="' . htmlspecialchars($urlEncodeAdmin, ENT_QUOTES, 'UTF-8') . '">
+                                                    <button type="submit" class="btn btn-outline-primary btn-xs">Panel Admin</button>
+                                                </form>';
+
+                                        }
+
+                                    ?>
+                                    </li>
                                 </ul>
                             </div>
                             <a href="/logout" class="btn btn-primary text-nowrap">
@@ -52,10 +90,27 @@ if($getUser->id_rol == 1) {
 
     <h4 class="py-3 breadcrumb-wrapper mb-2">Empresas</h4>
 
-    <p>Por favor selecciona una tienda para ingresar al panel.</p>
+    <p>Por favor selecciona una tienda para gestionar.</p>
     <!-- Role cards -->
     <div class="row g-4">
-        <?php foreach($allTenants->results as $oneTenant): ?>
+        <div class="col-xl-4 col-lg-6 col-md-6">
+            <div class="card h-100">
+                <div class="row h-100">
+                    <div class="col-sm-5">
+                        <div class="d-flex align-items-end h-100 justify-content-center mt-sm-0 mt-3">
+                            <img src="views/assets/img/illustrations/lady-with-laptop-light.png" class="img-fluid" alt="Image" width="100" data-app-light-img="illustrations/lady-with-laptop-light.png">
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="card-body text-sm-end text-center ps-sm-0">
+                            <button data-bs-target="#addRoleModal" data-bs-toggle="modal" class="btn btn-primary mb-3 text-nowrap add-new-role">Registrar Empresa</button>
+                            <p class="mb-0">Nueva empresa en tu cuenta.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php foreach($allTenants as $oneTenant): ?>
             <?php
             
                 /*=============================================
@@ -65,7 +120,7 @@ if($getUser->id_rol == 1) {
                 $allStores = StoresController::getstores($oneTenant->id_tenant);
             
             ?>
-            <div class="col-xl-4 col-lg-6 col-md-6">
+            <div class="col-xl-4 col-lg-6 col-md-6 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-2">
@@ -99,23 +154,6 @@ if($getUser->id_rol == 1) {
                 </div>
             </div>
         <?php endforeach; ?>
-        <div class="col-xl-4 col-lg-6 col-md-6 mb-4">
-            <div class="card h-100">
-                <div class="row h-100">
-                    <div class="col-sm-5">
-                        <div class="d-flex align-items-end h-100 justify-content-center mt-sm-0 mt-3">
-                            <img src="views/assets/img/illustrations/lady-with-laptop-light.png" class="img-fluid" alt="Image" width="100" data-app-light-img="illustrations/lady-with-laptop-light.png">
-                        </div>
-                    </div>
-                    <div class="col-sm-7">
-                        <div class="card-body text-sm-end text-center ps-sm-0">
-                            <button data-bs-target="#addRoleModal" data-bs-toggle="modal" class="btn btn-primary mb-3 text-nowrap add-new-role">Registrar Empresa</button>
-                            <p class="mb-0">Nueva empresa en tu cuenta.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 </div>

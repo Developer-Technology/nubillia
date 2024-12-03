@@ -13,6 +13,7 @@ echo '<script>
 
 $session_name = session_name();
 unset($_SESSION['store']);
+unset($_SESSION['admin']);
 $url = '/';
 
 if (isset($_COOKIE[$session_name])) {
