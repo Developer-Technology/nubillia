@@ -17,7 +17,7 @@ function execDatatable(text) {
 
     var columns = [
       { "data": "id_plan" },
-      { "data": "status_plan" },
+      { "data": "status_plan", "orderable": false },
       { "data": "name_plan" },
       { "data": "price_plan" },
       { "data": "created_plan" },
@@ -31,20 +31,18 @@ function execDatatable(text) {
   /*=============================================
   Validamos tabla de empresas
   =============================================*/
-  if ($(".tableTenants").length > 0) {
+  if ($(".tableTenantsAdmin").length > 0) {
 
-    var url = "ajax/data-tenants.php?text=" + text + "&between1=" + $("#between1").val() + "&between2=" + $("#between2").val() + "&token=" + localStorage.getItem("token_user");
+    var url = "ajax/admin/data-tenants.php?text=" + text + "&between1=" + $("#between1").val() + "&between2=" + $("#between2").val() + "&token=" + localStorage.getItem("token_user");
 
     var columns = [
-      { "data": "id_empresa" },
-      { "data": "estado_empresa", "orderable": false },
-      { "data": "logo_empresa", "orderable": false },
-      { "data": "ruc_empresa" },
-      { "data": "fase_empresa" },
-      { "data": "plan_empresa" },
-      { "data": "consumo_plan" },
-      { "data": "creado_empresa" },
-      { "data": "acciones", "orderable": false }
+      { "data": "id_tenant" },
+      { "data": "status_tenant", "orderable": false },
+      { "data": "name_tenant" },
+      { "data": "plan_tenant" },
+      { "data": "sunat_tenant" },
+      { "data": "created_tenant" },
+      { "data": "actions", "orderable": false }
     ];
 
     page = "tenants";

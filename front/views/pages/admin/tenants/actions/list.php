@@ -60,7 +60,7 @@ if(isset($_GET["start"]) && isset($_GET["end"])) {
             <!-- Right Toolbar -->
             <div class="col-md-6 d-flex gap-1 align-items-center justify-content-md-end">
 
-                <a href="/plans/new" class="btn btn-primary mt-2 mb-2">
+                <a href="/tenants/new" class="btn btn-primary mt-2 mb-2">
                     Nuevo Registro
                 </a>
 
@@ -71,13 +71,14 @@ if(isset($_GET["start"]) && isset($_GET["end"])) {
     </div>
 
     <div class="card-datatable table-responsive pt-0">
-        <table id="adminsTable" class="datatables-basic table table-bordered tablePlansAdmin">
+        <table id="adminsTable" class="datatables-basic table table-bordered tableTenantsAdmin">
             <thead>
                 <tr>
                     <th>#</th>
                     <th class="th-status">Estado</th>
-                    <th>Nombre</th>
-                    <th>Precio</th>
+                    <th>Empresa</th>
+                    <th>Plan</th>
+                    <th>Fact. Elect.</th>
                     <th>Fecha</th>
                     <th class="th-actions"></th>
                 </tr>

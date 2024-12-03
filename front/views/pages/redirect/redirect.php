@@ -39,4 +39,7 @@ $_SESSION['store'] = $stores->results[0];
 /*=============================================
 Redireccionamos al panel
 =============================================*/
-header("Location: /");
+echo '<script>
+        fncFormatInputs();
+        window.location = "/"
+    </script>'; 

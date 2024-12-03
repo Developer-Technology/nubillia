@@ -144,7 +144,8 @@ if(!empty($routesArray[2])) {
         <script src="/views/assets/custom/forms/forms.js"></script>
 
         <?php if(!empty($routesArray[1])): ?>
-            <?php if($routesArray[1] == "plans"): ?>
+            <?php if($routesArray[1] == "plans" ||
+                    $routesArray[1] == "tenants"): ?>
                 
                 <!-- DataTables  & Plugins -->
                 <link rel="stylesheet" href="/views/assets/plugins/daterangepicker/daterangepicker.css">
@@ -184,19 +185,19 @@ if(!empty($routesArray[2])) {
                     if($routesArray[1] == "forgot" ||
                         $routesArray[1] == "register") {
                         
-                        echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-auth.css">';
+                        echo '<link rel="stylesheet" href="/views/assets/vendor/css/pages/page-auth.css">';
                         include "views/pages/auth/".$routesArray[1]."/".$routesArray[1].".php";
                         
                     } else {
                         
-                        echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-misc.css">';
+                        echo '<link rel="stylesheet" href="/views/assets/vendor/css/pages/page-misc.css">';
                         include "views/pages/auth/404/404.php";
                     
                     }
                 
                 } else {
                     
-                    echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-auth.css">';
+                    echo '<link rel="stylesheet" href="/views/assets/vendor/css/pages/page-auth.css">';
                     include "views/pages/auth/login/login.php";
                 
                 }
@@ -215,19 +216,19 @@ if(!empty($routesArray[2])) {
                         $routesArray[1] == "redirect" || 
                         $routesArray[1] == "admin") {
                         
-                        echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-misc.css">';
+                        echo '<link rel="stylesheet" href="/views/assets/vendor/css/pages/page-misc.css">';
                         include "views/pages/".$routesArray[1]."/".$routesArray[1].".php";
                         
                     } else {
                         
-                        echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-misc.css">';
+                        echo '<link rel="stylesheet" href="/views/assets/vendor/css/pages/page-misc.css">';
                         include "views/pages/auth/404/404.php";
                     
                     }
                 
                 } else {
                     
-                    echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-auth.css"><link rel="stylesheet" href="views/assets/vendor/css/pages/page-profile.css" />';
+                    echo '<link rel="stylesheet" href="/views/assets/vendor/css/pages/page-auth.css"><link rel="stylesheet" href="views/assets/vendor/css/pages/page-profile.css" />';
                     include "views/pages/auth/tenant/tenant.php";
                 
                 }
@@ -248,14 +249,14 @@ if(!empty($routesArray[2])) {
                     
                     } else {
                         
-                        echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-misc.css">';
+                        echo '<link rel="stylesheet" href="/views/assets/vendor/css/pages/page-misc.css">';
                         include "views/pages/auth/404/404.php";
                     
                     }
                 
                 } else {
                     
-                    echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-auth.css">';
+                    echo '<link rel="stylesheet" href="/views/assets/vendor/css/pages/page-auth.css">';
                     include "views/pages/auth/lockscreen/lockscreen.php";
                 
                 }
@@ -324,7 +325,8 @@ if(!empty($routesArray[2])) {
                                         if($routesArray[1] == "logout" || 
                                             $routesArray[1] == "lock" || 
                                             $routesArray[1] == "change" ||
-                                            $routesArray[1] == "plans" ||
+                                            $routesArray[1] == "plans" || 
+                                            $routesArray[1] == "tenants" ||
                                             $routesArray[1] == "users" || 
                                             $routesArray[1] == "settings") {
 

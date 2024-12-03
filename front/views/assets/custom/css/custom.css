@@ -9,3 +9,11 @@
 .pointer {
     cursor: pointer;
 }
+
+.th-status {
+    width: 60px;
+}
+
+.th-actions {
+    width: 50px;
+}
