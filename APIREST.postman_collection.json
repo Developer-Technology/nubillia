@@ -16,7 +16,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
@@ -25,12 +25,9 @@
 					"urlencoded": []
 				},
 				"url": {
-					"raw": "http://api.developer-technology.local/tenants",
-					"protocol": "http",
+					"raw": "{{endpoint}}/tenants",
 					"host": [
-						"api",
-						"developer-technology",
-						"local"
+						"{{endpoint}}"
 					],
 					"path": [
 						"tenants"
@@ -46,17 +43,14 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://api.developer-technology.local/tenants?select=name_tenant",
-					"protocol": "http",
+					"raw": "{{endpoint}}/tenants?select=name_tenant",
 					"host": [
-						"api",
-						"developer-technology",
-						"local"
+						"{{endpoint}}"
 					],
 					"path": [
 						"tenants"
@@ -81,17 +75,14 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://api.developer-technology.local/workers?select=*&linkTo=id_worker&equalTo=1",
-					"protocol": "http",
+					"raw": "{{endpoint}}/workers?select=*&linkTo=id_worker&equalTo=1",
 					"host": [
-						"api",
-						"developer-technology",
-						"local"
+						"{{endpoint}}"
 					],
 					"path": [
 						"workers"
@@ -121,7 +112,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
@@ -158,7 +149,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
@@ -195,7 +186,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
@@ -240,7 +231,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
@@ -293,17 +284,14 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://api.developer-technology.com/relations?rel=detailfacts,products&type=detailfact,product&select=*&linkTo=serie_detailfact,number_sale_detailfact&equalTo=B001,24",
-					"protocol": "http",
+					"raw": "{{endpoint}}/relations?rel=detailfacts,products&type=detailfact,product&select=*&linkTo=serie_detailfact,number_sale_detailfact&equalTo=B001,24",
 					"host": [
-						"api",
-						"developer-technology",
-						"com"
+						"{{endpoint}}"
 					],
 					"path": [
 						"relations"
@@ -341,17 +329,14 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://api.developer-technology.local/clients?select=*&linkTo=name_client,id_store_client&search=Mundaca Alcantara Milagros Katerin,1",
-					"protocol": "http",
+					"raw": "{{endpoint}}/clients?select=*&linkTo=name_client,id_store_client&search=Mundaca Alcantara Milagros Katerin,1",
 					"host": [
-						"api",
-						"developer-technology",
-						"local"
+						"{{endpoint}}"
 					],
 					"path": [
 						"clients"
@@ -381,7 +366,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
@@ -426,7 +411,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
@@ -475,7 +460,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
@@ -532,7 +517,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
@@ -597,12 +582,9 @@
 					]
 				},
 				"url": {
-					"raw": "http://api.sistema.local/users?register=true&suffix=user",
-					"protocol": "http",
+					"raw": "{{endpoint}}/users?register=true&suffix=user",
 					"host": [
-						"api",
-						"sistema",
-						"local"
+						"{{endpoint}}"
 					],
 					"path": [
 						"users"
@@ -628,7 +610,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
@@ -648,12 +630,9 @@
 					]
 				},
 				"url": {
-					"raw": "http://api.sistema.local/users?login=true&suffix=user",
-					"protocol": "http",
+					"raw": "{{endpoint}}/users?login=true&suffix=user",
 					"host": [
-						"api",
-						"sistema",
-						"local"
+						"{{endpoint}}"
 					],
 					"path": [
 						"users"
@@ -679,7 +658,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
@@ -719,12 +698,9 @@
 					]
 				},
 				"url": {
-					"raw": "https://api.developer-technology.local/categories?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzU0NTcwNzAsImV4cCI6MTYzNTU0MzQ3MCwiZGF0YSI6eyJpZCI6IjMwIiwiZW1haWwiOiJpbnN0cnVjdG9yQGNvcnJlby5jb20ifX0.LnVav6yWEBJR0r9VmfeWuBvQBw7jp8-a7Vchhm9Vqmc&table=instructors&suffix=instructor&except",
-					"protocol": "https",
+					"raw": "{{endpoint}}/categories?token={{token-user}}&table=users&suffix=user&except",
 					"host": [
-						"api",
-						"developer-technology",
-						"local"
+						"{{endpoint}}"
 					],
 					"path": [
 						"categories"
@@ -732,15 +708,15 @@
 					"query": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzU0NTcwNzAsImV4cCI6MTYzNTU0MzQ3MCwiZGF0YSI6eyJpZCI6IjMwIiwiZW1haWwiOiJpbnN0cnVjdG9yQGNvcnJlby5jb20ifX0.LnVav6yWEBJR0r9VmfeWuBvQBw7jp8-a7Vchhm9Vqmc"
+							"value": "{{token-user}}"
 						},
 						{
 							"key": "table",
-							"value": "instructors"
+							"value": "users"
 						},
 						{
 							"key": "suffix",
-							"value": "instructor"
+							"value": "user"
 						},
 						{
 							"key": "except",
@@ -758,7 +734,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
@@ -802,7 +778,7 @@
 					]
 				},
 				"url": {
-					"raw": "{{endpoint}}/courses?id=67&nameId=id_course&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzU0NTcwNzAsImV4cCI6MTYzNTU0MzQ3MCwiZGF0YSI6eyJpZCI6IjMwIiwiZW1haWwiOiJpbnN0cnVjdG9yQGNvcnJlby5jb20ifX0.LnVav6yWEBJR0r9VmfeWuBvQBw7jp8-a7Vchhm9Vqmc&table=instructors&suffix=instructor",
+					"raw": "{{endpoint}}/courses?id=67&nameId=id_course&token={{token-user}}&table=users&suffix=user",
 					"host": [
 						"{{endpoint}}"
 					],
@@ -820,15 +796,15 @@
 						},
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzU0NTcwNzAsImV4cCI6MTYzNTU0MzQ3MCwiZGF0YSI6eyJpZCI6IjMwIiwiZW1haWwiOiJpbnN0cnVjdG9yQGNvcnJlby5jb20ifX0.LnVav6yWEBJR0r9VmfeWuBvQBw7jp8-a7Vchhm9Vqmc"
+							"value": "{{token-user}}"
 						},
 						{
 							"key": "table",
-							"value": "instructors"
+							"value": "users"
 						},
 						{
 							"key": "suffix",
-							"value": "instructor"
+							"value": "user"
 						}
 					]
 				}
@@ -842,7 +818,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
@@ -851,7 +827,7 @@
 					"urlencoded": []
 				},
 				"url": {
-					"raw": "{{endpoint}}/courses?id=66&nameId=id_course&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzU0NTcwNzAsImV4cCI6MTYzNTU0MzQ3MCwiZGF0YSI6eyJpZCI6IjMwIiwiZW1haWwiOiJpbnN0cnVjdG9yQGNvcnJlby5jb20ifX0.LnVav6yWEBJR0r9VmfeWuBvQBw7jp8-a7Vchhm9Vqmc&table=instructors&suffix=instructor",
+					"raw": "{{endpoint}}/courses?id=66&nameId=id_course&token={{token-user}}&table=users&suffix=user",
 					"host": [
 						"{{endpoint}}"
 					],
@@ -869,15 +845,15 @@
 						},
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzU0NTcwNzAsImV4cCI6MTYzNTU0MzQ3MCwiZGF0YSI6eyJpZCI6IjMwIiwiZW1haWwiOiJpbnN0cnVjdG9yQGNvcnJlby5jb20ifX0.LnVav6yWEBJR0r9VmfeWuBvQBw7jp8-a7Vchhm9Vqmc"
+							"value": "{{token-user}}"
 						},
 						{
 							"key": "table",
-							"value": "instructors"
+							"value": "users"
 						},
 						{
 							"key": "suffix",
-							"value": "instructor"
+							"value": "user"
 						}
 					]
 				}
@@ -891,7 +867,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
@@ -931,7 +907,7 @@
 					]
 				},
 				"url": {
-					"raw": "{{endpoint}}/courses?token=no&table=instructors&suffix=instructor&except=name_instructor",
+					"raw": "{{endpoint}}/courses?token={{token-user}}&table=users&suffix=user&except=name_instructor",
 					"host": [
 						"{{endpoint}}"
 					],
@@ -941,15 +917,15 @@
 					"query": [
 						{
 							"key": "token",
-							"value": "no"
+							"value": "{{token-user}}"
 						},
 						{
 							"key": "table",
-							"value": "instructors"
+							"value": "users"
 						},
 						{
 							"key": "suffix",
-							"value": "instructor"
+							"value": "user"
 						},
 						{
 							"key": "except",
@@ -970,7 +946,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+						"value": "{{token-header}}",
 						"type": "text"
 					}
 				],
@@ -979,12 +955,9 @@
 					"urlencoded": []
 				},
 				"url": {
-					"raw": "http://api.developer-technology.local/users?equalTo=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjkxMzU5MjksImV4cCI6MTY2OTIyMjMyOSwiZGF0YSI6eyJpZCI6IjUiLCJlbWFpbCI6ImNoYW5hbW90aC50ZWMifX0.am3-JOt0xeKg_1ZDbbLh8KYlHxjH_jv97sEr22RYyHU&linkTo=token_user&select=id_user,wishlist_user",
-					"protocol": "http",
+					"raw": "{{endpoint}}/users?equalTo={{token-user}}&linkTo=token_user&select=id_user,wishlist_user",
 					"host": [
-						"api",
-						"developer-technology",
-						"local"
+						"{{endpoint}}"
 					],
 					"path": [
 						"users"
@@ -992,7 +965,7 @@
 					"query": [
 						{
 							"key": "equalTo",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjkxMzU5MjksImV4cCI6MTY2OTIyMjMyOSwiZGF0YSI6eyJpZCI6IjUiLCJlbWFpbCI6ImNoYW5hbW90aC50ZWMifX0.am3-JOt0xeKg_1ZDbbLh8KYlHxjH_jv97sEr22RYyHU"
+							"value": "{{token-user}}"
 						},
 						{
 							"key": "linkTo",
@@ -1008,14 +981,42 @@
 			"response": []
 		}
 	],
-	"variable": [
+	"event": [
 		{
-			"key": "http://api.developer-technology.net",
-			"value": "{{endpoint}}"
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
 		},
 		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
 			"key": "endpoint",
-			"value": "http://api.developer-technology.loca"
+			"value": "http://api.nubillia.local"
+		},
+		{
+			"key": "token-header",
+			"value": "c5LTA6WPbMwHhEabYu77nN9cn4VcMj",
+			"type": "string"
+		},
+		{
+			"key": "token-user",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjkxMzU5MjksImV4cCI6MTY2OTIyMjMyOSwiZGF0YSI6eyJpZCI6IjUiLCJlbWFpbCI6ImNoYW5hbW90aC50ZWMifX0.am3-JOt0xeKg_1ZDbbLh8KYlHxjH_jv97sEr22RYyHU",
+			"type": "string"
 		}
 	]
 }
