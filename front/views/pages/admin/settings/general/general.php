@@ -1,6 +1,6 @@
 <?php
 
-/*=============================================
+    /*=============================================
     Obtenemos las configuraciones adicionales
     =============================================*/
     foreach (json_decode($getSetting->extras_setting) as $key => $elementExtras) {
@@ -15,20 +15,20 @@
 
 <div class="nav-align-top mb-4">
       <ul class="nav nav-pills mb-3 nav-fill" role="tablist">
-        <li class="nav-item">
+      <li class="nav-item">
           <button type="button" class="nav-link active" onclick="window.open('/settings/general','_self');">General</button>
         </li>
         <li class="nav-item">
-          <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-profile" aria-controls="navs-pills-justified-profile" aria-selected="false">Servidor De Correo</button>
+          <button type="button" class="nav-link" onclick="window.open('/settings/server','_self');">Servidor De Correo</button>
         </li>
         <li class="nav-item">
-          <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-messages" aria-controls="navs-pills-justified-messages" aria-selected="false">Favicon</button>
+          <button type="button" class="nav-link" onclick="window.open('/settings/favicon','_self');">Favicon</button>
         </li>
         <li class="nav-item">
-          <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-messages1" aria-controls="navs-pills-justified-messages1" aria-selected="false">Facturación</button>
+          <button type="button" class="nav-link" onclick="window.open('/settings/billing','_self');">Facturación</button>
         </li>
         <li class="nav-item">
-          <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-messages2" aria-controls="navs-pills-justified-messages2" aria-selected="false">Pasarelas De Pago</button>
+          <button type="button" class="nav-link" onclick="window.open('/settings/gateway','_self');">Pasarelas De Pago</button>
         </li>
       </ul>
       <div class="tab-content">
@@ -121,8 +121,10 @@
             <!-- Soporte -->
             <hr>
 
-            <h5>Soporte</h5>
-            <p>Configura los canales de soporte como WhatsApp y YouTube.</p>
+            <p>
+                <h5 class="card-title">Soporte</h5>
+                <p>Configura los canales de soporte como WhatsApp y YouTube.</p>
+            </p>
 
             <div class="row">
 
@@ -155,8 +157,10 @@
             <!-- Adicionales -->
             <hr>
 
-            <h5>Adicionales</h5>
-            <p>Configura parámetros adicionales del sistema.</p>
+            <p>
+                <h5 class="card-title">Adicionales</h5>
+                <p>Configura parámetros adicionales del sistema.</p>
+            </p>
 
             <div class="row">
 
@@ -167,11 +171,13 @@
 
                     <label for="registro-sistema">¿Permite Registro? <sup class="text-danger">*</sup></label>
                     <div class="mt-2 mb-3">
-                        <select name="registro-sistema" id="registro-sistema" class="form-select" required>
+                        <select id="selectpickerBasic" class="selectpicker w-100" name="registro-sistema" data-style="btn-default" required>
                             <?php if($registerUser == 'si'): ?>
+                                <option disabled>Seleccionar</option>
                                 <option value="si" selected>Sí</option>
                                 <option value="no">No</option>
                             <?php else: ?>
+                                <option disabled>Seleccionar</option>
                                 <option value="si">Sí</option>
                                 <option value="no" selected>No</option>
                             <?php endif ?>
@@ -187,11 +193,13 @@
 
                     <label for="reset-sistema">¿Permite Reset Password? <sup class="text-danger">*</sup></label>
                     <div class="mt-2 mb-3">
-                        <select name="reset-sistema" id="reset-sistema" class="form-select" required>
+                        <select id="selectpickerBasic" class="selectpicker w-100" name="reset-sistema" data-style="btn-default" required>
                             <?php if($resetPass == 'si'): ?>
+                                <option disabled>Seleccionar</option>
                                 <option value="si" selected>Sí</option>
                                 <option value="no">No</option>
                             <?php else: ?>
+                                <option disabled>Seleccionar</option>
                                 <option value="si">Sí</option>
                                 <option value="no" selected>No</option>
                             <?php endif ?>
@@ -207,11 +215,13 @@
 
                     <label for="social-sistema">Permite Social Login? <sup class="text-danger">*</sup></label>
                     <div class="mt-2 mb-3">
-                        <select name="social-sistema" id="social-sistema" class="form-select" required>
+                        <select id="selectpickerBasic" class="selectpicker w-100" name="social-sistema" data-style="btn-default" required>
                             <?php if($loginSocial == 'si'): ?>
+                                <option disabled>Seleccionar</option>
                                 <option value="si" selected>Sí</option>
                                 <option value="no">No</option>
                             <?php else: ?>
+                                <option disabled>Seleccionar</option>
                                 <option value="si">Sí</option>
                                 <option value="no" selected>No</option>
                             <?php endif ?>
@@ -237,7 +247,7 @@
             <!--=====================================
             Botones
             ======================================-->
-            <div class="col-md-12 mt-4">
+            <div class="col-md-12 mt-2">
 
                 <a class="btn btn-default border text-left" href="/settings/general">Cancelar</a>
                 <button type="submit" class="btn btn-primary float-right">Guardar</button>

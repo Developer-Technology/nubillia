@@ -67,7 +67,7 @@ foreach (json_decode($getSetting->extras_setting) as $key => $elementExtras) {
                         </div>
                         <div class="input-group input-group-merge">
                             <input type="password" id="loginPassword" class="form-control" name="loginPassword" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"aria-describedby="password" required>
-                            <span class="input-group-text cursor-pointer" onclick="showP()"><i class="bx bx-show" id="toggleIcon"></i></span>
+                            <span class="input-group-text cursor-pointer" onclick="showP()"><i class="bx bx-hide" id="toggleIcon"></i></span>
                         </div>
                     </div>
                     <div class="mb-3">

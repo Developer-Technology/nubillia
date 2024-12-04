@@ -106,4 +106,76 @@ class SettingsController{
 
     }
 
+    /*=============================================
+    Editar servidor de correo
+    =============================================*/
+    public function editServer()
+    {
+
+        if (isset($_POST["host-mail"])) {
+
+            echo '<script>
+                    matPreloader("on");
+                    fncSweetAlert("loading", "Cargando...", "");
+                </script>';
+
+            // Accedemos a los datos adicionales
+            $urlGetSet = "settings?select=*&linkTo=id_setting&equalTo=1";
+            $methodGetSet = "GET";
+            $fieldsGetSet = array();
+            $responseGetSet = CurlController::request($urlGetSet, $methodGetSet, $fieldsGetSet);
+
+            if($_POST["server-mail"] == 'no') {
+                $securityMail = '';
+            } else {
+                $securityMail = $_POST["security-mail"];
+            }
+
+            // Decodificar el JSON extras
+            $jsonServer = $responseGetSet->results[0]->server_setting;
+            $datosServer = json_decode($jsonServer, true);
+
+            // Acceder y editar los valores del arreglo
+            $datosServer[0]['server'] = $_POST["server-mail"];
+            $datosServer[0]['host'] = $_POST["host-mail"];
+            $datosServer[0]['user'] = $_POST["user-mail"];
+            $datosServer[0]['pass'] = $_POST["pass-mail"];
+            $datosServer[0]['security'] = $securityMail;
+            $datosServer[0]['port'] = $_POST["port-mail"];
+            $datosServer[0]['email'] = $_POST["email-mail"];
+
+            // Codificar de nuevo el JSON
+            $jsonServer = json_encode($datosServer);
+
+            // Enviamos los datos al API
+            $url = "settings?id=1&nameId=id_setting&token=" . $_SESSION["user"]->token_user . "&table=users&suffix=user";
+            $method = "PUT";
+            $fields = "&server_setting=" . $jsonServer;
+
+            $response = CurlController::request($url, $method, $fields);
+
+            if ($response->status == 200) {
+
+                echo '<script>
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncSweetAlert("success", "' . $response->results->comment . '", "/settings/server");
+                    </script>';
+
+            } else {
+
+                echo '<script>
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncNotie(3, "' . $response->results . '");
+                    </script>';
+
+            }
+
+        }
+
+    }
+
 }

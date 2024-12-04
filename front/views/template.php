@@ -113,8 +113,9 @@ if(!empty($routesArray[2])) {
         <!-- Vendors CSS -->
         <link rel="stylesheet" href="/views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
         <link rel="stylesheet" href="/views/assets/vendor/libs/tagify/tagify.css" />
+        <link rel="stylesheet" href="/views/assets/vendor/libs/bootstrap-select/bootstrap-select.css" />
         <link rel="stylesheet" href="/views/assets/vendor/libs/typeahead-js/typeahead.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css">
+        <link rel="stylesheet" href="/views/assets/plugins/summernote/summernote.css">
 
         <!-- Plugins -->
         <link rel="stylesheet" href="/views/assets/plugins/material-preloader/material-preloader.css">
@@ -134,6 +135,7 @@ if(!empty($routesArray[2])) {
         <script src="/views/assets/vendor/libs/hammer/hammer.js"></script>
         <script src="/views/assets/vendor/libs/i18n/i18n.js"></script>
         <script src="/views/assets/vendor/libs/tagify/tagify.js"></script>
+        <script src="/views/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
         <script src="/views/assets/vendor/libs/typeahead-js/typeahead.js"></script>
         <script src="/views/assets/vendor/js/menu.js"></script>
 
@@ -142,7 +144,7 @@ if(!empty($routesArray[2])) {
         <script src="/views/assets/plugins/notie/notie.min.js"></script>
         <script src="/views/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
         <script src="/views/assets/custom/alerts/alerts.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
+        <script src="/views/assets/plugins/summernote/summernote.js"></script>
         <script src="/views/assets/custom/forms/forms.js"></script>
 
         <?php if(!empty($routesArray[1])): ?>

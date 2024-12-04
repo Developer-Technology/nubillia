@@ -289,12 +289,12 @@ function showP() {
 
   if (passwordInput.type === "password") {
     passwordInput.type = "text";
-    toggleIcon.classList.remove("bx-show");
-    toggleIcon.classList.add("bx-hide");
-  } else {
-    passwordInput.type = "password";
     toggleIcon.classList.remove("bx-hide");
     toggleIcon.classList.add("bx-show");
+  } else {
+    passwordInput.type = "password";
+    toggleIcon.classList.remove("bx-show");
+    toggleIcon.classList.add("bx-hide");
   }
   passwordInput.focus(); // Enfoca el campo de contraseña
 }
@@ -380,8 +380,10 @@ Capturar el email para login desde el LocalStorage
 =============================================*/
 $(document).ready(function () {
 
+  /* Tags */
   fncTagInput();
 
+  /* Recordar usuario */
   if (localStorage.getItem("userRemember") != null) {
 
     $('[name="loginUsername"]').val(localStorage.getItem("userRemember"));
@@ -392,6 +394,19 @@ $(document).ready(function () {
     $('#remember').attr("checked", true);
 
   }
+
+  /* Summernote */
+  $(".summernote").summernote({
+    placeholder: '',
+    tabsize: 2,
+    height: 100,
+    toolbar: [
+      ['misc', ['undo', 'redo']],
+      ['style', ['bold', 'italic', 'underline', 'clear']],
+      ['para', ['ul', 'ol']],
+      ['insert', ['hr']]
+    ]
+  });
 
 })
 
@@ -460,10 +475,9 @@ function fncTagInput() {
 
   if ($('.tags-input').length > 0) {
 
-      $('.tags-input').each(function () {
-          // Convierte cada elemento jQuery a un nodo DOM
-          new Tagify(this);
-      });
+    $('.tags-input').each(function () {
+      new Tagify(this);
+    });
 
   }
 
@@ -531,11 +545,11 @@ function funcGet(event, table, id, suffix) {
           if ($(".totalOrder").attr("total") > 0) {
 
             $("#payMent").removeClass("hidden");
-      
+
           } else {
-      
+
             $("#payMent").addClass("hidden");
-      
+
           }
 
           $('#plan-tenant').val(id);
@@ -599,7 +613,7 @@ function funcPost(event, table, dataPost) {
     cache: false,
     processData: false,
 
-    success: function (response) {}
+    success: function (response) { }
 
   })
 
@@ -612,7 +626,7 @@ function generarCodigoUnico(longitud) {
   var caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   var codigo = '';
   for (var i = 0; i < longitud; i++) {
-      codigo += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    codigo += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
   }
   return codigo;
 }
@@ -817,23 +831,6 @@ function newOrder(methodPaid, statusPaid, idPayment, total) {
   }
 
 }
-
-/*=============================================
-Plugin Summernote
-=============================================*/
-$(document).ready(function() {
-  $(".summernote").summernote({
-      placeholder: '',
-      tabsize: 2,
-      height: 100,
-      toolbar: [
-          ['misc', ['undo', 'redo']],
-          ['style', ['bold', 'italic', 'underline', 'clear']],
-          ['para', ['ul', 'ol']],
-          ['insert', ['hr']]
-      ]
-  });
-});
 
 /*=============================================
 Adicionar Entradas al formulario de productos 
@@ -1529,7 +1526,7 @@ Modo de transporte
 =============================================*/
 function modoT(sel) {
 
-  if(sel.value=='') {
+  if (sel.value == '') {
     $("#conductor").addClass("hidden");
     $('.tipoCond').attr("required", false);
     $('.docCond').attr("required", false);
@@ -1538,7 +1535,7 @@ function modoT(sel) {
     $('.licCond').attr("required", false);
   }
 
-  if(sel.value=='01') {
+  if (sel.value == '01') {
     $("#conductor").addClass("hidden");
     $('.tipoCond').attr("required", false);
     $('.docCond').attr("required", false);
@@ -1547,7 +1544,7 @@ function modoT(sel) {
     $('.licCond').attr("required", false);
   }
 
-  if(sel.value=='02') {
+  if (sel.value == '02') {
     $("#conductor").removeClass("hidden");
     $('.tipoCond').attr("required", true);
     $('.docCond').attr("required", true);
@@ -1559,34 +1556,22 @@ function modoT(sel) {
 }
 
 /*=============================================
-Cambiar entorno de la facturacion electronica
+Cambiar estado del servidor de correo
 =============================================*/
-function cambiaEntorno(sel) {
+function changeServer(sel) {
 
-  if (sel.value == 'produccion') {
+  if (sel.value == 'si') {
 
     $(".required").attr("required", true);
-    $(".usuario-sol").val("");
-    $(".clave-sol").val("");
-    $(".file-certificate").val("");
-    $(".clave-certificate").val("");
-    $(".expired-certificate").val("");
-    $(".client_id").val("");
-    $(".client_secret").val("");
+    $(".value-none").val("");
     $(".readonly").attr("readonly", false);
     $(".text-danger").removeClass("hidden");
-    $(".usuario-sol").focus();
+    $(".host-mail").focus();
 
   } else {
 
     $(".required").attr("required", false);
-    $(".usuario-sol").val("MODDATOS");
-    $(".clave-sol").val("moddatos");
-    $(".file-certificate").val("");
-    $(".clave-certificate").val("");
-    $(".expired-certificate").val("");
-    $(".client_id").val("");
-    $(".client_secret").val("");
+    $(".value-none").val("");
     $(".readonly").attr("readonly", true);
     $(".text-danger").addClass("hidden");
 
