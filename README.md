@@ -17,26 +17,28 @@ Este proyecto es un sistema de gestión empresarial (ERP) diseñado bajo el mode
 
 Este sistema está diseñado para garantizar la seguridad y el aislamiento de datos de cada empresa, asegurando una experiencia intuitiva tanto para administradores como para colaboradores.
 
-## Cambios al 29/11/24
+## Avances al 29/11/24
 1 Se crea archivos principales del proyecto  
 2 Se corrige CORS para cualquier tecnolgía  
 3 Se agrega la estructura base de la vista, se implemente la plantilla, la cabecera, el menú lateral y el footer  
 4 Se configura las rutas amigables y el error 404
 
-## Cambios al 30/11/24
+## Avances al 30/11/24
 1 Se configura la vista de login, si no hay sesión se redirige al login  
 2 Se configura la vista de forgot con la url amigable  
 3 Se configura el error 404 cuando no se tiene sesión
 
-## Cambios al 01/12/24
+## Avances al 01/12/24
 1 Login funcional  
 2 LockScreen funcional
 
-## Cambios al 02/12/24
+## Avances al 02/12/24
 1 Se crea tabla de configuración y personalización del sistema  
 2 Se configura las sesiones para el acceso al panel de la empresa con la tienda seleccionada, de momento solo el super administrador podrá tener acceso a todas las empresas y tiendas  
 3 Se configura las sesiones para el acceso al panel de la empresa con la tienda seleccionada, se lista las tiendas que el usuario tiene registradas  
 4 Se separa de manera dinámica las sesiones al panel del super admin  
 5 CRUD planes  
-6 Listado de empresas  
-7 Configuraciones generales funcional  
+6 Listado de empresas
+
+## Avances al 03/12/24
+1 Configuraciones generales funcional  
