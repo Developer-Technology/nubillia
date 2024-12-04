@@ -31,6 +31,16 @@ class TemplateController {
 	}
 
 	/*=============================================
+    Token default del API SUNAT
+    =============================================*/
+    public static function tokenApi()
+    {
+
+        return "0312b11cfe3df2ca85728026f8a81da8f53110f6e828030cce3c9a1a8dc6f1bf";
+
+    }
+
+	/*=============================================
 	Ruta para las imágenes del sistema
 	=============================================*/
 	static public function srcImg() {

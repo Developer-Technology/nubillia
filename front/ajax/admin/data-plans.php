@@ -52,7 +52,7 @@ class DatatableController
 
             if (!empty($_POST['search']['value'])) {
                 if (preg_match('/^[0-9A-Za-zñÑáéíóú ]{1,}$/', $_POST['search']['value'])) {
-                    $linkTo = ["name_plan", "description_plan", "created_plan"];
+                    $linkTo = ["name_plan", "price_plan", "description_plan", "created_plan"];
                     $search = str_replace(" ", "_", $_POST['search']['value']);
 
                     foreach ($linkTo as $value) {
@@ -162,7 +162,7 @@ class DatatableController
                                     <button type='button' class='btn btn-outline-primary dropdown-toggle btn-xs waves-effect' data-bs-toggle='dropdown' aria-expanded='false'>Acciones</button>
                                     <ul class='dropdown-menu'>
                                         <li><a class='dropdown-item' href='/plans/edit/" . base64_encode($value->id_plan . "~" . $_GET["token"]) . "'>Editar Registro</a></li>
-                                        <li><a class='dropdown-item removeItem' idItem='" . base64_encode($value->id_plan . "~" . $_GET["token"]) . "' table='plans' suffix='plan' deleteFile='no' page='plans'>Eliminar Registro</a></li>
+                                        <li><a class='dropdown-item removeItem pointer' idItem='" . base64_encode($value->id_plan . "~" . $_GET["token"]) . "' table='plans' suffix='plan' deleteFile='no' page='plans'>Eliminar Registro</a></li>
                                     </ul>
                                 </div>";
 

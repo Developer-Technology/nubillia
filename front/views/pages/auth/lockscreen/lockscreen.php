@@ -27,7 +27,7 @@
                     <span class="footer-link me-4"><small><b>Empresa: </b><?php echo $getStore->name_tenant; ?> <br> <b>Tienda: </b><?php echo $getStore->name_store; ?></small></span>
                     <?php endif; ?>
 
-                    <form class="mb-3 needs-validation mt-3" method="POST" novalidate>
+                    <form class="mb-3 needs-validation mt-3" method="POST" novalidate autocomplete="off">
                         
                         <input type="hidden" class="form-control" id="username" name="loginUsername" placeholder="Ingresa tu Usuario" value="<?php echo $getUser->username_user; ?>">
                         <div class="mb-3 form-password-toggle">

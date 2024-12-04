@@ -38,4 +38,5 @@ Este sistema está diseñado para garantizar la seguridad y el aislamiento de da
 3 Se configura las sesiones para el acceso al panel de la empresa con la tienda seleccionada, se lista las tiendas que el usuario tiene registradas  
 4 Se separa de manera dinámica las sesiones al panel del super admin  
 5 CRUD planes  
-6 Listado de empresas
+6 Listado de empresas  
+7 Configuraciones generales funcional  

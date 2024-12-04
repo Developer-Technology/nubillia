@@ -1,3 +1,34 @@
+<?php
+
+/*-------------------------
+Autor: Chanamoth
+Web: www.chanamoth.com
+Mail: info@chanamoth.com
+---------------------------*/
+
+/*=============================================
+Obtenemos las configuraciones adicionales
+=============================================*/
+foreach (json_decode($getSetting->extras_setting) as $key => $elementExtras) {
+
+  $resetPass = $elementExtras->reset_pass;
+
+}
+
+if($resetPass == 'no') {
+
+
+  echo '<script>
+          fncFormatInputs();
+          matPreloader("off");
+          fncSweetAlert("close", "", "");
+          fncSweetAlert("error", "No puedes acceder a esta sección", "/");
+      </script>';
+
+} else {
+
+?>
+
 <div class="authentication-wrapper authentication-cover">
   <div class="authentication-inner row m-0">
 
@@ -30,7 +61,7 @@
         <!-- /Logo -->
         <h4 class="mb-2">¿Olvidaste tu contraseña? 🔒</h4>
         <p class="mb-4">Ingresa tu correo electrónico y te enviaremos instrucciones para restablecer tu contraseña</p>
-        <form id="formAuthentication" class="mb-3" action="https://demos.pixinvent.com/frest-html-admin-template/html/vertical-menu-template-bordered/auth-reset-password-cover.html" method="GET">
+        <form id="formAuthentication" class="mb-3" autocomplete="off">
           <div class="mb-3">
             <label for="email" class="form-label">Correo Electrónico</label>
             <input type="text" class="form-control" id="email" name="email" placeholder="Ingresa tu Correo Electrónico" autofocus>
@@ -48,3 +79,5 @@
     <!-- /Forgot Password -->
   </div>
 </div>
+
+<?php } ?>

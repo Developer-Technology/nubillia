@@ -2,7 +2,7 @@
     <!-- Snow Theme -->
     <div class="col-12">
         <div class="card mb-4">
-            <form method="post" class="needs-validation" novalidate>
+            <form method="post" class="needs-validation" novalidate autocomplete="off">
 
                 <?php
 

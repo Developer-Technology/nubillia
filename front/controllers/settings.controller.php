@@ -9,7 +9,7 @@ Mail: info@chanamoth.com
 class SettingsController{
 
 	/*=============================================
-	Datos empresa / tienda
+	Datos de configuraciones
 	=============================================*/	
 	public static function getdata(){
 
@@ -32,5 +32,78 @@ class SettingsController{
         }
 
 	}
+
+    /*=============================================
+    Editar datos generales
+    =============================================*/
+    public function editGeneral()
+    {
+
+        if (isset($_POST["name-sys"])) {
+
+            echo '<script>
+                    matPreloader("on");
+                    fncSweetAlert("loading", "Cargando...", "");
+                </script>';
+
+            // Accedemos a los datos adicionales
+            $urlGetSet = "settings?select=*&linkTo=id_setting&equalTo=1";
+            $methodGetSet = "GET";
+            $fieldsGetSet = array();
+            $responseGetSet = CurlController::request($urlGetSet, $methodGetSet, $fieldsGetSet);
+
+            // Decodificar el JSON extras
+            $jsonExtras = $responseGetSet->results[0]->extras_setting;
+            $datosExtras = json_decode($jsonExtras, true);
+
+            // Acceder y editar los valores del arreglo
+            $datosExtras[0]['reset_pass'] = $_POST["reset-sistema"];
+            $datosExtras[0]['register_system'] = $_POST["registro-sistema"];
+            $datosExtras[0]['social_login'] = $_POST["social-sistema"];
+
+            // Codificar de nuevo el JSON
+            $jsonExtras = json_encode($datosExtras);
+
+            // Convertir el JSON en un arreglo PHP
+            $rawKeywords = json_decode($_POST["kw-emp"], true);
+
+            // Extraer únicamente los valores (sin la clave "value")
+            $keywords = array_map(function($tag) {
+                return $tag['value'];
+            }, $rawKeywords);
+
+            // Convertir el arreglo limpio a JSON para guardarlo
+            $jsonKeywords = json_encode($keywords);
+
+            // Enviamos los datos al API
+            $url = "settings?id=1&nameId=id_setting&token=" . $_SESSION["user"]->token_user . "&table=users&suffix=user";
+            $method = "PUT";
+            $fields = "name_system_setting=" . $_POST["name-sys"] . "&name_company_setting=" . $_POST["name-emp"] . "&description_setting=" . TemplateController::htmlClean($_POST["description-emp"]) . "&web_setting=" . $_POST["web-emp"] . "&whatsapp_setting=" . $_POST["whatsapp-setting"] . "&youtube_setting=" . $_POST["youtube-setting"] . "&keywords_setting=" . $jsonKeywords . "&extras_setting=" . $jsonExtras;
+
+            $response = CurlController::request($url, $method, $fields);
+
+            if ($response->status == 200) {
+
+                echo '<script>
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncSweetAlert("success", "' . $response->results->comment . '", "/settings/general");
+                    </script>';
+
+            } else {
+
+                echo '<script>
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncNotie(3, "' . $response->results . '");
+                    </script>';
+
+            }
+
+        }
+
+    }
 
 }

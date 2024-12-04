@@ -637,6 +637,14 @@
             </a>
         </li>
 
+        <!-- Suscripciones -->
+        <li class="menu-item <?php if (!empty($routesArray) && $routesArray[1] == 'suscriptions'): ?>active<?php endif?>">
+            <a href="/suscriptions" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-credit-card-front"></i>
+                <div data-i18n="Suscripciones">Suscripciones</div>
+            </a>
+        </li>
+
         <!-- Configuraciones -->
         <li class="menu-item <?php if (!empty($routesArray) && $routesArray[1] == 'settings'): ?>active<?php endif?>">
             <a href="/settings" class="menu-link">

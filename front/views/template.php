@@ -112,6 +112,7 @@ if(!empty($routesArray[2])) {
         
         <!-- Vendors CSS -->
         <link rel="stylesheet" href="/views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+        <link rel="stylesheet" href="/views/assets/vendor/libs/tagify/tagify.css" />
         <link rel="stylesheet" href="/views/assets/vendor/libs/typeahead-js/typeahead.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css">
 
@@ -132,6 +133,7 @@ if(!empty($routesArray[2])) {
         <script src="/views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
         <script src="/views/assets/vendor/libs/hammer/hammer.js"></script>
         <script src="/views/assets/vendor/libs/i18n/i18n.js"></script>
+        <script src="/views/assets/vendor/libs/tagify/tagify.js"></script>
         <script src="/views/assets/vendor/libs/typeahead-js/typeahead.js"></script>
         <script src="/views/assets/vendor/js/menu.js"></script>
 

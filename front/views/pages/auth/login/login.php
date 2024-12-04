@@ -1,3 +1,24 @@
+<?php
+
+/*-------------------------
+Autor: Chanamoth
+Web: www.chanamoth.com
+Mail: info@chanamoth.com
+---------------------------*/
+
+/*=============================================
+Obtenemos las configuraciones adicionales
+=============================================*/
+foreach (json_decode($getSetting->extras_setting) as $key => $elementExtras) {
+
+    $resetPass = $elementExtras->reset_pass;
+    $registerUser = $elementExtras->register_system;
+    $loginSocial = $elementExtras->social_login;
+
+}
+
+?>
+
 <div class="authentication-wrapper authentication-cover">
     <div class="authentication-inner row m-0">
         <!-- /Left Text -->
@@ -30,7 +51,7 @@
                 <h4 class="mb-2">¡Bienvenido! 👋</h4>
                 <p class="mb-4">Inicia sesión en tu cuenta y comienza la aventura.</p>
 
-                <form method="post" class="mb-3 needs-validation" novalidate>
+                <form method="post" class="mb-3 needs-validation" novalidate autocomplete="off">
                     <div class="mb-3">
                         <label for="username" class="form-label">Usuario</label>
                         <input type="text" class="form-control" id="username" name="loginUsername" placeholder="Ingresa tu Usuario" autofocus required>
@@ -38,9 +59,11 @@
                     <div class="mb-3 form-password-toggle">
                         <div class="d-flex justify-content-between">
                             <label class="form-label" for="loginPassword">Contraseña</label>
+                            <?php if($resetPass == 'si'): ?>
                             <a href="/forgot">
                                 <small>¿Olvidaste tu contraseña?</small>
                             </a>
+                            <?php endif; ?>
                         </div>
                         <div class="input-group input-group-merge">
                             <input type="password" id="loginPassword" class="form-control" name="loginPassword" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"aria-describedby="password" required>
@@ -73,13 +96,16 @@
                     </button>
                 </form>
 
+                <?php if($registerUser == 'si'): ?>
                 <p class="text-center">
                     <span>¿No tienes una cuenta?</span>
                     <a href="/register">
                         <span>Regístrate</span>
                     </a>
                 </p>
+                <?php endif; ?>
 
+                <?php if($loginSocial == 'si'): ?>
                 <div class="divider my-4">
                     <div class="divider-text">O</div>
                 </div>
@@ -89,14 +115,11 @@
                         <i class="tf-icons bx bxl-facebook"></i>
                     </a>
 
-                    <a href="javascript:;" class="btn btn-icon btn-label-google-plus me-3">
+                    <a href="javascript:;" class="btn btn-icon btn-label-google-plus">
                         <i class="tf-icons bx bxl-google"></i>
                     </a>
-
-                    <a href="javascript:;" class="btn btn-icon btn-label-twitter">
-                        <i class="tf-icons bx bxl-twitter"></i>
-                    </a>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
         <!-- /Login -->

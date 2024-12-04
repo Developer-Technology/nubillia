@@ -380,6 +380,8 @@ Capturar el email para login desde el LocalStorage
 =============================================*/
 $(document).ready(function () {
 
+  fncTagInput();
+
   if (localStorage.getItem("userRemember") != null) {
 
     $('[name="loginUsername"]').val(localStorage.getItem("userRemember"));
@@ -458,9 +460,10 @@ function fncTagInput() {
 
   if ($('.tags-input').length > 0) {
 
-    $('.tags-input').tagsinput({
-      maxTags: 15
-    });
+      $('.tags-input').each(function () {
+          // Convierte cada elemento jQuery a un nodo DOM
+          new Tagify(this);
+      });
 
   }
 
