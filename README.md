@@ -44,5 +44,5 @@ Este sistema está diseñado para garantizar la seguridad y el aislamiento de da
 1 Configuraciones generales funcional  
 
 ## Avances al 04/12/24
-
-2 Servidor de correo funcional
+1 Servidor de correo funcional  
+2 Se exporta la base de datos y el json para el postman
