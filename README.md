@@ -42,3 +42,7 @@ Este sistema está diseñado para garantizar la seguridad y el aislamiento de da
 
 ## Avances al 03/12/24
 1 Configuraciones generales funcional  
+
+## Avances al 04/12/24
+
+2 Servidor de correo funcional
