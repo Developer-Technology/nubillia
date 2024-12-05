@@ -334,4 +334,69 @@ class SettingsController{
 
     }
 
+    /*=============================================
+    Editar Pasarelas
+    =============================================*/
+    public function editGateway()
+    {
+
+        if (isset($_POST["client_id-paypal"])) {
+
+            echo '<script>
+                    matPreloader("on");
+                    fncSweetAlert("loading", "Cargando...", "");
+                </script>';
+
+            $select = "*";
+
+            $url = "settings?select=" . $select . "&linkTo=id_setting&equalTo=1";
+            $method = "GET";
+            $fields = array();
+
+            $response = CurlController::request($url, $method, $fields);
+
+            // Decodificar el JSON Paypal
+            $jsonPaypal = $response->results[0]->paypal_setting;
+            $datosPaypal = json_decode($jsonPaypal, true);
+
+            // Acceder y editar los valores del arreglo
+            $datosPaypal[0]['client_id'] = $_POST["client_id-paypal"];
+            $datosPaypal[0]['secret_key'] = $_POST["secret_key-paypal"];
+
+            // Codificar de nuevo el JSON
+            $jsonPaypal = json_encode($datosPaypal);
+
+            /*=============================================
+            Solicitud a la API
+            =============================================*/
+            $urlPut = "settings?id=1&nameId=id_setting&token=" . $_SESSION["user"]->token_user . "&table=users&suffix=user";
+            $methodPut = "PUT";
+            $fieldsPut = "paypal_setting=" . $jsonPaypal;
+
+            $responsePut = CurlController::request($urlPut, $methodPut, $fieldsPut);
+
+            if ($responsePut->status == 200) {
+
+                echo '<script>
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncSweetAlert("success", "' . $responsePut->results->comment . '", "/settings/gateway");
+                    </script>';
+
+            } else {
+
+                echo '<script>
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncNotie(3, "' . $responsePut->results . '");
+                    </script>';
+
+            }
+
+        }
+
+    }
+
 }

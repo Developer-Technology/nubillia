@@ -145,7 +145,7 @@
 
                         <label for="">Correlativo <sup class="text-danger <?php echo $spanRequire ?>">*</sup></label>
                         <div class="mt-2 mb-3">
-                            <input type="text" name="number-billing" class="form-control value-none required readonly" placeholder="Correlativo" value="<?php echo $correlativo ?>" <?php echo $required ?> <?php echo $readOnly ?>>
+                            <input type="number" name="number-billing" class="form-control value-none required readonly" placeholder="Correlativo" value="<?php echo $correlativo ?>" <?php echo $required ?> <?php echo $readOnly ?>>
                         </div>
 
                     </div>
