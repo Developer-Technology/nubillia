@@ -20,6 +20,7 @@ function execDatatable(text) {
       { "data": "status_plan", "orderable": false },
       { "data": "name_plan" },
       { "data": "price_plan" },
+      { "data": "content_plan" },
       { "data": "created_plan" },
       { "data": "actions", "orderable": false }
     ];
@@ -291,7 +292,13 @@ Ejecutar reporte
 =============================================*/
 function reportActive(event) {
 
+  matPreloader("on");
+  fncSweetAlert("loading", "Cargando...", "");
+
   if (event.target.checked) {
+
+    matPreloader("off");
+    fncSweetAlert("close", "", "");
 
     $("#adminsTable").dataTable().fnClearTable();
     $("#adminsTable").dataTable().fnDestroy();
@@ -303,6 +310,9 @@ function reportActive(event) {
     }, 100)
 
   } else {
+
+    matPreloader("off");
+    fncSweetAlert("close", "", "");
 
     $("#adminsTable").dataTable().fnClearTable();
     $("#adminsTable").dataTable().fnDestroy();
@@ -394,6 +404,9 @@ $(document).on("click", ".removeItem", function () {
 
     if (resp) {
 
+      matPreloader("on");
+      fncSweetAlert("loading", "Cargando...", "");
+
       var data = new FormData();
       data.append("idItem", idItem);
       data.append("table", table);
@@ -415,6 +428,8 @@ $(document).on("click", ".removeItem", function () {
 
           if (response == 200) {
 
+            matPreloader("off");
+            fncSweetAlert("close", "", "");
             fncSweetAlert(
               "success",
               "El registro ha sido eliminado exitosamente",
@@ -423,6 +438,8 @@ $(document).on("click", ".removeItem", function () {
 
           } else if (response == "no-delete") {
 
+            matPreloader("off");
+            fncSweetAlert("close", "", "")
             fncSweetAlert(
               "error",
               "El registro tiene datos relacionados",
@@ -431,6 +448,8 @@ $(document).on("click", ".removeItem", function () {
 
           } else {
 
+            matPreloader("off");
+            fncSweetAlert("close", "", "")
             fncNotie(3, "No se pudo eliminar el registro");
 
           }
@@ -449,6 +468,9 @@ $(document).on("click", ".removeItem", function () {
 Cambiar estado del producto
 =============================================*/
 function changeState(event, id, table, suffix) {
+
+  matPreloader("on");
+  fncSweetAlert("loading", "Cargando...", "");
 
   if (event.target.checked) {
 
@@ -491,12 +513,16 @@ function changeState(event, id, table, suffix) {
 
       if (response == 200) {
 
+        matPreloader("off");
+        fncSweetAlert("close", "", "");
         fncNotie(1, "El registro fue actualizado");
         $(".txtStatus").text(txtStatus);
         $(".suspend-user").text(txtBtn);
 
       } else {
 
+        matPreloader("off");
+        fncSweetAlert("close", "", "");
         fncNotie(3, "No se pudo actualizar el registro");
 
       }

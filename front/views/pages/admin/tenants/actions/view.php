@@ -40,6 +40,19 @@ Mail: info@chanamoth.com
 
                 }
 
+                /*=============================================
+                Obtenemos lo que contiene el plan
+                =============================================*/
+                $jsonPlan = $tenant->content_plan;
+                $arrayPlan = json_decode($jsonPlan, true);
+                foreach ($arrayPlan as $elementPlan) {
+
+                    $totalUsers = $elementPlan["users"];
+                    $totalStores = $elementPlan["stores"];
+                    $totalWarehouses = $elementPlan["warehouses"];
+
+                }
+
 			} else {
 
 				echo '<script>
@@ -76,22 +89,6 @@ Mail: info@chanamoth.com
                         </div>
                     </div>
                 </div>
-                <!--<div class="d-flex justify-content-around flex-wrap my-4 py-3">
-                    <div class="d-flex align-items-start me-4 mt-3 gap-3">
-                        <span class="badge bg-label-primary p-2 rounded"><i class='bx bx-check bx-sm'></i></span>
-                        <div>
-                            <h5 class="mb-0">1.23k</h5>
-                            <span>Tasks Done</span>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-start mt-3 gap-3">
-                        <span class="badge bg-label-primary p-2 rounded"><i class='bx bx-customize bx-sm'></i></span>
-                        <div>
-                            <h5 class="mb-0">568</h5>
-                            <span>Projects Done</span>
-                        </div>
-                    </div>
-                </div>-->
                 <h5 class="pb-2 border-bottom mb-4 mt-4">Detalles</h5>
                 <div class="info-container">
                     <ul class="list-unstyled">
@@ -140,11 +137,12 @@ Mail: info@chanamoth.com
                         <sub class="fs-6 pricing-duration mt-auto mb-4">/mes</sub>
                     </div>
                 </div>
+                <ul class="ps-3 g-2 mb-3">
+                    <li class="mb-2"><?php echo $totalUsers; ?> Usuario(s)</li>
+                    <li class="mb-2"><?php echo $totalStores; ?> Tienda(s)</li>
+                    <li><?php echo $totalWarehouses; ?> Almacene(s)</li>
+                </ul>
                 <?php echo $tenant->description_plan; ?>
-                <!--<div class="d-flex justify-content-between align-items-center mb-1">
-                    <h6 class="mb-0">Días</h6>
-                    <h6 class="mb-0">65% Completed</h6>
-                </div>-->
                 <div class="progress mb-1" style="height: 8px;">
                     <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65"
                         aria-valuemin="0" aria-valuemax="100"></div>

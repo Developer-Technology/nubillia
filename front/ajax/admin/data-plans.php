@@ -169,6 +169,27 @@ class DatatableController
                     $actions = TemplateController::htmlClean($actions);
                 }
 
+                /*=============================================
+                Obtenemos lo que contiene el plan
+                =============================================*/
+                $jsonPlan = $value->content_plan;
+                $arrayPlan = json_decode($jsonPlan, true);
+                foreach ($arrayPlan as $elementPlan) {
+
+                    $totalUsers = $elementPlan["users"];
+                    $totalStores = $elementPlan["stores"];
+                    $totalWarehouses = $elementPlan["warehouses"];
+
+                }
+                $contienePlan = "<div class='d-flex flex-row'>
+                                    <div class='d-flex flex-column'>
+                                        <small>Usuarios: " . $totalUsers . "</small>
+                                        <small>Tiendas: " . $totalStores . "</small>
+                                        <small>Almacenes: " . $totalWarehouses . "</small>
+                                    </div>
+                                </div>";
+                $contienePlan = TemplateController::htmlClean($contienePlan);
+
                 $name_plan = $value->name_plan;
                 $precioPlan = $value->price_plan;
                 $created_plan = TemplateController::fechaEsShort($value->created_plan);
@@ -178,6 +199,7 @@ class DatatableController
                     "status_plan": "' . $txtType . '",
                     "name_plan": "' . TemplateController::capitalize($name_plan) . '",
                     "price_plan": "' . $precioPlan . '",
+                    "content_plan": "' . $contienePlan . '",
                     "created_plan": "' . $created_plan . '",
                     "actions": "' . $actions . '"
                 },';

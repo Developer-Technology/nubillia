@@ -20,7 +20,7 @@
                         <!--=====================================
                         Nombre
                         ======================================-->
-                        <div class="col-md-10">
+                        <div class="col-md-4">
                         
                         
                         <label>Nombre <sup class="text-danger">*</sup></label>
@@ -60,21 +60,72 @@
                         </div>
 
                         <!--=====================================
+                        Usuarios
+                        ======================================-->
+                        <div class="col-md-2">
+
+                            <label for="">Usuarios <sup class="text-danger">*</sup></label>
+
+                            <div class="mt-2 mb-3">
+                                <input
+                                type="number"
+                                class="form-control"
+                                placeholder="Usuarios"
+                                name="users-plan"
+                                required>
+                            </div>
+
+                        </div>
+
+                        <!--=====================================
+                        Tiendas
+                        ======================================-->
+                        <div class="col-md-2">
+
+                            <label for="">Tiendas <sup class="text-danger">*</sup></label>
+
+                            <div class="mt-2 mb-3">
+                                <input
+                                type="number"
+                                class="form-control"
+                                placeholder="Tiendas"
+                                name="stores-plan"
+                                required>
+                            </div>
+
+                        </div>
+
+                        <!--=====================================
+                        Almacenes
+                        ======================================-->
+                        <div class="col-md-2">
+
+                            <label for="">Almacenes <sup class="text-danger">*</sup></label>
+
+                            <div class="mt-2 mb-3">
+                                <input
+                                type="number"
+                                class="form-control"
+                                placeholder="Almacenes"
+                                name="warehouses-plan"
+                                required>
+                            </div>
+
+                        </div>
+
+                        <!--=====================================
                         Descripción
                         ======================================-->
                         <div class="col-md-12">
 
                             <div class="form-group mt-2 mb-3">
                                 
-                                <label>Descripción <sup class="text-danger">*</sup></label>
+                                <label>Descripción</label>
 
                                 <textarea
                                 class="summernote"
                                 name="description-plan"
-                                required
                                 ></textarea>
-
-                                <div class="invalid-feedback">Este campo es obligatorio</div>
 
                             </div>
 
