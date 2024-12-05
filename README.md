@@ -53,3 +53,4 @@ Este sistema está diseñado para garantizar la seguridad y el aislamiento de da
 ## Avance al 05/12/24
 1 Se configura la facturación con el API de facturación  
 2 Se configura los medios de pago "Paypal" para los planes y suscripciones  
+3 Perfil de empresa desde el panel admin

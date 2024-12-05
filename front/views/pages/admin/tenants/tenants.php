@@ -4,7 +4,7 @@
         
         <?php if (isset($routesArray[2])): ?>
             
-            <?php if ($routesArray[2] == "new" || $routesArray[2] == "edit"): ?>
+            <?php if ($routesArray[2] == "new" || $routesArray[2] == "edit" || $routesArray[2] == "view"): ?>
                 
                 <li class="breadcrumb-item">
                     <a href="/tenants" class="text-muted fw-light">Empresas</a>

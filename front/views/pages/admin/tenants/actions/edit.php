@@ -14,7 +14,7 @@ Mail: info@chanamoth.com
 
 			$select = "*";
 
-			$url = "plans?select=".$select."&linkTo=id_plan&equalTo=".$security[0];;
+			$url = "tenants?select=".$select."&linkTo=id_tenant&equalTo=".$security[0];;
 			$method = "GET";
 			$fields = array();
 
@@ -27,7 +27,7 @@ Mail: info@chanamoth.com
 			} else {
 
 				echo '<script>
-                        window.location = "/plans";
+                        window.location = "/tenants";
                     </script>';
 
 			}
@@ -35,7 +35,7 @@ Mail: info@chanamoth.com
 		} else {
 
 			echo '<script>
-                    window.location = "/plans";
+                    window.location = "/tenants";
                 </script>';
 
 		}

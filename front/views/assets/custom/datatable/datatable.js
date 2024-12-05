@@ -453,10 +453,22 @@ function changeState(event, id, table, suffix) {
   if (event.target.checked) {
 
     var state = "1";
+    var txtStatus = "Activo";
+    $(".txtStatus").removeClass("bg-label-danger");
+    $(".txtStatus").addClass("bg-label-success");
+    var txtBtn = "Suspender";
+    $(".suspend-user").removeClass("btn-label-success");
+    $(".suspend-user").addClass("btn-label-danger");
 
   } else {
 
     var state = "0";
+    var txtStatus = "Suspendido";
+    $(".txtStatus").removeClass("bg-label-success");
+    var txtBtn = "Activar";
+    $(".txtStatus").addClass("bg-label-danger");
+    $(".suspend-user").removeClass("btn-label-danger");
+    $(".suspend-user").addClass("btn-label-success");
 
   }
 
@@ -469,7 +481,7 @@ function changeState(event, id, table, suffix) {
 
 
   $.ajax({
-    url: "ajax/ajax-state.php",
+    url: "/ajax/ajax-state.php",
     method: "POST",
     data: data,
     contentType: false,
@@ -480,6 +492,8 @@ function changeState(event, id, table, suffix) {
       if (response == 200) {
 
         fncNotie(1, "El registro fue actualizado");
+        $(".txtStatus").text(txtStatus);
+        $(".suspend-user").text(txtBtn);
 
       } else {
 

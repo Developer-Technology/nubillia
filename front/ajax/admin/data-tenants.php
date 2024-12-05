@@ -161,6 +161,7 @@ class DatatableController
                     $actions = "<div class='btn-group'>
                                     <button type='button' class='btn btn-outline-primary dropdown-toggle btn-xs waves-effect' data-bs-toggle='dropdown' aria-expanded='false'>Acciones</button>
                                     <ul class='dropdown-menu'>
+                                        <li><a class='dropdown-item' href='/tenants/view/" . base64_encode($value->id_tenant . "~" . $_GET["token"]) . "'>Ver Perfil</a></li>
                                         <li><a class='dropdown-item' href='/tenants/edit/" . base64_encode($value->id_tenant . "~" . $_GET["token"]) . "'>Editar Registro</a></li>
                                         <li><a class='dropdown-item removeItem pointer' idItem='" . base64_encode($value->id_tenant . "~" . $_GET["token"]) . "' table='tenants' suffix='tenant' deleteFile='no' page='tenants'>Eliminar Registro</a></li>
                                     </ul>
