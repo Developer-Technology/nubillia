@@ -380,6 +380,9 @@ Capturar el email para login desde el LocalStorage
 =============================================*/
 $(document).ready(function () {
 
+  /* CropImage Cuadrado */
+  CropImageSquared();
+
   /* Tags */
   fncTagInput();
 
@@ -1580,29 +1583,59 @@ function changeServer(sel) {
 }
 
 /*=============================================
-Cambiar configuracion supabase
+CropImage Cuadrado
 =============================================*/
-function supabase(sel) {
+function CropImageSquared() {
 
-  if (sel.value == 'si') {
+  const $faviconInput = $("#faviconInput");
+  const $faviconPreview = $("#faviconPreview");
+  const $cropButton = $("#cropButton");
+  const $submitButton = $("#submitButton");
+  const $croppedImageInput = $("#croppedImageInput");
+  const $cropedImage = $("#cropedImage"); // Elemento para previsualización del recorte
+  let cropper;
 
-    $("#url-supabase").attr("required", true);
-    $("#url-supabase").attr("readonly", false);
-    $("#key-supabase").attr("required", true);
-    $("#key-supabase").attr("readonly", false);
-    $("#pass-supabase").attr("required", true);
-    $("#pass-supabase").attr("readonly", false);
+  // Manejo del input de archivo
+  $faviconInput.on("change", function (event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        $faviconPreview.attr("src", e.target.result).show();
 
-  } else {
+        // Inicializar Cropper.js
+        if (cropper) {
+          cropper.destroy();
+        }
+        cropper = new Cropper($faviconPreview[0], {
+          aspectRatio: 1, // Cuadrado
+          viewMode: 1,
+        });
+        $cropButton.show();
+      };
+      reader.readAsDataURL(file);
+    }
+  });
 
-    $("#url-supabase").attr("required", false);
-    $("#url-supabase").attr("readonly", true);
-    $("#key-supabase").attr("required", false);
-    $("#key-supabase").attr("readonly", true);
-    $("#pass-supabase").attr("required", false);
-    $("#pass-supabase").attr("readonly", true);
+  // Botón para recortar la imagen
+  $cropButton.on("click", function () {
+    if (cropper) {
+      const canvas = cropper.getCroppedCanvas({
+        width: 200, // Tamaño deseado del favicon
+        height: 200,
+      });
 
-  }
+      // Convertir el canvas a un DataURL
+      const croppedDataUrl = canvas.toDataURL("image/png");
+
+      // Mostrar la imagen recortada en el elemento cropedImage
+      $cropedImage.attr("src", croppedDataUrl).show();
+
+      // Guardar el DataURL en el input oculto para enviar al servidor
+      $croppedImageInput.val(croppedDataUrl);
+      $submitButton.show();
+    }
+  });
 
 }
 

@@ -8,7 +8,7 @@ Mail: info@chanamoth.com
 
 if(isset($routesArray[2])) {
     
-    if($routesArray[2] == "general"){
+    if($routesArray[2] == "general") {
         
         $txtBread = 'Configuración General';
     

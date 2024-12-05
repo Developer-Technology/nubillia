@@ -22,6 +22,19 @@ if(isset($_SESSION["user"])) {
     require_once "controllers/users.controller.php";
     $getUser = UsersController::getdata($_SESSION["user"]->id_user);
 
+    /*=============================================
+    Avatar usuario
+    =============================================*/
+    if ($getUser->photo_worker == '') {
+
+        $avatarUser = TemplateController::returnImg('img', 'avatars', '');
+
+    } else {
+
+        $avatarUser = TemplateController::returnImg('users', '', $getUser->photo_worker);
+
+    }
+
 }
 
 if(isset($_SESSION["store"])) {
@@ -36,6 +49,19 @@ Obtenemos las configuraciones iniciales
 =============================================*/
 require_once "controllers/settings.controller.php";
 $getSetting = SettingsController::getdata();
+
+/*=============================================
+Favicon
+=============================================*/
+if ($getSetting->favicon_setting == '') {
+
+    $faviconSetting = TemplateController::returnImg('img', 'favicon', '');
+
+} else {
+
+    $faviconSetting = TemplateController::returnImg('favicon', '', $getSetting->favicon_setting);
+
+}
 
 /*=============================================
 Capturar las rutas de la URL
@@ -91,7 +117,7 @@ if(!empty($routesArray[2])) {
         <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
 
         <!-- Favicon -->
-        <link rel="icon" type="image/x-icon" href="/views/assets/img/icons/logo.ico" />
+        <link rel="icon" type="image/x-icon" href="<?php echo $faviconSetting; ?>" />
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -114,6 +140,7 @@ if(!empty($routesArray[2])) {
         <link rel="stylesheet" href="/views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
         <link rel="stylesheet" href="/views/assets/vendor/libs/tagify/tagify.css" />
         <link rel="stylesheet" href="/views/assets/vendor/libs/bootstrap-select/bootstrap-select.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
         <link rel="stylesheet" href="/views/assets/vendor/libs/typeahead-js/typeahead.css" />
         <link rel="stylesheet" href="/views/assets/plugins/summernote/summernote.css">
 
@@ -136,6 +163,7 @@ if(!empty($routesArray[2])) {
         <script src="/views/assets/vendor/libs/i18n/i18n.js"></script>
         <script src="/views/assets/vendor/libs/tagify/tagify.js"></script>
         <script src="/views/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
         <script src="/views/assets/vendor/libs/typeahead-js/typeahead.js"></script>
         <script src="/views/assets/vendor/js/menu.js"></script>
 

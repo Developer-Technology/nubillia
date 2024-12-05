@@ -47,4 +47,5 @@ Este sistema está diseñado para garantizar la seguridad y el aislamiento de da
 1 Servidor de correo funcional  
 2 Se exporta la base de datos y el json para el postman  
 3 Se crea el controlador files.controller.php para manejar la carga, eliminación y creación dinámica del avatar y archivos  
-4 Se crear un archivo dinámico dentro de "uploads" para que con el endpoint {{endpoint}}/uploads/index.php se pueda manejar dinámicamente los archivos
+4 Se crear un archivo dinámico dentro de "uploads" para que con el endpoint {{endpoint}}/uploads/index.php se pueda manejar dinámicamente los archivos  
+5 Formulario para la carga de favicon

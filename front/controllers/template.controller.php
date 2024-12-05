@@ -45,7 +45,7 @@ class TemplateController {
 	=============================================*/
 	static public function srcImg() {
 
-		return CurlController::api() . "documents/";
+		return CurlController::api() . "uploads/";
 
 	}
 
@@ -54,13 +54,13 @@ class TemplateController {
 	=============================================*/
 	static public function returnImg($folder,$id,$picture) {
 
-		if($picture != null) {
+		if($picture != null || $picture != '') {
 
-			return TemplateController::srcImg()."views/".$folder."/".$id."/".$picture;
+			return TemplateController::srcImg(). $folder ."/". $id ."/". $picture;
 		
 		} else {
 
-			return "views/images/users/default.png";
+			return "/views/assets/" .$folder. "/" .$id. "/default.png";
 		}
 
 	}

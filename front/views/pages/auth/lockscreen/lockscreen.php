@@ -13,7 +13,7 @@
                     <div class="app-brand justify-content-center">
                         <a href="/" class="app-brand-link gap-2">
                             <span class="app-brand-logo demo">
-                                <?php include "views/assets/img/svg/logo.svg"; ?>
+                                <img src="<?php echo $faviconSetting; ?>" style="width:26px;">
                             </span>
                             <span class="app-brand-text demo h3 mb-0 fw-bold"><?php echo $getSetting->name_system_setting; ?></span>
                         </a>

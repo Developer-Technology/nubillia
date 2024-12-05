@@ -178,4 +178,89 @@ class SettingsController{
 
     }
 
+    /*=============================================
+    Cargar Favicon
+    =============================================*/
+    public function editFavicon()
+    {
+
+        if (isset($_POST["croppedImage"])) {
+
+            echo '<script>
+                    matPreloader("on");
+                    fncSweetAlert("loading", "Cargando...", "");
+                </script>';
+
+            $select = "*";
+
+            $urlSet = "settings?select=" . $select . "&linkTo=id_setting&equalTo=1";
+            $methodSet = "GET";
+            $fieldsSet = array();
+
+            $responseSet = CurlController::request($urlSet, $methodSet, $fieldsSet);
+
+            /*=============================================
+            Borramos el archivo actual
+            =============================================*/
+            $urlDel = "uploads/index.php";
+            $methodDel = "POST";
+            $fieldsDel = array(
+
+                "deleteFile" => $responseSet->results[0]->favicon_setting,
+                "deleteDir" => "favicon"
+
+            );
+            $dataFielDel = json_encode($fieldsDel);
+
+            $deletePicture = CurlController::request($urlDel, $methodDel, $dataFielDel);
+
+            /*=============================================
+            Guardamos el archivo enviado
+            =============================================*/
+            $urlUp = "uploads/index.php";
+            $methodUp = "POST";
+            $fieldsUp = array(
+
+                "file" => $_POST["croppedImage"],
+                "type" => "image/png",
+                "folder" => "favicon",
+                "name" => $_POST["croppedImage"] . time(),
+                "width" => 150,
+                "height" => 150,
+
+            );
+
+            $saveImageEmpr = CurlController::request($urlUp, $methodUp, $fieldsUp)->file;
+
+            // Enviamos los datos al API
+            $url = "settings?id=1&nameId=id_setting&token=" . $_SESSION["user"]->token_user . "&table=users&suffix=user";
+            $method = "PUT";
+            $fields = "&favicon_setting=" . $saveImageEmpr;
+
+            $response = CurlController::request($url, $method, $fields);
+
+            if ($response->status == 200) {
+
+                echo '<script>
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncSweetAlert("success", "' . $response->results->comment . '", "/settings/favicon");
+                    </script>';
+
+            } else {
+
+                echo '<script>
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncNotie(3, "' . $response->results . '");
+                    </script>';
+
+            }
+
+        }
+
+    }
+
 }
