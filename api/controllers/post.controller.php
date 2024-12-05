@@ -1,5 +1,11 @@
 <?php 
 
+/*-------------------------
+Autor: Chanamoth
+Web: www.chanamoth.com
+Mail: info@chanamoth.com
+---------------------------*/
+
 require_once "models/get.model.php";
 require_once "models/post.model.php";
 require_once "models/connection.php";
@@ -32,7 +38,7 @@ class PostController{
 
 		if(isset($data["password_".$suffix]) && $data["password_".$suffix] != null){
 
-			$crypt = crypt($data["password_".$suffix], '$2a$07$azybxcags23425sdg23sdfhsd$');
+			$crypt = crypt($data["password_".$suffix], Connection::cryptData());
 
 			$data["password_".$suffix] = $crypt;
 
@@ -116,7 +122,7 @@ class PostController{
 				Encriptamos la contraseña
 				=============================================*/
 
-				$crypt = crypt($data["password_".$suffix], '$2a$07$azybxcags23425sdg23sdfhsd$');
+				$crypt = crypt($data["password_".$suffix], Connection::cryptData());
 				//$crypt = md5($data["password_".$suffix]);
 
 				if($response[0]->{"password_".$suffix} == $crypt){

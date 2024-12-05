@@ -979,6 +979,158 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "POST - Crear avatar",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token-header}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "file",
+							"value": "avatar",
+							"type": "text"
+						},
+						{
+							"key": "folder",
+							"value": "users",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Super Administrador",
+							"type": "text"
+						},
+						{
+							"key": "width",
+							"value": "60",
+							"type": "text"
+						},
+						{
+							"key": "height",
+							"value": "60",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{endpoint}}/uploads/index.php",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"uploads",
+						"index.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Cargar archivo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token-header}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "type",
+							"value": "image/jpeg",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"value": "C:/Users/Mario Rojas/Downloads/yape_ejemplo.jpg",
+							"type": "text"
+						},
+						{
+							"key": "folder",
+							"value": "demo",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "demo",
+							"type": "text"
+						},
+						{
+							"key": "width",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "height",
+							"value": "100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{endpoint}}/uploads/index.php",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"uploads",
+						"index.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Eliminar archivo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token-header}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "deleteFile",
+							"value": "demo.jpg",
+							"type": "text"
+						},
+						{
+							"key": "deleteDir",
+							"value": "demo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{endpoint}}/uploads/index.php",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"uploads",
+						"index.php"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [

@@ -33,6 +33,16 @@ class Connection{
 	}
 
 	/*=============================================
+	Encriptar
+	=============================================*/
+
+	static public function cryptData(){
+
+		return '$2a$07$azybxcags23425sdg23sdfhsd$';
+
+	}
+
+	/*=============================================
 	Acceso público
 	=============================================*/
 	static public function publicAccess(){

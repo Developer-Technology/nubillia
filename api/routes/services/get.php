@@ -1,5 +1,11 @@
 <?php
 
+/*-------------------------
+Autor: Chanamoth
+Web: www.chanamoth.com
+Mail: info@chanamoth.com
+---------------------------*/
+
 require_once "controllers/get.controller.php";
 require_once "models/connection.php";
 

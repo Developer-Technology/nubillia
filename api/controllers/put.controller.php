@@ -1,5 +1,11 @@
 <?php 
 
+/*-------------------------
+Autor: Chanamoth
+Web: www.chanamoth.com
+Mail: info@chanamoth.com
+---------------------------*/
+
 require_once "models/put.model.php";
 
 class PutController{

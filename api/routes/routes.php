@@ -1,5 +1,11 @@
 <?php
 
+/*-------------------------
+Autor: Chanamoth
+Web: www.chanamoth.com
+Mail: info@chanamoth.com
+---------------------------*/
+
 require_once "models/connection.php";
 require_once "controllers/get.controller.php";
 
@@ -10,7 +16,7 @@ $routesArray = array_filter($routesArray);
 Cuando no se hace ninguna petición a la API
 =============================================*/
 
-if(count($routesArray) == 0){
+if(count($routesArray) == 0) {
 
 	$json = array(
 
@@ -29,7 +35,7 @@ if(count($routesArray) == 0){
 Cuando si se hace una petición a la API
 =============================================*/
 
-if(count($routesArray) == 1 && isset($_SERVER['REQUEST_METHOD'])){
+if(count($routesArray) == 1 && isset($_SERVER['REQUEST_METHOD'])) {
 
 	$table = explode("?", $routesArray[1])[0];
 
@@ -37,9 +43,9 @@ if(count($routesArray) == 1 && isset($_SERVER['REQUEST_METHOD'])){
 	Validar llave secreta
 	=============================================*/
 
-	if(!isset(getallheaders()["Authorization"]) || getallheaders()["Authorization"] != Connection::apikey()){
+	if(!isset(getallheaders()["Authorization"]) || getallheaders()["Authorization"] != Connection::apikey()) {
 
-		if(in_array($table, Connection::publicAccess()) == 0){
+		if(in_array($table, Connection::publicAccess()) == 0) {
 	
 			$json = array(
 		
@@ -51,7 +57,7 @@ if(count($routesArray) == 1 && isset($_SERVER['REQUEST_METHOD'])){
 
 			return;
 
-		}else{
+		} else {
 
 			/*=============================================
 			Acceso público
@@ -68,7 +74,7 @@ if(count($routesArray) == 1 && isset($_SERVER['REQUEST_METHOD'])){
 	Peticiones GET
 	=============================================*/
 
-	if($_SERVER['REQUEST_METHOD'] == "GET"){
+	if($_SERVER['REQUEST_METHOD'] == "GET") {
 
 		include "services/get.php";
 
@@ -78,7 +84,7 @@ if(count($routesArray) == 1 && isset($_SERVER['REQUEST_METHOD'])){
 	Peticiones POST
 	=============================================*/
 
-	if($_SERVER['REQUEST_METHOD'] == "POST"){
+	if($_SERVER['REQUEST_METHOD'] == "POST") {
 
 		include "services/post.php";
 
@@ -88,7 +94,7 @@ if(count($routesArray) == 1 && isset($_SERVER['REQUEST_METHOD'])){
 	Peticiones PUT
 	=============================================*/
 
-	if($_SERVER['REQUEST_METHOD'] == "PUT"){
+	if($_SERVER['REQUEST_METHOD'] == "PUT") {
 
 		include "services/put.php";
 
@@ -98,12 +104,10 @@ if(count($routesArray) == 1 && isset($_SERVER['REQUEST_METHOD'])){
 	Peticiones DELETE
 	=============================================*/
 
-	if($_SERVER['REQUEST_METHOD'] == "DELETE"){
+	if($_SERVER['REQUEST_METHOD'] == "DELETE") {
 
 		include "services/delete.php";
 
 	}
 
 }
-
-
