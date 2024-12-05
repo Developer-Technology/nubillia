@@ -16,7 +16,7 @@
     }
 
     /*=============================================
-    Validamos el estadi
+    Validamos el estado
     =============================================*/
     if($server == 'no') {
 
@@ -41,19 +41,16 @@
             <button type="button" class="nav-link" onclick="window.open('/settings/general','_self');">General</button>
         </li>
         <li class="nav-item">
-            <button type="button" class="nav-link active" onclick="window.open('/settings/server','_self');">Servidor De
-                Correo</button>
+            <button type="button" class="nav-link active" onclick="window.open('/settings/server','_self');">Servidor De Correo</button>
         </li>
         <li class="nav-item">
             <button type="button" class="nav-link" onclick="window.open('/settings/favicon','_self');">Favicon</button>
         </li>
         <li class="nav-item">
-            <button type="button" class="nav-link"
-                onclick="window.open('/settings/billing','_self');">Facturación</button>
+            <button type="button" class="nav-link" onclick="window.open('/settings/billing','_self');">Facturación</button>
         </li>
         <li class="nav-item">
-            <button type="button" class="nav-link" onclick="window.open('/settings/gateway','_self');">Pasarelas De
-                Pago</button>
+            <button type="button" class="nav-link" onclick="window.open('/settings/gateway','_self');">Pasarelas De Pago</button>
         </li>
     </ul>
 

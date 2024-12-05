@@ -24,6 +24,20 @@ class CurlController
     }
 
     /*=============================================
+    Ruta API Facturacion
+    =============================================*/
+    public static function apiFact()
+    {
+    
+        /* Produccion */
+        //return "https://apifacturacion.chanamoth.com/";
+
+        /* Desarrollo */
+        return "http://api.tukifac.local/";
+        
+    }
+
+    /*=============================================
     Peticiones a la API del sistema
     =============================================*/
     static public function request($url,$method,$fields){
@@ -55,7 +69,7 @@ class CurlController
 	}
 
 	/*=============================================
-    Peticiones a la API SUNAT
+    Peticiones a la API Facturacion
     =============================================*/
     public static function requestSunat($url, $method, $fields, $token)
     {
@@ -75,7 +89,7 @@ class CurlController
         }
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => CurlController::api() . $url,
+            CURLOPT_URL => CurlController::apiFact() . $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,

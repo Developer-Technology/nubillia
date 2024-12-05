@@ -263,4 +263,75 @@ class SettingsController{
 
     }
 
+    /*=============================================
+    Editar Facturacion
+    =============================================*/
+    public function editBilling()
+    {
+
+        if (isset($_POST["status-billing"])) {
+
+            echo '<script>
+                    matPreloader("on");
+                    fncSweetAlert("loading", "Cargando...", "");
+                </script>';
+
+            // Accedemos a los datos adicionales
+            $urlGetSet = "settings?select=*&linkTo=id_setting&equalTo=1";
+            $methodGetSet = "GET";
+            $fieldsGetSet = array();
+            $responseGetSet = CurlController::request($urlGetSet, $methodGetSet, $fieldsGetSet);
+
+            if($_POST["status-billing"] == 'no') {
+                $sendBilling = '';
+            } else {
+                $sendBilling = $_POST["send-billing"];
+            }
+
+            // Decodificar el JSON extras
+            $jsonFacturacion = $responseGetSet->results[0]->invoice_setting;
+            $datosFacturacion = json_decode($jsonFacturacion, true);
+
+            // Acceder y editar los valores del arreglo
+            $datosFacturacion[0]['factura']['serie'] = $_POST["serie-billing"];
+            $datosFacturacion[0]['factura']['correlativo'] = $_POST["number-billing"];
+            $datosFacturacion[0]['factura']['automatico'] = $sendBilling;
+            $datosFacturacion[0]['api']['activo'] = $_POST["status-billing"];
+            $datosFacturacion[0]['api']['token'] = $_POST["token-billing"];
+            $datosFacturacion[0]['api']['secret'] = $_POST["secret-billing"];
+
+            // Codificar de nuevo el JSON
+            $jsonFacturacion = json_encode($datosFacturacion);
+
+            // Enviamos los datos al API
+            $url = "settings?id=1&nameId=id_setting&token=" . $_SESSION["user"]->token_user . "&table=users&suffix=user";
+            $method = "PUT";
+            $fields = "invoice_setting=" . $jsonFacturacion;
+
+            $response = CurlController::request($url, $method, $fields);
+
+            if ($response->status == 200) {
+
+                echo '<script>
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncSweetAlert("success", "' . $response->results->comment . '", "/settings/billing");
+                    </script>';
+
+            } else {
+
+                echo '<script>
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncNotie(3, "' . $response->results . '");
+                    </script>';
+
+            }
+
+        }
+
+    }
+
 }
