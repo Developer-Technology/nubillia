@@ -360,13 +360,15 @@ if(!empty($routesArray[2])) {
                                             $routesArray[1] == "plans" || 
                                             $routesArray[1] == "tenants" ||
                                             $routesArray[1] == "users" || 
-                                            $routesArray[1] == "settings") {
+                                            $routesArray[1] == "settings" ||
+                                            $routesArray[1] == "redirect") {
 
                                             if($routesArray[1] == "lock") {
 
                                                 include "views/pages/auth/".$routesArray[1]."/".$routesArray[1].".php";
 
-                                            } elseif($routesArray[1] == "change" || 
+                                            } elseif($routesArray[1] == "change" ||
+                                                    $routesArray[1] == "redirect" ||
                                                     $routesArray[1] == "logout") {
 
                                                 include "views/pages/".$routesArray[1]."/".$routesArray[1].".php";

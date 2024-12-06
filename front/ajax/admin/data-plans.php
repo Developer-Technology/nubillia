@@ -192,6 +192,7 @@ class DatatableController
 
                 $name_plan = $value->name_plan;
                 $precioPlan = $value->price_plan;
+                $sales_plan = $value->sales_plan;
                 $created_plan = TemplateController::fechaEsShort($value->created_plan);
 
                 $dataJson .= '{
@@ -200,6 +201,7 @@ class DatatableController
                     "name_plan": "' . TemplateController::capitalize($name_plan) . '",
                     "price_plan": "' . $precioPlan . '",
                     "content_plan": "' . $contienePlan . '",
+                    "sales_plan": "' . $sales_plan . '",
                     "created_plan": "' . $created_plan . '",
                     "actions": "' . $actions . '"
                 },';

@@ -12,7 +12,13 @@ if($getUser->id_rol == 1) {
     Controladores
     =============================================*/
     require_once "controllers/tenants.controller.php";
-    $allTenants = TenantsController::getalltenants()->results;
+    $allTenants = TenantsController::getalltenants();
+
+    if($allTenants == 'Not found') {
+        $allTenants = [];
+    } else {
+        $allTenants = $allTenants->results;
+    }
 
     $urlEncodeAdmin = base64_encode($_SESSION['user']->id_user . '~' . $_SESSION['user']->token_user);
 

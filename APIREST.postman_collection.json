@@ -618,8 +618,8 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "email_user",
-							"value": "mario.rojas.chanamoth@gmail.com",
+							"key": "username_user",
+							"value": "superadmin",
 							"type": "text"
 						},
 						{
@@ -666,44 +666,24 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "title_course",
-							"value": "Aprende PHP de cero a avanzado",
+							"key": "name_plan",
+							"value": "demo",
 							"type": "text"
 						},
 						{
-							"key": "description_course",
-							"value": "Aprende todas las bases de este maravillos lenguaje",
-							"type": "text"
-						},
-						{
-							"key": "id_instructor_course",
-							"value": "12",
-							"type": "text"
-						},
-						{
-							"key": "image_course",
-							"value": "https://i.udemycdn.com/course/480x270/672600_1def_7.jpg",
-							"type": "text"
-						},
-						{
-							"key": "price_course",
-							"value": "199.99",
-							"type": "text"
-						},
-						{
-							"key": "date_created_course",
-							"value": "2021-10-27",
+							"key": "created_plan",
+							"value": "2024-12-05",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "{{endpoint}}/categories?token={{token-user}}&table=users&suffix=user&except",
+					"raw": "{{endpoint}}/plans?token={{token-user}}&table=users&suffix=user",
 					"host": [
 						"{{endpoint}}"
 					],
 					"path": [
-						"categories"
+						"plans"
 					],
 					"query": [
 						{
@@ -720,7 +700,8 @@
 						},
 						{
 							"key": "except",
-							"value": null
+							"value": null,
+							"disabled": true
 						}
 					]
 				}
@@ -1035,6 +1016,60 @@
 			"response": []
 		},
 		{
+			"name": "POST - Crear logo inicial",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token-header}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "file",
+							"value": "logoBlank",
+							"type": "text"
+						},
+						{
+							"key": "folder",
+							"value": "logo",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "10725799093",
+							"type": "text"
+						},
+						{
+							"key": "width",
+							"value": "400",
+							"type": "text"
+						},
+						{
+							"key": "height",
+							"value": "84",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{endpoint}}/uploads/index.php",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"uploads",
+						"index.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "POST - Cargar archivo",
 			"request": {
 				"method": "POST",
@@ -1109,7 +1144,7 @@
 					"urlencoded": [
 						{
 							"key": "deleteFile",
-							"value": "demo.jpg",
+							"value": "$2a$07$azybxcags23425sdg23sdelhgYipgZ3zhPdt74CXv5ou0pTo.16WK.jpg",
 							"type": "text"
 						},
 						{

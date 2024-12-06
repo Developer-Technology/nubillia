@@ -71,7 +71,7 @@ if(isset($_GET["start"]) && isset($_GET["end"])) {
     </div>
 
     <div class="card-datatable table-responsive pt-0">
-        <table id="adminsTable" class="datatables-basic table-sm table table-bordered table-hover tableTenantsAdmin">
+        <table id="adminsTable" class="datatable-project border-top table-sm table table-hover adminsTable tableTenantsAdmin">
             <thead class="bg-light">
                 <tr>
                     <th>#</th>

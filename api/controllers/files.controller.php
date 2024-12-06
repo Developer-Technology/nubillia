@@ -6,6 +6,8 @@ Web: www.chanamoth.com
 Mail: info@chanamoth.com
 ---------------------------*/
 
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_WARNING);
+
 require_once "../models/connection.php";
 
 class FilesController
@@ -153,6 +155,62 @@ class FilesController
                 imagepng($avatar, $folderPath);
                 imagedestroy($avatar);
 
+                // Validar si el archivo se creó
+                if (file_exists($folderPath)) {
+                    $newName =  $newName;
+                } else {
+                    $newName = "error";
+                }
+
+            }
+            
+            /*=============================================
+            Función el logo con el RUC
+            =============================================*/
+            if ($file == "logoBlank") {
+                $encript = $name[0] . "_" . date('Y-m-d') . "_" . time();
+                $newName = crypt($encript, Connection::cryptData()) . ".png";
+                $folderPath = $directory . "/" . $newName;
+            
+                // Crear la imagen base
+                $avatar = imagecreatetruecolor($width, $height);
+            
+                // Color de fondo aleatorio
+                $red = rand(0, 255);
+                $green = rand(0, 255);
+                $blue = rand(0, 255);
+                $bg_color = imagecolorallocate($avatar, $red, $green, $blue);
+                imagefill($avatar, 0, 0, $bg_color);
+            
+                // Color del texto
+                $avatar_text_color = imagecolorallocate($avatar, 255, 255, 255);
+            
+                // Ruta a la fuente TrueType (ajustable)
+                $font_path = $_SERVER['DOCUMENT_ROOT'] . '/uploads/font/arial.ttf';
+            
+                // Tamaño fijo de la fuente
+                $font_size = 15;
+            
+                // Calcular el tamaño del texto
+                $bbox = imagettfbbox($font_size, 0, $font_path, $name);
+                $text_width = abs($bbox[2] - $bbox[0]);
+                $text_height = abs($bbox[7] - $bbox[1]);
+            
+                // Calcular coordenadas para centrar el texto (convertir a enteros)
+                $x = intval(($width - $text_width) / 2);
+                $y = intval(($height - $text_height) / 2 + $text_height);
+            
+                // Escribir el texto en la imagen
+                imagettftext($avatar, $font_size, 0, $x, $y, $avatar_text_color, $font_path, $name);
+                imagepng($avatar, $folderPath);
+                imagedestroy($avatar);
+            
+                // Validar si el archivo se creó
+                if (file_exists($folderPath)) {
+                    $newName =  $newName;
+                } else {
+                    $newName = "error";
+                }
             }
 
             return $newName;

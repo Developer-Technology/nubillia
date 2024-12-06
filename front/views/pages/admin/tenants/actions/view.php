@@ -73,6 +73,8 @@ Mail: info@chanamoth.com
 
 ?>
 
+<input type="hidden" id="tenant" value="<?php echo $tenant->id_tenant; ?>">
+
 <div class="row gy-4">
     <!-- User Sidebar -->
     <div class="col-xl-4 col-lg-5 col-md-5 order-1 order-md-0">
@@ -103,10 +105,6 @@ Mail: info@chanamoth.com
                         <li class="mb-3">
                             <span class="fw-bold me-2">Teléfono:</span>
                             <span><?php echo $tenant->phone_tenant; ?></span>
-                        </li>
-                        <li class="mb-3">
-                            <span class="fw-bold me-2">Web:</span>
-                            <span><?php echo $tenant->web_tenant; ?></span>
                         </li>
                         <li class="mb-3">
                             <span class="fw-bold me-2">Dirección:</span>
@@ -160,34 +158,43 @@ Mail: info@chanamoth.com
 
     <!-- User Content -->
     <div class="col-xl-8 col-lg-7 col-md-7 order-0 order-md-1">
-        <!-- User Pills -->
-        <ul class="nav nav-pills flex-column flex-md-row mb-3">
-            <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i
-                        class="bx bx-home me-1"></i>Tiendas</a></li>
-            <li class="nav-item"><a class="nav-link" href="app-user-view-billing.html"><i
-                        class="bx bx-detail me-1"></i>Facturación</a></li>
-        </ul>
-        <!--/ User Pills -->
-
-        <!-- Project table -->
-        <div class="card mb-4">
-            <h5 class="card-header">User's Projects List</h5>
+        <!-- Tiendas -->
+        <div class="card card-datatable mb-4">
+            <h5 class="card-header">Tiendas</h5>
             <div class="table-responsive mb-3">
-                <table class="table datatable-project border-top">
-                    <thead>
+                <table class="datatable-project border-top table-sm table table-hover multipleTable tableSotresAdmin">
+                    <thead class="bg-light">
                         <tr>
-                            <th></th>
-                            <th></th>
-                            <th>Project</th>
-                            <th class="text-nowrap">Total Task</th>
-                            <th>Progress</th>
-                            <th>Hours</th>
+                            <th>#</th>
+                            <th class="th-status">Estado</th>
+                            <th>Nombre</th>
+                            <th>Dirección</th>
+                            <th>Fecha</th>
+                            <th class="th-actions"></th>
                         </tr>
                     </thead>
                 </table>
             </div>
         </div>
-        <!-- /Project table -->
+        <!-- /Tiendas -->
+        <!-- Almacenes -->
+        <div class="card card-datatable mb-4">
+            <h5 class="card-header">Almacenes</h5>
+            <div class="table-responsive mb-3">
+                <table class="datatable-project border-top table-sm table table-hover multipleTable tableWarehousesAdmin">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th class="th-status">Estado</th>
+                            <th>Nombre</th>
+                            <th>Dirección</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <!-- /Almacenes -->
     </div>
     <!--/ User Content -->
 </div>

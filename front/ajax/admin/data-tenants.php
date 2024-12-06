@@ -163,7 +163,6 @@ class DatatableController
                                     <ul class='dropdown-menu'>
                                         <li><a class='dropdown-item' href='/tenants/view/" . base64_encode($value->id_tenant . "~" . $_GET["token"]) . "'>Ver Perfil</a></li>
                                         <li><a class='dropdown-item' href='/tenants/edit/" . base64_encode($value->id_tenant . "~" . $_GET["token"]) . "'>Editar Registro</a></li>
-                                        <li><a class='dropdown-item removeItem pointer' idItem='" . base64_encode($value->id_tenant . "~" . $_GET["token"]) . "' table='tenants' suffix='tenant' deleteFile='no' page='tenants'>Eliminar Registro</a></li>
                                     </ul>
                                 </div>";
 
@@ -210,11 +209,11 @@ class DatatableController
                 foreach ($arraySunat as $elementSunat) {
 
                     $factElect = $elementSunat["api"];
-                    $phaseElect = $elementSunat["phase"];
+                    //$phaseElect = $elementSunat["phase"];
 
                 }
 
-                if($phaseElect == '') {
+                /*if($phaseElect == '') {
 
                     $phase = '----';
 
@@ -222,15 +221,14 @@ class DatatableController
 
                     $phase = TemplateController::capitalize($phaseElect);
 
-                }
+                }*/
 
                 /*=============================================
                 Data Sunat
                 =============================================*/
                 $dataSunat = "<div class='d-flex flex-row'>
                                 <div class='d-flex flex-column'>
-                                    <small>API: " . TemplateController::capitalize($factElect) . "</small>
-                                    <small>Fase: " . $phase . "</small>
+                                    <small>Activado: " . TemplateController::capitalize($factElect) . "</small>
                                 </div>
                             </div>";
                 $dataSunat = TemplateController::htmlClean($dataSunat);

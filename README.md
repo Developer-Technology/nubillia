@@ -50,9 +50,14 @@ Este sistema está diseñado para garantizar la seguridad y el aislamiento de da
 4 Se crear un archivo dinámico dentro de "uploads" para que con el endpoint {{endpoint}}/uploads/index.php se pueda manejar dinámicamente los archivos  
 5 Formulario para la carga de favicon
 
-## Avance al 05/12/24
+## Avances al 05/12/24
 1 Se configura la facturación con el API de facturación  
 2 Se configura los medios de pago "Paypal" para los planes y suscripciones  
 3 Perfil de empresa desde el panel admin  
 4 Se agrega que incluye cada plan como usuarios, tiendas y almacenes  
-5 Se mejora la interacción con las respuestas utilizando matpreload y sweetalert
+5 Se mejora la interacción con las respuestas utilizando matpreload y sweetalert  
+6 Se crea una función para crear el logo inicial de la empresa con el RUC  
+7 Se modifica las tablas para tener varias tablas sin reportes, esto para el perfil de la empresa donde se lita las tiendas y almacenes
+
+## Avances al 06/12/24
+1 Formulario de registro de empresa funcional desde el panel admin, al registrar una empresa se crea de manera automatica la tienda y almacén principal, modificando la próxima fecha de facturación según el plan y periodo seleccionado, el id de la empresa y tienda se asigna al usuario

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-12-2024 a las 07:46:39
+-- Tiempo de generación: 06-12-2024 a las 06:54:03
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -60,9 +60,9 @@ CREATE TABLE `plans` (
 --
 
 INSERT INTO `plans` (`id_plan`, `name_plan`, `description_plan`, `price_plan`, `content_plan`, `sales_plan`, `status_plan`, `created_plan`, `updated_plan`) VALUES
-(5, 'Básico', '<p>Plan Básico</p>', 50, '', 0, 1, '2024-12-03', '2024-12-04 04:52:43'),
-(6, 'Estándar', '<p>Plan Estándar</p>', 100, '', 0, 1, '2024-12-03', '2024-12-04 05:26:57'),
-(7, 'Premium', '<p><b>Plan</b> Premium</p>', 250, '', 0, 1, '2024-12-03', '2024-12-04 06:41:06');
+(5, 'Básico', '', 50, '[{\"users\":\"5\",\"stores\":\"1\",\"warehouses\":\"2\"}]', 1, 1, '2024-12-03', '2024-12-06 05:10:02'),
+(6, 'Estándar', '', 100, '[{\"users\":\"10\",\"stores\":\"2\",\"warehouses\":\"5\"}]', 1, 1, '2024-12-03', '2024-12-06 05:30:39'),
+(7, 'Premium', '', 250, '[{\"users\":\"50\",\"stores\":\"10\",\"warehouses\":\"10\"}]', 2, 1, '2024-12-03', '2024-12-06 05:36:49');
 
 -- --------------------------------------------------------
 
@@ -114,6 +114,37 @@ INSERT INTO `rols` (`id_rol`, `id_tenant_rol`, `id_store_rol`, `name_rol`, `acce
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `saleadmins`
+--
+
+CREATE TABLE `saleadmins` (
+  `id_saleadmin` int(11) NOT NULL,
+  `id_user_saleadmin` int(11) NOT NULL,
+  `id_tenant_saleadmin` int(11) NOT NULL,
+  `id_plan_saleadmin` int(11) NOT NULL,
+  `method_saleadmin` text NOT NULL,
+  `trans_saleadmin` text NOT NULL,
+  `money_saleadmin` text NOT NULL,
+  `price_saleadmin` float NOT NULL,
+  `type_change_saleadmin` float NOT NULL,
+  `status_saleadmin` text NOT NULL,
+  `created_saleadmin` date NOT NULL,
+  `updated_saleadmin` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `saleadmins`
+--
+
+INSERT INTO `saleadmins` (`id_saleadmin`, `id_user_saleadmin`, `id_tenant_saleadmin`, `id_plan_saleadmin`, `method_saleadmin`, `trans_saleadmin`, `money_saleadmin`, `price_saleadmin`, `type_change_saleadmin`, `status_saleadmin`, `created_saleadmin`, `updated_saleadmin`) VALUES
+(2, 1, 4, 5, 'Plin', '17334618022722325', 'PEN', 50, 3.734, 'pagado', '2024-12-06', '2024-12-06 05:38:52'),
+(3, 1, 5, 6, 'Paypal', '17334621814369818', 'USD', 200, 3.734, 'pagado', '2024-12-06', '2024-12-06 05:38:54'),
+(4, 1, 6, 7, 'Paypal', '173346324338634a7', 'USD', 3000, 3.734, 'pagado', '2024-12-06', '2024-12-06 05:38:55'),
+(5, 1, 7, 7, 'Yape', '17334634087206dfa', 'PEN', 250, 3.734, 'pagado', '2024-12-06', '2024-12-06 05:38:57');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `settings`
 --
 
@@ -143,7 +174,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id_setting`, `name_system_setting`, `name_company_setting`, `web_setting`, `logo_setting`, `favicon_setting`, `description_setting`, `keywords_setting`, `whatsapp_setting`, `paypal_setting`, `culqi_setting`, `bank_setting`, `invoice_setting`, `youtube_setting`, `server_setting`, `extras_setting`, `created_setting`, `updated_setting`) VALUES
-(1, 'Nubillia', 'Chanamoth', 'https://chanamoth.com/', '', '', '<span style=\"text-align: center;\">Gestiona tu empresa, equipos, sucursales, inventarios y ventas desde una plataforma segura, centralizada y fácil de usar, con reportes detallados al alcance de tu mano.</span>', '[\"Nubillia\",\"Chanamoth\",\"SAAS\",\"ERP\"]', 'https://wa.link/9g29eb', '[{\"client_id\":\"AQlSK5pzTMhnsu-u9WCLvFYyONZ2IZHEP5Ft9nSH2xrhyQPeJ3BDCHhGiMjBMFrEDTozlAhQLuOdAUD5\",\"secret_key\":\"EFPeb__QkEQCxj3CunqXVk9nQn6XYdZRLyxIzXE89McT2AiCI_7kKwkJK-NMwfwL8lZW3hx7WDyK5pm8\"}]', '[{\"public_key\":\"\",\"secret_key\":\"\"}]', '[{\"qr_yape\":\"\",\"qr_plin\":\"\",\"cuenta_bancaria\":\"\",\"ncuenta_bancaria\":\"\"}]', '[{\"estado\":\"activo\",\"factura\":{\"serie\":\"F001\",\"correlativo\":12},\"empresa\":{\"ruc\":\"11111111111\",\"razonSocial\":\"EMPRESA DEMOSTRACION SAC\",\"nombreComercial\":\"DEMO\",\"departamento\":\"LIMA\",\"provincia\":\"LIMA\",\"distrito\":\"LOS OLIVOS\",\"ubigeo\":\"150117\",\"direccion\":\"AVENIDA DEMOSTRACION 132\",\"telefono\":\"999999999\",\"email\":\"demo@gmail.com\"},\"sunat\":{\"modo\":\"beta\",\"usuarioSol\":\"MODDATOS\",\"claveSol\":\"moddatos\",\"claveCertificado\":\"\",\"expiraCertificado\":\"\"}}]', 'https://www.youtube.com/@developertechnolog', '[{\"server\":\"si\",\"host\":\"mail.chanamoth.com\",\"user\":\"info@chanamoth.com\",\"pass\":\"Cl@rodeluna199407\",\"security\":\"ssl\",\"port\":\"465\",\"email\":\"info@chanamoth.com\"}]', '[{\"reset_pass\":\"si\",\"register_system\":\"si\",\"social_login\":\"no\"}]', '2024-12-02', '2024-12-04 06:14:16');
+(1, 'Nubillia', 'Chanamoth', 'https://chanamoth.com/', '', '$2a$07$azybxcags23425sdg23sdejaPvPDuI1PtPWzomfYn9qds9Uh593Pm.png', 'Gestiona tu empresa, equipos, sucursales, inventarios y ventas desde una plataforma segura, centralizada y fácil de usar, con reportes detallados al alcance de tu mano.<br>', '[\"Nubillia\",\"Chanamoth\",\"SAAS\",\"ERP\"]', 'https://wa.link/9g29eb', '[{\"client_id\":\"AQlSK5pzTMhnsu-u9WCLvFYyONZ2IZHEP5Ft9nSH2xrhyQPeJ3BDCHhGiMjBMFrEDTozlAhQLuOdAUD5\",\"secret_key\":\"EFPeb__QkEQCxj3CunqXVk9nQn6XYdZRLyxIzXE89McT2AiCI_7kKwkJK-NMwfwL8lZW3hx7WDyK5pm8\"}]', '[{\"public_key\":\"\",\"secret_key\":\"\"}]', '[{\"qr_yape\":\"\",\"qr_plin\":\"\",\"cuenta_bancaria\":\"\",\"ncuenta_bancaria\":\"\"}]', '[{\"factura\":{\"serie\":\"\",\"correlativo\":\"\",\"automatico\":\"\"},\"api\":{\"activo\":\"no\",\"token\":\"\",\"secret\":\"\"}}]', 'https://www.youtube.com/@developertechnolog', '[{\"server\":\"si\",\"host\":\"mail.chanamoth.com\",\"user\":\"info@chanamoth.com\",\"pass\":\"Cl@rodeluna199407\",\"security\":\"ssl\",\"port\":\"465\",\"email\":\"info@chanamoth.com\"}]', '[{\"reset_pass\":\"si\",\"register_system\":\"si\",\"social_login\":\"no\"}]', '2024-12-02', '2024-12-06 05:43:43');
 
 -- --------------------------------------------------------
 
@@ -167,7 +198,43 @@ CREATE TABLE `stores` (
 --
 
 INSERT INTO `stores` (`id_store`, `id_tenant_store`, `name_store`, `address_store`, `status_store`, `type_store`, `created_store`, `updated_store`) VALUES
-(1, 1, 'Principal', 'Avenida Demo 123', 1, 1, '2024-12-01', '2024-12-02 02:36:47');
+(2, 4, 'Tienda Principal', 'AAHH 19 DE MAYO MZ B LOTE 1', 1, 1, '2024-12-06', '2024-12-06 05:42:25'),
+(3, 5, 'Tienda Principal', 'MZA. A LOTE. 06 URB.  VILLA UNIVERSITARIA  (CALLE 6)', 1, 1, '2024-12-06', '2024-12-06 05:42:29'),
+(4, 6, 'Tienda Principal', 'AV. REPÚBLICA DE PANAMÁ NRO. 4050 URB.  LIMATAMBO  (LOS NEGOCIOS 490)', 1, 1, '2024-12-06', '2024-12-06 05:42:31'),
+(5, 7, 'Tienda Principal', 'FRANCISCO BOLOGNESI NRO. 550 (A UNA CUADRA DEL OVALO SANTA ANITA)', 1, 1, '2024-12-06', '2024-12-06 05:42:32');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `suscriptions`
+--
+
+CREATE TABLE `suscriptions` (
+  `id_suscription` int(11) NOT NULL,
+  `id_tenant_suscription` int(11) NOT NULL,
+  `id_user_suscription` int(11) NOT NULL,
+  `id_plan_suscription` int(11) NOT NULL,
+  `trans_suscription` text NOT NULL,
+  `emision_suscription` date NOT NULL,
+  `pay_suscription` date NOT NULL,
+  `price_suscription` float NOT NULL,
+  `method_suscription` text NOT NULL,
+  `operation_suscription` text NOT NULL,
+  `status_suscription` text NOT NULL,
+  `file_suscription` text NOT NULL,
+  `created_suscription` date NOT NULL,
+  `updated_suscription` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `suscriptions`
+--
+
+INSERT INTO `suscriptions` (`id_suscription`, `id_tenant_suscription`, `id_user_suscription`, `id_plan_suscription`, `trans_suscription`, `emision_suscription`, `pay_suscription`, `price_suscription`, `method_suscription`, `operation_suscription`, `status_suscription`, `file_suscription`, `created_suscription`, `updated_suscription`) VALUES
+(2, 4, 1, 5, '17334618022722325', '2024-12-06', '2024-12-06', 50, 'Plin', '22222', 'pagado', '', '2024-12-06', '2024-12-06 05:39:30'),
+(3, 5, 1, 6, '17334621814369818', '2024-12-06', '2024-12-06', 200, 'Paypal', '1253', 'pagado', '', '2024-12-06', '2024-12-06 05:39:33'),
+(4, 6, 1, 7, '173346324338634a7', '2024-12-06', '2024-12-06', 3000, 'Paypal', '57896', 'pagado', '', '2024-12-06', '2024-12-06 05:39:34'),
+(5, 7, 1, 7, '17334634087206dfa', '2024-12-06', '2024-12-06', 250, 'Yape', '89741', 'pagado', '', '2024-12-06', '2024-12-06 05:39:36');
 
 -- --------------------------------------------------------
 
@@ -199,7 +266,10 @@ CREATE TABLE `tenants` (
 --
 
 INSERT INTO `tenants` (`id_tenant`, `id_plan_tenant`, `ruc_tenant`, `name_tenant`, `address_tenant`, `email_tenant`, `phone_tenant`, `logo_tenant`, `web_tenant`, `status_tenant`, `prox_bill_tenant`, `server_tenant`, `sunat_tenant`, `modules_tenant`, `created_tenant`, `updated_tenant`) VALUES
-(1, 5, '10725799093', 'ROJAS CHANAMOTH MARIO JHUNIOR', 'AAHH 19 DE MAYO MZ B LT 1', 'info@chanamoth.com', '935852750', '', 'https//chanamoth.com', 1, '0000-00-00', '[{\"server\":\"no\",\"host\":\"\",\"user\":\"\",\"pass\":\"\",\"security\":\"\",\"port\":\"\",\"document\":\"\",\"marketing\":\"\"}]', '[{\"api\":\"no\",\"token\":\"\",\"secret\":\"\",\"departament\":\"\",\"province\":\"\",\"district\":\"\",\"ubigee\":\"\",\"phase\":\"\",\"user_sol\":\"\",\"pass_sol\":\"\",\"exp_cert\":\"\",\"pass_cert\":\"\"}]', '[]', '2024-12-01', '2024-12-04 04:52:40');
+(4, 5, '10725799093', 'Mario Jhunior Rojas Chanamoth', 'AAHH 19 DE MAYO MZ B LOTE 1', 'mario.rojas.chanamoth@gmail.com', '935852750', '', '', 1, '2025-01-06', '', '[{\"api\":\"no\",\"token\":\"\",\"secret\":\"\"}]', '', '2024-12-06', '2024-12-06 05:33:03'),
+(5, 6, '20606455951', 'POLICLINICO MAYOLO S.A.C.', 'MZA. A LOTE. 06 URB.  VILLA UNIVERSITARIA  (CALLE 6)', 'demo@demo.com', '999999999', '', '', 1, '2025-02-06', '', '[{\"api\":\"no\",\"token\":\"\",\"secret\":\"\"}]', '', '2024-12-06', '2024-12-06 05:33:03'),
+(6, 7, '20415932376', 'COCA-COLA SERVICIOS DE PERU S.A', 'AV. REPÚBLICA DE PANAMÁ NRO. 4050 URB.  LIMATAMBO  (LOS NEGOCIOS 490)', 'cocacola@demo.com', '888888888', '', '', 1, '2025-12-06', '', '[{\"api\":\"no\",\"token\":\"\",\"secret\":\"\"}]', '', '2024-12-06', '2024-12-06 05:34:03'),
+(7, 7, '20505234970', 'PEPSI COLA PANAMERICANA S.R.L.', 'FRANCISCO BOLOGNESI NRO. 550 (A UNA CUADRA DEL OVALO SANTA ANITA)', 'pepsi@demo.com', '777777777', '', '', 1, '0000-00-00', '', '[{\"api\":\"no\",\"token\":\"\",\"secret\":\"\"}]', '', '2024-12-06', '2024-12-06 05:36:48');
 
 -- --------------------------------------------------------
 
@@ -229,7 +299,34 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `id_tenant_user`, `id_store_user`, `id_worker_user`, `id_rol_user`, `username_user`, `password_user`, `status_user`, `chat_user`, `extras_user`, `token_user`, `token_exp_user`, `created_user`, `updated_user`) VALUES
-(1, '[]', '[{\"id\":\"1\"}]', 1, 1, 'superadmin', '$2a$07$azybxcags23425sdg23sdeeKAqt96CqhlXh4xR.Kd9524vrpGvri6', 1, 1, '', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzMyOTQ3NDcsImV4cCI6MTczMzM4MTE0NywiZGF0YSI6eyJpZCI6MSwiZW1haWwiOiJzdXBlcmFkbWluIn19.Q53fMT4qn_Vosynmerd9SBKs8y8C2ilBPBwg3yEeeS8', '1733381147', '2024-12-01', '2024-12-04 06:45:47');
+(1, '[{\"id\":\"4\"},{\"id\":\"5\"},{\"id\":\"6\"},{\"id\":\"7\"}]', '[{\"id\":\"2\"},{\"id\":\"3\"},{\"id\":\"4\"},{\"id\":\"5\"}]', 1, 1, 'superadmin', '$2a$07$azybxcags23425sdg23sdeeKAqt96CqhlXh4xR.Kd9524vrpGvri6', 1, 1, '', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzM0NjIyOTEsImV4cCI6MTczMzU0ODY5MSwiZGF0YSI6eyJpZCI6MSwiZW1haWwiOiJzdXBlcmFkbWluIn19.JRYtfc391TlzeZewqVUPxo9Cm8yRRfSICt72UaVHiaU', '1733548691', '2024-12-01', '2024-12-06 05:36:48');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `warehouses`
+--
+
+CREATE TABLE `warehouses` (
+  `id_warehouse` int(11) NOT NULL,
+  `id_tenant_warehouse` int(11) NOT NULL,
+  `id_store_warehouse` int(11) NOT NULL,
+  `name_warehouse` text NOT NULL,
+  `address_warehouse` text NOT NULL,
+  `status_warehouse` int(11) NOT NULL,
+  `created_warehouse` date NOT NULL,
+  `updated_warehouse` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `warehouses`
+--
+
+INSERT INTO `warehouses` (`id_warehouse`, `id_tenant_warehouse`, `id_store_warehouse`, `name_warehouse`, `address_warehouse`, `status_warehouse`, `created_warehouse`, `updated_warehouse`) VALUES
+(2, 4, 2, 'Almacén Principal', 'AAHH 19 DE MAYO MZ B LOTE 1', 1, '2024-12-06', '2024-12-06 05:10:02'),
+(3, 5, 3, 'Almacén Principal', 'MZA. A LOTE. 06 URB.  VILLA UNIVERSITARIA  (CALLE 6)', 1, '2024-12-06', '2024-12-06 05:16:21'),
+(4, 6, 4, 'Almacén Principal', 'AV. REPÚBLICA DE PANAMÁ NRO. 4050 URB.  LIMATAMBO  (LOS NEGOCIOS 490)', 1, '2024-12-06', '2024-12-06 05:34:03'),
+(5, 7, 5, 'Almacén Principal', 'FRANCISCO BOLOGNESI NRO. 550 (A UNA CUADRA DEL OVALO SANTA ANITA)', 1, '2024-12-06', '2024-12-06 05:36:48');
 
 -- --------------------------------------------------------
 
@@ -258,7 +355,7 @@ CREATE TABLE `workers` (
 --
 
 INSERT INTO `workers` (`id_worker`, `id_tenant_worker`, `id_store_worker`, `id_position_worker`, `id_bank_worker`, `name_worker`, `email_worker`, `phone_worker`, `photo_worker`, `status_worker`, `rrhh_worker`, `created_worker`, `updated_worker`) VALUES
-(1, 0, 0, 1, 1, 'Super Administrador', 'admin@admin.com', '935852750', '', 1, '[{\"birthday\":\"\",\"document\":\"\",\"type\":\"\",\"salary\":\"\",\"horary\":\"\",\"family\":\"\",\"sons\":\"\",\"address\":\"\",\"gender\":\"\",\"enter\":\"\",\"pension\":\"\",\"account\":\"\",\"signature\":\"\"}]', '2024-12-01', '2024-12-02 05:59:41');
+(1, 0, 0, 1, 1, 'Super Administrador', 'admin@admin.com', '935852750', '$2a$07$azybxcags23425sdg23sdehIC1Gf6HUGZDSXV0yFAHmTRH..YFKWK.png', 1, '[{\"birthday\":\"\",\"document\":\"\",\"type\":\"\",\"salary\":\"\",\"horary\":\"\",\"family\":\"\",\"sons\":\"\",\"address\":\"\",\"gender\":\"\",\"enter\":\"\",\"pension\":\"\",\"account\":\"\",\"signature\":\"\"}]', '2024-12-01', '2024-12-05 03:05:25');
 
 --
 -- Índices para tablas volcadas
@@ -289,6 +386,12 @@ ALTER TABLE `rols`
   ADD PRIMARY KEY (`id_rol`);
 
 --
+-- Indices de la tabla `saleadmins`
+--
+ALTER TABLE `saleadmins`
+  ADD PRIMARY KEY (`id_saleadmin`);
+
+--
 -- Indices de la tabla `settings`
 --
 ALTER TABLE `settings`
@@ -301,6 +404,12 @@ ALTER TABLE `stores`
   ADD PRIMARY KEY (`id_store`);
 
 --
+-- Indices de la tabla `suscriptions`
+--
+ALTER TABLE `suscriptions`
+  ADD PRIMARY KEY (`id_suscription`);
+
+--
 -- Indices de la tabla `tenants`
 --
 ALTER TABLE `tenants`
@@ -311,6 +420,12 @@ ALTER TABLE `tenants`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`);
+
+--
+-- Indices de la tabla `warehouses`
+--
+ALTER TABLE `warehouses`
+  ADD PRIMARY KEY (`id_warehouse`);
 
 --
 -- Indices de la tabla `workers`
@@ -332,7 +447,7 @@ ALTER TABLE `banks`
 -- AUTO_INCREMENT de la tabla `plans`
 --
 ALTER TABLE `plans`
-  MODIFY `id_plan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_plan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `positions`
@@ -347,6 +462,12 @@ ALTER TABLE `rols`
   MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `saleadmins`
+--
+ALTER TABLE `saleadmins`
+  MODIFY `id_saleadmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `settings`
 --
 ALTER TABLE `settings`
@@ -356,19 +477,31 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT de la tabla `stores`
 --
 ALTER TABLE `stores`
-  MODIFY `id_store` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_store` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `suscriptions`
+--
+ALTER TABLE `suscriptions`
+  MODIFY `id_suscription` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tenants`
 --
 ALTER TABLE `tenants`
-  MODIFY `id_tenant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_tenant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `warehouses`
+--
+ALTER TABLE `warehouses`
+  MODIFY `id_warehouse` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `workers`

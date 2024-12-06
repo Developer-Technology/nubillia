@@ -54,13 +54,20 @@ Función para validar data repetida
 =============================================*/
 function validateRepeat(event, type, table, suffix) {
 
+  if(event.target.value != '') {
+
+    matPreloader("on");
+    fncSweetAlert("loading", "Validando...", "");
+
+  }
+
   var data = new FormData();
   data.append("data", event.target.value);
   data.append("table", table);
   data.append("suffix", suffix);
 
   $.ajax({
-    url: "ajax/ajax-validate.php",
+    url: "/ajax/ajax-validate.php",
     method: "POST",
     data: data,
     contentType: false,
@@ -68,13 +75,16 @@ function validateRepeat(event, type, table, suffix) {
     processData: false,
     success: function (response) {
 
+      matPreloader("off");
+      fncSweetAlert("close", "", "");
+
       if (response == 200) {
 
         event.target.value = "";
         $(event.target).parent().addClass("was-validated");
-        $(event.target).parent().children(".invalid-feedback").html("The data entered is already registered in the database");
+        $(event.target).parent().children(".invalid-feedback").html("El dato ingresado ya está registado en la base de datos");
 
-        fncNotie(3, "The data entered is already registered in the database");
+        fncNotie(3, "El dato ingresado ya está registado en la base de datos");
 
       } else {
 
@@ -510,7 +520,7 @@ function funcGet(event, table, id, suffix) {
   data.append("suffix", suffix);
 
   $.ajax({
-    url: "ajax/ajax-get.php",
+    url: "/ajax/ajax-get.php",
     method: "POST",
     dataType: "json",
     data: data,
@@ -584,7 +594,7 @@ function funcPut(event, table, id, suffix, dataUp) {
   data.append("dataUp", dataUp);
 
   $.ajax({
-    url: "ajax/ajax-put.php",
+    url: "/ajax/ajax-put.php",
     method: "POST",
     dataType: "json",
     data: data,
@@ -608,7 +618,7 @@ function funcPost(event, table, dataPost) {
   data.append("dataPost", dataPost);
 
   $.ajax({
-    url: "ajax/ajax-post.php",
+    url: "/ajax/ajax-post.php",
     method: "POST",
     dataType: "json",
     data: data,
@@ -1893,7 +1903,7 @@ function sendAjaxConsult(typeDoc) {
             $.ajax({
 
               type: 'POST',
-              url: 'ajax/ajax-consulta.php',
+              url: '/ajax/ajax-consulta.php',
               dataType: "json",
               data: { type: typeDoc, doc: documento },
 
@@ -2064,7 +2074,7 @@ function sendAjaxConsult(typeDoc) {
       $.ajax({
 
         type: 'POST',
-        url: 'ajax/ajax-consulta.php',
+        url: '/ajax/ajax-consulta.php',
         dataType: "json",
         data: { type: typeDoc, typeComp: typeComp, rucEmisor: rucEmisor, fechaEmision: fechaEmision, serieComp: serieComp, numberComp: numberComp, montoComp: montoComp },
 
@@ -2124,7 +2134,7 @@ function sendSunat(idSale) {
   =============================================*/
   $.ajax({
 
-    url: 'ajax/ajax-send-invoices.php',
+    url: '/ajax/ajax-send-invoices.php',
     data: { idSale: idSale },
     type: "GET",
     dataType: "json",
@@ -2194,7 +2204,7 @@ function sendSunatDesp(idDesp) {
   =============================================*/
   $.ajax({
 
-    url: 'ajax/ajax-send-despatches.php',
+    url: '/ajax/ajax-send-despatches.php',
     data: { idDesp: idDesp },
     type: "GET",
     dataType: "json",
@@ -2238,7 +2248,7 @@ function sendSunatTra(idDesp) {
   =============================================*/
   $.ajax({
 
-    url: 'ajax/ajax-send-transport.php',
+    url: '/ajax/ajax-send-transport.php',
     data: { idDesp: idDesp },
     type: "GET",
     dataType: "json",
@@ -2282,7 +2292,7 @@ function sendSunatResumen(idSum) {
   =============================================*/
   $.ajax({
 
-    url: 'ajax/ajax-send-resumen.php',
+    url: '/ajax/ajax-send-resumen.php',
     data: { idSum: idSum },
     type: "GET",
     dataType: "json",
@@ -2326,7 +2336,7 @@ function sendSunatBaja(idVoided) {
   =============================================*/
   $.ajax({
 
-    url: 'ajax/ajax-send-baja.php',
+    url: '/ajax/ajax-send-baja.php',
     data: { idVoided: idVoided },
     type: "GET",
     dataType: "json",
@@ -2493,7 +2503,7 @@ $("#saveSale").submit(function (event) {
 
     $.ajax({
       type: "POST",
-      url: "ajax/ajax-newsale.php",
+      url: "/ajax/ajax-newsale.php",
       data: parametros,
       beforeSend: function (objeto) { },
       success: function (datos) {
@@ -2521,7 +2531,7 @@ Selecciona medico admision
 function selectMedico() {
   var idSpecialty = $(".idSpecialty").val();
   $.ajax({
-    url: "ajax/charge-medic.php",
+    url: "/ajax/charge-medic.php",
     method: "POST",
     data: {
       "id": idSpecialty

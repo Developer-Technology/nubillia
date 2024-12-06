@@ -11,7 +11,7 @@ Mostrar errores
 =============================================*/
 ini_set('display_errors', 1);
 ini_set("log_errors", 1);
-ini_set("error_log",  "D:/xampp/htdocs/facturacion/api");
+ini_set("error_log",  "C:/xampp8/htdocs/saas_nubillia/api");
 
 /*=============================================
 CORS

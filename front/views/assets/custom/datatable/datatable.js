@@ -21,6 +21,7 @@ function execDatatable(text) {
       { "data": "name_plan" },
       { "data": "price_plan" },
       { "data": "content_plan" },
+      { "data": "sales_plan" },
       { "data": "created_plan" },
       { "data": "actions", "orderable": false }
     ];
@@ -51,163 +52,9 @@ function execDatatable(text) {
   }
 
   /*=============================================
-  Validamos tabla de usuarios
-  =============================================*/
-  if ($(".tableUsers").length > 0) {
-
-    var url = "ajax/data-users.php?text=" + text + "&between1=" + $("#between1").val() + "&between2=" + $("#between2").val() + "&token=" + localStorage.getItem("token_user");
-
-    var columns = [
-      { "data": "id_usuario" },
-      { "data": "estado_usuario", "orderable": false },
-      { "data": "datos_usuario" },
-      { "data": "contacto_usuario" },
-      { "data": "rol_usuario" },
-      { "data": "metodo_usuario" },
-      { "data": "verificado_usuario" },
-      { "data": "empresas_usuario" },
-      { "data": "creado_usuario" },
-      { "data": "acciones", "orderable": false }
-    ];
-
-    page = "users";
-
-  }
-
-  /*=============================================
-  Validamos tabla de ventas
-  =============================================*/
-  if ($(".tableSales").length > 0) {
-
-    var url = "ajax/data-sales.php?text=" + text + "&between1=" + $("#between1").val() + "&between2=" + $("#between2").val() + "&token=" + localStorage.getItem("token_user");
-
-    var columns = [
-      { "data": "id_venta" },
-      { "data": "trans_venta", "orderable": false },
-      { "data": "nombre_plan" },
-      { "data": "datos_compra", "orderable": false },
-      { "data": "estado_venta" },
-      { "data": "asignado_venta" },
-      { "data": "creado_venta" }
-    ];
-
-    page = "sales";
-
-  }
-
-  /*=============================================
-  Validamos tabla de suscripciones
-  =============================================*/
-  if ($(".tableSuscription").length > 0) {
-
-    var url = "ajax/data-suscriptions.php?text=" + text + "&between1=" + $("#between1").val() + "&between2=" + $("#between2").val() + "&token=" + localStorage.getItem("token_user") + "&idTenant=" + $("#idTenant").val();
-
-    var columns = [
-      { "data": "id_suscripcion" },
-      { "data": "fecha_emision" },
-      { "data": "fecha_pago" },
-      { "data": "datos_compra", "orderable": false },
-      { "data": "monto_pago" },
-      { "data": "plan_suscripcion", "orderable": false },
-      { "data": "estado_suscripcion" },
-      { "data": "descargar_suscripcion", "orderable": false },
-      { "data": "acciones", "orderable": false },
-      { "data": "pago_suscripcion" }
-    ];
-
-    page = "suscriptions";
-
-  }
-
-  /*=============================================
-  Validamos tabla guia de remision remitente
-  =============================================*/
-  if ($(".tableDtpub").length > 0) {
-
-    var url = "ajax/data-remitent.php?text=" + text + "&between1=" + $("#between1").val() + "&between2=" + $("#between2").val() + "&token=" + localStorage.getItem("token_user") + "&idTenant=" + $("#idTenant").val();
-
-    var columns = [
-      { "data": "id_despatch" },
-      { "data": "doc_despatch" },
-      { "data": "tipo_despatch" },
-      { "data": "emision_despatch" },
-      { "data": "baja_despatch", "orderable": false },
-      { "data": "rel_despatch", "orderable": false },
-      { "data": "dest_despatch", "orderable": false },
-      { "data": "estado_despatch" },
-      { "data": "creado_despatch" },
-      { "data": "actions", "orderable": false }
-    ];
-
-    page = "despatch-remitent";
-
-  }
-
-  /*=============================================
-  Validamos tabla guia de remision transportista
-  =============================================*/
-  if ($(".tableDtrans").length > 0) {
-
-    var url = "ajax/data-transportist.php?text=" + text + "&between1=" + $("#between1").val() + "&between2=" + $("#between2").val() + "&token=" + localStorage.getItem("token_user") + "&idTenant=" + $("#idTenant").val();
-
-    var columns = [
-      { "data": "id_transportist" },
-      { "data": "doc_transportist" },
-      { "data": "emision_transportist" },
-      { "data": "dest_transportist", "orderable": false },
-      { "data": "estado_transportist" },
-      { "data": "creado_transportist" },
-      { "data": "actions", "orderable": false }
-    ];
-
-    page = "despatch-transport";
-
-  }
-
-  /*=============================================
-  Validamos tabla resumen diario
-  =============================================*/
-  if ($(".tableSumm").length > 0) {
-
-    var url = "ajax/data-summary.php?text=" + text + "&between1=" + $("#between1").val() + "&between2=" + $("#between2").val() + "&token=" + localStorage.getItem("token_user") + "&idTenant=" + $("#idTenant").val();
-
-    var columns = [
-      { "data": "id_summary" },
-      { "data": "doc_summary" },
-      { "data": "emision_summary" },
-      { "data": "estado_summary" },
-      { "data": "creado_summary" },
-      { "data": "actions", "orderable": false }
-    ];
-
-    page = "summary";
-
-  }
-
-  /*=============================================
-  Validamos tabla resumen diario
-  =============================================*/
-  if ($(".tableVoid").length > 0) {
-
-    var url = "ajax/data-voided.php?text=" + text + "&between1=" + $("#between1").val() + "&between2=" + $("#between2").val() + "&token=" + localStorage.getItem("token_user") + "&idTenant=" + $("#idTenant").val();
-
-    var columns = [
-      { "data": "id_voided" },
-      { "data": "doc_voided" },
-      { "data": "emision_voided" },
-      { "data": "estado_voided" },
-      { "data": "creado_voided" },
-      { "data": "actions", "orderable": false }
-    ];
-
-    page = "voided";
-
-  }
-
-  /*=============================================
   Ejecutamos DataTable
   =============================================*/
-  var adminsTable = $("#adminsTable").DataTable({
+  var adminsTable = $(".adminsTable").DataTable({
 
     "responsive": true,
     "lengthChange": true,
@@ -271,7 +118,7 @@ function execDatatable(text) {
 
   if (text == "flat") {
 
-    $("#adminsTable").on("draw.dt", function () {
+    $(".adminsTable").on("draw.dt", function () {
 
       setTimeout(function () {
 
@@ -288,6 +135,93 @@ function execDatatable(text) {
 execDatatable("html");
 
 /*=============================================
+Ejecutamos Multilples tablas sin reporte
+=============================================*/
+$(".multipleTable").each(function() {
+  var table = $(this); // Referencia a la tabla
+
+  // Verificar si es la tabla de tiendas
+  if (table.hasClass("tableSotresAdmin")) {
+      var url = "/ajax/admin/data-tenants-stores.php?tenant=" + $("#tenant").val() + "&token=" + localStorage.getItem("token_user");
+      var columns = [
+          { "data": "id_store" },
+          { "data": "status_store", "orderable": false },
+          { "data": "name_store" },
+          { "data": "address_store" },
+          { "data": "created_store" },
+          { "data": "actions", "orderable": false }
+      ];
+  }
+
+  // Verificar si es la tabla de almacenes
+  if (table.hasClass("tableWarehousesAdmin")) {
+      var url = "/ajax/admin/data-tenants-warehouses.php?tenant=" + $("#tenant").val() + "&token=" + localStorage.getItem("token_user");
+      var columns = [
+          { "data": "id_warehouse" },
+          { "data": "status_warehouse", "orderable": false },
+          { "data": "name_warehouse" },
+          { "data": "address_warehouse" },
+          { "data": "created_warehouse" }
+      ];
+  }
+
+  // Inicializar el DataTable para la tabla actual
+  table.DataTable({
+      "responsive": true,
+      "lengthChange": true,
+      "aLengthMenu": [[5, 10, 50, 500, 1000], [5, 10, 50, 100, 500, 1000]],
+      "autoWidth": false,
+      "processing": true,
+      "serverSide": true,
+      "order": [[0, "desc"]],
+      "ajax": {
+          "url": url,
+          "type": "POST"
+      },
+      "columns": columns,
+      "language": {
+          "sProcessing": "Procesando...",
+          "sLengthMenu": "Mostrar _MENU_ registros",
+          "sZeroRecords": "No se encontraron resultados",
+          "sEmptyTable": "Ningún dato disponible en esta tabla",
+          "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
+          "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0",
+          "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+          "sSearch": "Buscar:",
+          "sUrl": "",
+          "sInfoThousands": ",",
+          "sLoadingRecords": "Cargando...",
+          "oPaginate": {
+              "sFirst": "Primero",
+              "sLast": "Último",
+              "sNext": "Siguiente",
+              "sPrevious": "Anterior"
+          },
+          "oAria": {
+              "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+              "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+          }
+      },
+      "buttons": [
+          { extend: "copy", className: "btn btn-label-primary btn-sm mb-2", text: "Copiar" },
+          { extend: "csv", className: "btn btn-label-primary btn-sm mb-2", text: "CSV" },
+          { extend: "excel", className: "btn btn-label-primary btn-sm mb-2", text: "Excel" },
+          { extend: "pdf", className: "btn btn-label-primary btn-sm mb-2", text: "PDF", orientation: "landscape" },
+          { extend: "print", className: "btn btn-label-primary btn-sm mb-2", text: "Imprimir" }
+      ],
+      fnDrawCallback: function (oSettings) {
+          if (oSettings.aoData.length == 0) {
+              $('.dataTables_paginate').hide();
+              $('.dataTables_info').hide();
+          } else {
+              $('.dataTables_paginate').show();
+              $('.dataTables_info').show();
+          }
+      }
+  });
+});
+
+/*=============================================
 Ejecutar reporte 
 =============================================*/
 function reportActive(event) {
@@ -300,8 +234,8 @@ function reportActive(event) {
     matPreloader("off");
     fncSweetAlert("close", "", "");
 
-    $("#adminsTable").dataTable().fnClearTable();
-    $("#adminsTable").dataTable().fnDestroy();
+    $(".adminsTable").dataTable().fnClearTable();
+    $(".adminsTable").dataTable().fnDestroy();
 
     setTimeout(function () {
 
@@ -314,8 +248,8 @@ function reportActive(event) {
     matPreloader("off");
     fncSweetAlert("close", "", "");
 
-    $("#adminsTable").dataTable().fnClearTable();
-    $("#adminsTable").dataTable().fnDestroy();
+    $(".adminsTable").dataTable().fnClearTable();
+    $(".adminsTable").dataTable().fnDestroy();
 
     setTimeout(function () {
 
