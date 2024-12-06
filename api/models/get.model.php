@@ -388,7 +388,7 @@ class GetModel{
 	Peticiones GET para el buscador sin relaciones
 	=============================================*/
 
-	static public function getDataSearch($table, $select, $linkTo, $search,$orderBy,$orderMode,$startAt,$endAt){
+	static public function getDataSearch($table, $select, $linkTo, $search,$orderBy,$orderMode,$startAt,$endAt, $filterTo, $inTo){
 
 		/*=============================================
 		Validar existencia de la tabla y de las columnas
@@ -401,11 +401,29 @@ class GetModel{
 			array_push($selectArray, $value);
 		}
 
+		if($filterTo != null){
+			$filterToArray = explode(",",$filterTo);
+		}else{
+			$filterToArray =array();
+		}
+
 		$selectArray = array_unique($selectArray);
+
+		foreach ($filterToArray  as $key => $value) {
+			array_push($selectArray, $value);
+		}
 		
 		if(empty(Connection::getColumnsData($table,$selectArray ))){
 			
 			return null;
+
+		}
+
+		$filter = "";
+
+		if($filterTo != null && $inTo != null){
+
+			$filter = 'AND '.$filterTo.' IN ('.$inTo.')';
 
 		}
 
@@ -429,7 +447,7 @@ class GetModel{
 		Sin ordenar y sin limitar datos
 		=============================================*/
 
-		$sql = "SELECT $select FROM $table WHERE $linkToArray[0] LIKE '%$searchArray[0]%' $linkToText";
+		$sql = "SELECT $select FROM $table WHERE $linkToArray[0] LIKE '%$searchArray[0]%' $linkToText $filter";
 
 		/*=============================================
 		Ordenar datos sin limites
@@ -437,7 +455,7 @@ class GetModel{
 
 		if($orderBy != null && $orderMode != null && $startAt == null && $endAt == null){
 
-			$sql = "SELECT $select FROM $table WHERE $linkToArray[0] LIKE '%$searchArray[0]%' $linkToText ORDER BY $orderBy $orderMode";
+			$sql = "SELECT $select FROM $table WHERE $linkToArray[0] LIKE '%$searchArray[0]%' $linkToText $filter ORDER BY $orderBy $orderMode";
 
 		}
 
@@ -447,7 +465,7 @@ class GetModel{
 
 		if($orderBy != null && $orderMode != null && $startAt != null && $endAt != null){
 
-			$sql = "SELECT $select FROM $table WHERE $linkToArray[0] LIKE '%$searchArray[0]%' $linkToText ORDER BY $orderBy $orderMode LIMIT $startAt, $endAt";
+			$sql = "SELECT $select FROM $table WHERE $linkToArray[0] LIKE '%$searchArray[0]%' $linkToText $filter ORDER BY $orderBy $orderMode LIMIT $startAt, $endAt";
 
 		}
 
@@ -457,7 +475,7 @@ class GetModel{
 
 		if($orderBy == null && $orderMode == null && $startAt != null && $endAt != null){
 
-			$sql = "SELECT $select FROM $table WHERE $linkToArray[0] LIKE '%$searchArray[0]%' $linkToText LIMIT $startAt, $endAt";
+			$sql = "SELECT $select FROM $table WHERE $linkToArray[0] LIKE '%$searchArray[0]%' $linkToText $filter LIMIT $startAt, $endAt";
 
 		}
 

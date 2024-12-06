@@ -47,9 +47,9 @@ Peticiones GET con filtro entre tablas relacionadas
 Peticiones GET para el buscador sin relaciones
 =============================================*/
 
-}else if(!isset($_GET["rel"]) && !isset($_GET["type"]) && isset($_GET["linkTo"]) && isset($_GET["search"])){
+}else if(!isset($_GET["rel"]) && !isset($_GET["type"]) && isset($_GET["linkTo"]) && isset($_GET["search"]) && isset($_GET["filterTo"]) && isset($_GET["inTo"])){
 
-	$response -> getDataSearch($table, $select,$_GET["linkTo"],$_GET["search"],$orderBy,$orderMode,$startAt,$endAt);
+	$response -> getDataSearch($table, $select,$_GET["linkTo"],$_GET["search"],$orderBy,$orderMode,$startAt,$endAt,$_GET["filterTo"],$_GET["inTo"]);
 
 /*=============================================
 Peticiones GET para el buscador con relaciones

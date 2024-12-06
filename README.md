@@ -60,4 +60,5 @@ Este sistema está diseñado para garantizar la seguridad y el aislamiento de da
 7 Se modifica las tablas para tener varias tablas sin reportes, esto para el perfil de la empresa donde se lita las tiendas y almacenes
 
 ## Avances al 06/12/24
-1 Formulario de registro de empresa funcional desde el panel admin, al registrar una empresa se crea de manera automatica la tienda y almacén principal, modificando la próxima fecha de facturación según el plan y periodo seleccionado, el id de la empresa y tienda se asigna al usuario
+1 Formulario de registro de empresa funcional desde el panel admin, al registrar una empresa se crea de manera automatica la tienda y almacén principal, modificando la próxima fecha de facturación según el plan y periodo seleccionado, el id de la empresa y tienda se asigna al usuario  
+2 Se corrige la relación de tablas para independizar cada registro que se tiene según la empresa
