@@ -52,7 +52,7 @@ class DatatableController
 
             if (!empty($_POST['search']['value'])) {
                 if (preg_match('/^[0-9A-Za-zñÑáéíóú ]{1,}$/', $_POST['search']['value'])) {
-                    $linkTo = ["name_tenant", "ruc_plan", "email_tenant", "address_tenant", "name_plan", "price_plan", "created_tenant"];
+                    $linkTo = ["name_tenant", "ruc_tenant", "email_tenant", "address_tenant", "name_plan", "price_plan", "created_tenant"];
                     $search = str_replace(" ", "_", $_POST['search']['value']);
 
                     foreach ($linkTo as $value) {
@@ -161,8 +161,8 @@ class DatatableController
                     $actions = "<div class='btn-group'>
                                     <button type='button' class='btn btn-outline-primary dropdown-toggle btn-xs waves-effect' data-bs-toggle='dropdown' aria-expanded='false'>Acciones</button>
                                     <ul class='dropdown-menu'>
-                                        <li><a class='dropdown-item' href='/tenants/view/" . base64_encode($value->id_tenant . "~" . $_GET["token"]) . "'>Ver Perfil</a></li>
                                         <li><a class='dropdown-item' href='/tenants/edit/" . base64_encode($value->id_tenant . "~" . $_GET["token"]) . "'>Editar Registro</a></li>
+                                        <li><a class='dropdown-item' href='/tenants/view/" . base64_encode($value->id_tenant . "~" . $_GET["token"]) . "'>Ver Perfil</a></li>
                                     </ul>
                                 </div>";
 

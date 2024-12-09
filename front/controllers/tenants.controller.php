@@ -431,4 +431,101 @@ class TenantsController{
 
     }
 
+    /*=============================================
+    Modificar empresas
+    =============================================*/
+    public static function edit($id)
+    {
+
+        if (isset($_POST["idTenant"])) {
+
+            /*=============================================
+            Mensaje de carga
+            =============================================*/
+            echo '<script>
+                    matPreloader("on");
+                    fncSweetAlert("loading", "Cargando...", "");
+                </script>';
+
+            /*=============================================
+            Enviamos los datos
+            =============================================*/
+            if ($_POST["idTenant"] == $id) {
+
+                $select = "*";
+
+                $url = "tenants?select=" . $select . "&linkTo=id_tenant&equalTo=" . $id;
+                $method = "GET";
+                $fields = array();
+
+                $response = CurlController::request($url, $method, $fields);
+
+                if ($response->status == 200) {
+
+                    // Decodificar el JSON
+                    $json = $response->results[0]->sunat_tenant;
+                    $datosApi = json_decode($json, true);
+
+                    // Acceder y editar los valores del arreglo
+                    $datosApi[0]['api'] = $_POST["status-sunat"];
+                    $datosApi[0]['token'] = $_POST["token-sunat"];
+                    $datosApi[0]['secret'] = $_POST["secret-sunat"];
+
+                    // Codificar de nuevo el JSON
+                    $json = json_encode($datosApi);
+
+                    $data = "web_tenant=" . $_POST["web-tenant"] . "&phone_tenant=" . $_POST["phone-tenant"] . "&email_tenant=" . $_POST["email-tenant"] . "&address_tenant=" . $_POST["address-tenant"]. "&prox_bill_tenant=" . $_POST["pfact-tenant"] . "&id_plan_tenant=" . $_POST["plan-tenant"] . "&sunat_tenant=" . $json;
+
+                    $url = "tenants?id=" . $id . "&nameId=id_tenant&token=" . $_SESSION["user"]->token_user . "&table=users&suffix=user";
+                    $method = "PUT";
+                    $fields = $data;
+
+                    $response = CurlController::request($url, $method, $fields);
+
+                    if ($response->status == 200) {
+
+                        echo '<script>
+                                fncFormatInputs();
+                                matPreloader("off");
+                                fncSweetAlert("close", "", "");
+                                fncSweetAlert("success", "' . $response->results->comment . '", "/tenants");
+                            </script>';
+
+                    } else {
+
+                        echo '<script>
+                                fncFormatInputs();
+                                matPreloader("off");
+                                fncSweetAlert("close", "", "");
+                                fncNotie(3, "' . $response->results . '");
+                            </script>';
+
+                    }
+
+                } else {
+
+                    echo '<script>
+                            fncFormatInputs();
+                            matPreloader("off");
+                            fncSweetAlert("close", "", "");
+                            fncNotie(3, "No se econtró el registro a editar.");
+                        </script>';
+
+                }
+
+            } else {
+
+                echo '<script>
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncNotie(3, "Debe enviar un ID para editar.");
+                    </script>';
+
+            }
+
+        }
+
+    }
+
 }
