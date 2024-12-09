@@ -145,8 +145,23 @@ Mail: info@chanamoth.com
                     <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65"
                         aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <span>Quedan 4 días</span>
-                <div class="d-grid w-100 mt-3 pt-2">
+                <?php if($tenant->prox_bill_tenant == '0000-00-00'): ?>
+                    <span>Tu plan no expira.</span>
+                <?php else: ?>
+                    <?php
+                    
+                        $fechaQueda = TemplateController::diasRestantes($tenant->prox_bill_tenant);
+
+                        if($fechaQueda == 0) {
+                            $queda = "Tu plan ya expiró.";
+                        } else {
+                            $queda = "Queda(n) " . $fechaQueda . " día(s)";
+                        }
+                    
+                    ?>
+                    <span><?php echo $queda ?></span>
+                <?php endif; ?>
+                <div class="d-grid w-100 mt-3 pt-2 hidden">
                     <button class="btn btn-primary" data-bs-target="#upgradePlanModal" data-bs-toggle="modal">Actualiza Plan</button>
                 </div>
             </div>

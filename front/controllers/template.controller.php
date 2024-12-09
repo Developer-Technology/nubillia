@@ -186,4 +186,25 @@ class TemplateController {
         return strtoupper($codigo); // Convertir a mayúsculas
     }
 
+	/*=============================================
+    Calcula cuanto falta para culminar el plan
+    =============================================*/
+	public static function diasRestantes($fechaObjetivo) {
+
+		$fechaActual = new DateTime();
+		$fechaDestino = new DateTime($fechaObjetivo);
+		$diferencia = $fechaActual->diff($fechaDestino);
+	
+		if ($fechaDestino > $fechaActual) {
+
+			return $diferencia->days;
+
+		} else {
+
+			return 0;
+
+		}
+
+	}
+
 }

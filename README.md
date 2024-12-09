@@ -64,4 +64,5 @@ Este sistema está diseñado para garantizar la seguridad y el aislamiento de da
 2 Se corrige la relación de tablas para independizar cada registro que se tiene según la empresa
 
 ## Avances al 09/12/24
-1 Formulario para editar empresa desde el panel admin
+1 Formulario para editar empresa desde el panel admin  
+2 Se agrega los días faltantes para expirar el plan dentro del perfil de la empresa en el panel admin
