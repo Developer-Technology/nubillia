@@ -68,3 +68,6 @@ Este sistema está diseñado para garantizar la seguridad y el aislamiento de da
 2 Se agrega los días faltantes para expirar el plan dentro del perfil de la empresa en el panel admin  
 3 Se visualiza las ventas realizadas en el panel admin  
 4 Listado de usuarios desde el panel admin
+
+## Avances al 10/12/24
+1 Registro de usuarios desde el front

@@ -116,6 +116,9 @@ if(!empty($routesArray[2])) {
         <meta name="description" content="Start your development with a Dashboard for Bootstrap 5" />
         <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
 
+        <!-- Base URL -->
+        <base href="<?php echo TemplateController::path() ?>">
+
         <!-- Favicon -->
         <link rel="icon" type="image/x-icon" href="<?php echo $faviconSetting; ?>" />
 
@@ -125,55 +128,55 @@ if(!empty($routesArray[2])) {
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
 
         <!-- Icons -->
-        <link rel="stylesheet" href="/views/assets/vendor/fonts/boxicons.css" />
-        <link rel="stylesheet" href="/views/assets/vendor/fonts/fontawesome.css" />
-        <link rel="stylesheet" href="/views/assets/vendor/fonts/flag-icons.css" />
+        <link rel="stylesheet" href="views/assets/vendor/fonts/boxicons.css" />
+        <link rel="stylesheet" href="views/assets/vendor/fonts/fontawesome.css" />
+        <link rel="stylesheet" href="views/assets/vendor/fonts/flag-icons.css" />
 
         <!-- Core CSS -->
-        <link rel="stylesheet" href="/views/assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
-        <link rel="stylesheet" href="/views/assets/vendor/css/rtl/theme-bordered.css" class="template-customizer-theme-css" />
-        <link rel="stylesheet" href="/views/assets/css/demo.css" />
-        <link rel="stylesheet" href="/views/assets/vendor/libs/sweetalert2/sweetalert2.css" />
-        <link rel="stylesheet" href="/views/assets/custom/css/custom.css">
+        <link rel="stylesheet" href="views/assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+        <link rel="stylesheet" href="views/assets/vendor/css/rtl/theme-bordered.css" class="template-customizer-theme-css" />
+        <link rel="stylesheet" href="views/assets/css/demo.css" />
+        <link rel="stylesheet" href="views/assets/vendor/libs/sweetalert2/sweetalert2.css" />
+        <link rel="stylesheet" href="views/assets/custom/css/custom.css">
         
         <!-- Vendors CSS -->
-        <link rel="stylesheet" href="/views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-        <link rel="stylesheet" href="/views/assets/vendor/libs/tagify/tagify.css" />
-        <link rel="stylesheet" href="/views/assets/vendor/libs/bootstrap-select/bootstrap-select.css" />
+        <link rel="stylesheet" href="views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+        <link rel="stylesheet" href="views/assets/vendor/libs/tagify/tagify.css" />
+        <link rel="stylesheet" href="views/assets/vendor/libs/bootstrap-select/bootstrap-select.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
-        <link rel="stylesheet" href="/views/assets/vendor/libs/typeahead-js/typeahead.css" />
-        <link rel="stylesheet" href="/views/assets/plugins/summernote/summernote.css">
+        <link rel="stylesheet" href="views/assets/vendor/libs/typeahead-js/typeahead.css" />
+        <link rel="stylesheet" href="views/assets/plugins/summernote/summernote.css">
 
         <!-- Plugins -->
-        <link rel="stylesheet" href="/views/assets/plugins/material-preloader/material-preloader.css">
-        <link rel="stylesheet" href="/views/assets/plugins/notie/notie.css">
-        <script src="/views/assets/plugins/data-tables/dataTables.js"></script>
+        <link rel="stylesheet" href="views/assets/plugins/material-preloader/material-preloader.css">
+        <link rel="stylesheet" href="views/assets/plugins/notie/notie.css">
+        <script src="views/assets/plugins/data-tables/dataTables.js"></script>
 
         <!-- Helpers -->
-        <script src="/views/assets/vendor/js/helpers.js"></script>
+        <script src="views/assets/vendor/js/helpers.js"></script>
         <!--Config  -->
-        <script src="/views/assets/js/config.js"></script>
+        <script src="views/assets/js/config.js"></script>
 
         <!-- Scripts Footer -->
-        <script src="/views/assets/vendor/libs/jquery/jquery.js"></script>
-        <script src="/views/assets/vendor/libs/popper/popper.js"></script>
-        <script src="/views/assets/vendor/js/bootstrap.js"></script>
-        <script src="/views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-        <script src="/views/assets/vendor/libs/hammer/hammer.js"></script>
-        <script src="/views/assets/vendor/libs/i18n/i18n.js"></script>
-        <script src="/views/assets/vendor/libs/tagify/tagify.js"></script>
-        <script src="/views/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+        <script src="views/assets/vendor/libs/jquery/jquery.js"></script>
+        <script src="views/assets/vendor/libs/popper/popper.js"></script>
+        <script src="views/assets/vendor/js/bootstrap.js"></script>
+        <script src="views/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+        <script src="views/assets/vendor/libs/hammer/hammer.js"></script>
+        <script src="views/assets/vendor/libs/i18n/i18n.js"></script>
+        <script src="views/assets/vendor/libs/tagify/tagify.js"></script>
+        <script src="views/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
-        <script src="/views/assets/vendor/libs/typeahead-js/typeahead.js"></script>
-        <script src="/views/assets/vendor/js/menu.js"></script>
+        <script src="views/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+        <script src="views/assets/vendor/js/menu.js"></script>
 
         <!-- Plugins -->
-        <script src="/views/assets/plugins/material-preloader/material-preloader.js"></script>
-        <script src="/views/assets/plugins/notie/notie.min.js"></script>
-        <script src="/views/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
-        <script src="/views/assets/custom/alerts/alerts.js"></script>
-        <script src="/views/assets/plugins/summernote/summernote.js"></script>
-        <script src="/views/assets/custom/forms/forms.js"></script>
+        <script src="views/assets/plugins/material-preloader/material-preloader.js"></script>
+        <script src="views/assets/plugins/notie/notie.min.js"></script>
+        <script src="views/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+        <script src="views/assets/custom/alerts/alerts.js"></script>
+        <script src="views/assets/plugins/summernote/summernote.js"></script>
+        <script src="views/assets/custom/forms/forms.js"></script>
 
         <?php if(!empty($routesArray[1])): ?>
             <?php if($routesArray[1] == "plans" ||
@@ -182,25 +185,25 @@ if(!empty($routesArray[2])) {
                     $routesArray[1] == "sales"): ?>
                 
                 <!-- DataTables  & Plugins -->
-                <link rel="stylesheet" href="/views/assets/plugins/daterangepicker/daterangepicker.css">
-                <link rel="stylesheet" href="/views/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
-                <link rel="stylesheet" href="/views/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
-                <link rel="stylesheet" href="/views/assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+                <link rel="stylesheet" href="views/assets/plugins/daterangepicker/daterangepicker.css">
+                <link rel="stylesheet" href="views/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+                <link rel="stylesheet" href="views/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+                <link rel="stylesheet" href="views/assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
-                <script src="/views/assets/plugins/moment/moment.min.js"></script>
-                <script src="/views/assets/plugins/daterangepicker/daterangepicker.js"></script>
-                <script src="/views/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-                <script src="/views/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
-                <script src="/views/assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-                <script src="/views/assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-                <script src="/views/assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-                <script src="/views/assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-                <script src="/views/assets/plugins/jszip/jszip.min.js"></script>
-                <script src="/views/assets/plugins/pdfmake/pdfmake.min.js"></script>
-                <script src="/views/assets/plugins/pdfmake/vfs_fonts.js"></script>
-                <script src="/views/assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-                <script src="/views/assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-                <script src="/views/assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+                <script src="views/assets/plugins/moment/moment.min.js"></script>
+                <script src="views/assets/plugins/daterangepicker/daterangepicker.js"></script>
+                <script src="views/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+                <script src="views/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+                <script src="views/assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+                <script src="views/assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+                <script src="views/assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+                <script src="views/assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+                <script src="views/assets/plugins/jszip/jszip.min.js"></script>
+                <script src="views/assets/plugins/pdfmake/pdfmake.min.js"></script>
+                <script src="views/assets/plugins/pdfmake/vfs_fonts.js"></script>
+                <script src="views/assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+                <script src="views/assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+                <script src="views/assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
             <?php endif; ?>
         <?php endif; ?>
@@ -219,19 +222,19 @@ if(!empty($routesArray[2])) {
                     if($routesArray[1] == "forgot" ||
                         $routesArray[1] == "register") {
                         
-                        echo '<link rel="stylesheet" href="/views/assets/vendor/css/pages/page-auth.css">';
+                        echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-auth.css">';
                         include "views/pages/auth/".$routesArray[1]."/".$routesArray[1].".php";
                         
                     } else {
                         
-                        echo '<link rel="stylesheet" href="/views/assets/vendor/css/pages/page-misc.css">';
+                        echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-misc.css">';
                         include "views/pages/auth/404/404.php";
                     
                     }
                 
                 } else {
                     
-                    echo '<link rel="stylesheet" href="/views/assets/vendor/css/pages/page-auth.css">';
+                    echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-auth.css">';
                     include "views/pages/auth/login/login.php";
                 
                 }
@@ -250,19 +253,19 @@ if(!empty($routesArray[2])) {
                         $routesArray[1] == "redirect" || 
                         $routesArray[1] == "admin") {
                         
-                        echo '<link rel="stylesheet" href="/views/assets/vendor/css/pages/page-misc.css">';
+                        echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-misc.css">';
                         include "views/pages/".$routesArray[1]."/".$routesArray[1].".php";
                         
                     } else {
                         
-                        echo '<link rel="stylesheet" href="/views/assets/vendor/css/pages/page-misc.css">';
+                        echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-misc.css">';
                         include "views/pages/auth/404/404.php";
                     
                     }
                 
                 } else {
                     
-                    echo '<link rel="stylesheet" href="/views/assets/vendor/css/pages/page-auth.css"><link rel="stylesheet" href="views/assets/vendor/css/pages/page-profile.css" />';
+                    echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-auth.css"><link rel="stylesheet" href="views/assets/vendor/css/pages/page-profile.css" />';
                     include "views/pages/auth/tenant/tenant.php";
                 
                 }
@@ -283,14 +286,14 @@ if(!empty($routesArray[2])) {
                     
                     } else {
                         
-                        echo '<link rel="stylesheet" href="/views/assets/vendor/css/pages/page-misc.css">';
+                        echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-misc.css">';
                         include "views/pages/auth/404/404.php";
                     
                     }
                 
                 } else {
                     
-                    echo '<link rel="stylesheet" href="/views/assets/vendor/css/pages/page-auth.css">';
+                    echo '<link rel="stylesheet" href="views/assets/vendor/css/pages/page-auth.css">';
                     include "views/pages/auth/lockscreen/lockscreen.php";
                 
                 }
@@ -426,7 +429,7 @@ if(!empty($routesArray[2])) {
         <!-- / Layout wrapper -->
 
         <!-- Main JS -->
-        <script src="/views/assets/js/main.js"></script>
+        <script src="views/assets/js/main.js"></script>
     
     </body>
 

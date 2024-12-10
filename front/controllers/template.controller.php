@@ -14,10 +14,10 @@ class TemplateController {
 	static public function path() {
 
 		/* Produccion */
-		//return "nubillia.chanamoth.local/";
+		//return "https://admin.nubillia.com/";
 
 		/* Desarrollo */
-		return "nubillia.local/";
+		return "http://admin.nubillia.local/";
 
 	}
 

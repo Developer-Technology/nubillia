@@ -7,7 +7,6 @@ class Connection{
 	/*=============================================
 	Información de la base de datos
 	=============================================*/
-
 	static public function infoDatabase(){
 
 		$infoDB = array(
@@ -25,7 +24,6 @@ class Connection{
 	/*=============================================
 	APIKEY
 	=============================================*/
-
 	static public function apikey(){
 
 		return "c5LTA6WPbMwHhEabYu77nN9cn4VcMj";
@@ -35,7 +33,6 @@ class Connection{
 	/*=============================================
 	Encriptar
 	=============================================*/
-
 	static public function cryptData(){
 
 		return '$2a$07$azybxcags23425sdg23sdfhsd$';
@@ -56,9 +53,7 @@ class Connection{
 	/*=============================================
 	Conexión a la base de datos
 	=============================================*/
-
 	static public function connect(){
-
 
 		try{
 
@@ -88,13 +83,11 @@ class Connection{
 		/*=============================================
 		Traer el nombre de la base de datos
 		=============================================*/
-
 		$database = Connection::infoDatabase()["database"];
 
 		/*=============================================
 		Traer todas las columnas de una tabla
 		=============================================*/
-
 		$validate = Connection::connect()
 		->query("SELECT COLUMN_NAME AS item FROM information_schema.columns WHERE table_schema = '$database' AND table_name = '$table'")
 		->fetchAll(PDO::FETCH_OBJ);
@@ -102,7 +95,6 @@ class Connection{
 		/*=============================================
 		Validamos existencia de la tabla
 		=============================================*/
-
 		if(empty($validate)){
 
 			return null;
@@ -112,7 +104,6 @@ class Connection{
 			/*=============================================
 			Ajuste de selección de columnas globales
 			=============================================*/
-
 			if($columns[0] == "*"){
 				
 				array_shift($columns);
@@ -122,7 +113,6 @@ class Connection{
 			/*=============================================
 			Validamos existencia de columnas
 			=============================================*/
-
 			$sum = 0;
 				
 			foreach ($validate as $key => $value) {
@@ -132,11 +122,7 @@ class Connection{
 						
 			}
 
-
-
 			return $sum == count($columns) ? $validate : null;
-			
-			
 			
 		}
 
@@ -145,7 +131,6 @@ class Connection{
 	/*=============================================
 	Generar Token de Autenticación
 	=============================================*/
-
 	static public function jwt($id, $email){
 
 		$time = time();
@@ -168,7 +153,6 @@ class Connection{
 	/*=============================================
 	Validar el token de seguridad
 	=============================================*/
-
 	static public function tokenValidate($token,$table,$suffix){
 
 		/*=============================================
@@ -181,7 +165,6 @@ class Connection{
 			/*=============================================
 			Validamos que el token no haya expirado
 			=============================================*/	
-
 			$time = time();
 
 			if($time < $user[0]->{"token_exp_".$suffix}){

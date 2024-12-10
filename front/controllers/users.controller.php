@@ -9,7 +9,7 @@ Mail: info@chanamoth.com
 class UsersController{
 
 	/*=============================================
-	Login de administradores
+	Login de usuarios
 	=============================================*/	
 	public function login(){
 
@@ -388,5 +388,113 @@ class UsersController{
         }
 
 	}
+
+	/*=============================================
+	Registro de usuarios
+	=============================================*/	
+	public function register()
+    {
+
+        if (isset($_POST["registerEmail"])) {
+
+            echo '<script>
+                    matPreloader("on");
+                    fncSweetAlert("loading", "Cargando...", "");
+                </script>';
+
+            /*=============================================
+			Creamos el avatar
+			=============================================*/
+			$urlAvatar = "uploads/index.php";
+			$methodAvatar = "POST";
+			$fieldsAvatar = array(
+				"file" => "avatar",
+				"folder" => "users",
+				"name" => $_POST["registerName"],
+				"width" => 60,
+				"height" => 60
+			);
+
+			$responseAvatar = CurlController::request($urlAvatar, $methodAvatar, $fieldsAvatar);
+
+			if($responseAvatar->status != 200) {
+
+				$fileAvatar = "";
+
+			} else {
+
+				$fileAvatar = $responseAvatar->file;
+
+			}
+
+			/*=============================================
+			Registramos el colaborador
+			=============================================*/
+			$urlWorker = "workers?token=no-token&table=users&suffix=user";
+			$methodWorker = "POST";
+			$fieldsWorker = array(
+				"name_worker" => TemplateController::capitalize($_POST["registerName"]),
+				"email_worker" => $_POST["registerEmail"],
+				"photo_worker" => $fileAvatar,
+				"created_worker" => date('Y-m-d')
+			);
+
+			$responseWorker = CurlController::request($urlWorker, $methodWorker, $fieldsWorker);
+
+			if($responseWorker->status == 200) {
+
+				$url = "users?register=true&suffix=user";
+				$method = "POST";
+				$fields = array(
+					"email_user" => $_POST["registerEmail"],
+					"id_tenant_user" => "[]",
+					"id_store_user" => "[]",
+					"id_worker_user" => $responseWorker->results->lastId,
+					"id_rol_user" => 2,
+					"username_user" => $_POST["registerUserName"],
+					"password_user" => $_POST["loginPassword"],
+					"status_user" => 1,
+					"method_user" => "Directo",
+					"created_user" => date('Y-m-d')
+				);
+
+				$response = CurlController::request($url, $method, $fields);
+
+				print_r($response);
+
+				if ($response->status == 200) {
+
+					echo '<script>
+							fncFormatInputs()
+							matPreloader("off");
+							fncSweetAlert("close", "", "");
+							fncSweetAlert("success", "Por favor verifica tu correo para continuar", "/");
+						</script>';
+
+				} else {
+
+					echo '<script>
+						fncFormatInputs();
+						matPreloader("off");
+						fncSweetAlert("close", "", "");
+						fncNotie(3, "' . $response->results . '");
+					</script>';
+
+				}
+
+			} else {
+
+				echo '<script>
+						fncFormatInputs();
+						matPreloader("off");
+						fncSweetAlert("close", "", "");
+						fncNotie(3, "' . $responseWorker->results . '");
+					</script>';
+
+			}
+
+        }
+
+    }
 
 }

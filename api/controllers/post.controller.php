@@ -47,6 +47,39 @@ class PostController{
 			$return = new PostController();
 			$return -> fncResponse($response,null,$suffix);
 
+			/*=============================================
+			Recogemos los datos del sistema
+			=============================================*/
+			$dataSett = GetModel::getDataFilter("settings", "*", "id_setting", 1, null, null, null, null);
+
+			/*=============================================
+			Obtenemos los datos del servidor de correo
+			=============================================*/
+			foreach (json_decode($dataSett[0]->server_setting) as $key => $elementServer) {
+
+				$server = $elementServer->server;
+
+			}
+
+			if($server == "si") {
+			
+				/*=============================================
+				Generamos el correo
+				=============================================*/
+				$name = $data["email_" . $suffix];
+				$subject = "Verifica tu cuenta";
+				$email = $data["email_" . $suffix];
+				$message = "Debemos verificar tu cuenta para que puedas acceder a <b>" . $dataSett[0]->name_system_setting . "</b>";
+				$text = "Haz clic en este enlace para verificar tu cuenta";
+				/* Ruta donde se encuentra el sistema */
+				$url = RoutesController::path() . 'verify/' . base64_encode($data["email_" . $suffix] . '~' . date('Y-m-d H:i:s') . '~c5LTA6WPbMwHhEabYu77nN9cn4VcMj' . '~' . uniqid());
+
+				//$sendEmail = RoutesController::sendEmail($name, $subject, $data["email_" . $suffix], $message, $text, $url);
+			
+				//return $sendEmail;
+				
+			}
+
 		}else{
 
 			/*=============================================

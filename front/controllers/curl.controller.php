@@ -30,7 +30,7 @@ class CurlController
     {
     
         /* Produccion */
-        //return "https://apifacturacion.chanamoth.com/";
+        //return "https://api.nubillia.com/";
 
         /* Desarrollo */
         return "http://api.tukifac.local/";
