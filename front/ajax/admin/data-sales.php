@@ -135,22 +135,22 @@ class DatatableController
                     /* Validar si hay empresa asociada */
                     if ($value->id_tenant_saleadmin != 0) {
 
-                        $asignado = "<span class='badge bg-info'>Asignado</span>";
+                        $asignado = "<span class='badge bg-info'><small>Asignado</small></span>";
     
                     } else {
     
-                        $asignado = "<span class='badge bg-warning'>No Asignado</span>";
+                        $asignado = "<span class='badge bg-warning'><small>No Asignado</small></span>";
     
                     }
 
                     /* Validar el estado */
                     if ($value->status_saleadmin != 'pagado') {
 
-                        $pagado = "<span class='badge bg-danger'>No Pagado</span>";
+                        $pagado = "<span class='badge bg-danger'><small>No Pagado</small></span>";
     
                     } else {
     
-                        $pagado = "<span class='badge bg-success'>Pagado</span>";
+                        $pagado = "<span class='badge bg-success'><small>Pagado</small></span>";
     
                     }
                 }

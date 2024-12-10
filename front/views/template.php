@@ -178,6 +178,7 @@ if(!empty($routesArray[2])) {
         <?php if(!empty($routesArray[1])): ?>
             <?php if($routesArray[1] == "plans" ||
                     $routesArray[1] == "tenants" ||
+                    $routesArray[1] == "users" ||
                     $routesArray[1] == "sales"): ?>
                 
                 <!-- DataTables  & Plugins -->

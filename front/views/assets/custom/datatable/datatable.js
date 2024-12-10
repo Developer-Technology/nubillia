@@ -73,6 +73,31 @@ function execDatatable(text) {
   }
 
   /*=============================================
+  Validamos tabla de usuarios en el panel admin
+  =============================================*/
+  if ($(".tableUsersAdmin").length > 0) {
+
+    var url = "ajax/admin/data-users.php?text=" + text + "&between1=" + $("#between1").val() + "&between2=" + $("#between2").val() + "&token=" + localStorage.getItem("token_user");
+
+    var columns = [
+      { "data": "id_user" },
+      { "data": "status_user", "orderable": false },
+      { "data": "data_user" },
+      { "data": "contact_user" },
+      { "data": "rol_user" },
+      { "data": "method_user" },
+      { "data": "verified_user" },
+      { "data": "tenants_user" },
+      { "data": "created_user" },
+      { "data": "actions", "orderable": false }
+    ];
+
+    page = "users";
+
+  }
+
+
+  /*=============================================
   Ejecutamos DataTable
   =============================================*/
   var adminsTable = $(".adminsTable").DataTable({
