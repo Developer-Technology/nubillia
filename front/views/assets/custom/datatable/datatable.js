@@ -52,6 +52,27 @@ function execDatatable(text) {
   }
 
   /*=============================================
+  Validamos tabla de ventas en el panel admin
+  =============================================*/
+  if ($(".tableSalesAdmin").length > 0) {
+
+    var url = "ajax/admin/data-sales.php?text=" + text + "&between1=" + $("#between1").val() + "&between2=" + $("#between2").val() + "&token=" + localStorage.getItem("token_user");
+
+    var columns = [
+      { "data": "id_saleadmin" },
+      { "data": "trans_saleadmin" },
+      { "data": "name_plan" },
+      { "data": "data_purchase" },
+      { "data": "status_saleadmin" },
+      { "data": "asign_saleadmin" },
+      { "data": "created_saleadmin" }
+    ];
+
+    page = "sales";
+
+  }
+
+  /*=============================================
   Ejecutamos DataTable
   =============================================*/
   var adminsTable = $(".adminsTable").DataTable({

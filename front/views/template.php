@@ -177,7 +177,8 @@ if(!empty($routesArray[2])) {
 
         <?php if(!empty($routesArray[1])): ?>
             <?php if($routesArray[1] == "plans" ||
-                    $routesArray[1] == "tenants"): ?>
+                    $routesArray[1] == "tenants" ||
+                    $routesArray[1] == "sales"): ?>
                 
                 <!-- DataTables  & Plugins -->
                 <link rel="stylesheet" href="/views/assets/plugins/daterangepicker/daterangepicker.css">
@@ -361,6 +362,7 @@ if(!empty($routesArray[2])) {
                                             $routesArray[1] == "tenants" ||
                                             $routesArray[1] == "users" || 
                                             $routesArray[1] == "settings" ||
+                                            $routesArray[1] == "sales" ||
                                             $routesArray[1] == "redirect") {
 
                                             if($routesArray[1] == "lock") {
